@@ -1,0 +1,5 @@
+- Separation of concerns, try not to use markup
+- copy and paste your flies before submission into an online htm validator, and see what errors you might have:
+	- validator: https://validator.w3.org/
+	- use these settings: https://screencast.com/t/5yXl8UHPv
+- hyphen, check this article out: http://www.getitwriteonline.com/archive/091502enem.htm

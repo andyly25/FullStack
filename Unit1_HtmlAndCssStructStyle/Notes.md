@@ -39,3 +39,18 @@ HTML and CSS: Structure and style
 	- anchor, image, header, video
 - Taking content and structuring it into well-formed, semantic HTML
 - Explaining what a11y is and describing and following basic a11y best practices
+	- a11y (two 1's) stands for accessibility
+	- practice making web pages accessible to both able-bodied and disabled users
+		- we'll mainly focus on visually impaired
+		- it also help web crawlers find and index content on the web to have it appear on search results
+	- Logical content structure makes easier for screen readers to nav and understand
+	- make sure to tell which language it's reading, usually placed in `<html lang="en">` tag
+	- ARIA ("Accessible Rich Internet Applications"): web accessibility interface
+		- helps those who uses it to understand and use websites
+	- `role` tells the browser what each content is for and helps screen readers understand
+		- best used for newer HTML5 sectioning 
+			- e.g.: header, main, nav, footer
+	- Conclusion: 
+		- semantic HTML
+		- lan attrib. on HTML tag
+		- set the role attribute are appropiate locations

@@ -58,7 +58,7 @@ HTML and CSS: Structure and style
 ## CSS the Right Way
 - Describing the different parts of a CSS ruleset (the selector, the declaration block, declarations, properties, values)
 	- **ruleset**
-		- ``` HTML
+		- ```CSS
 			input {
 				display: block;
 				font-family: 'Proxima Nova W01', sans-serif;
@@ -99,6 +99,9 @@ HTML and CSS: Structure and style
 		- normally everything will add up for total width
 		- if we want model to respect width that was set, use `box-sizing`
 - Inspecting and manipulating CSS using Developer Tools
+	- can preview page on browser, experiement different settings, then using what you like into your code.
+	- if you click on right side for source of css code, it'll be minified. 
+		- click on `{}` on bottom left side for pretty print of the code
 - Learning new CSS properties
 - Solving basic CSS problems like setting background colors, font colors, width, height, etc.
 - Using a wide variety of CSS selectors to target HTML elements

@@ -47,3 +47,48 @@ ul > li  {
 button[type="submit"] {
   /* any button with a type of "submit" */
 }
+
+/* Before and after */
+blockquote::before{
+  content: open-quote;
+}
+blockquote::after{
+  content: close-quote;
+}
+
+
+
+/* Anchor Pseudo Classes */
+a:link {
+  /* unvisited link */
+}
+
+a:visited {
+  /* visited link */
+}
+
+a:hover {
+  /* mouse over link */
+}
+
+a:focus {
+  /* keyboard focus on link */
+}
+
+a:active {
+  /* selected link (i.e., you've clicked
+    but not released on the link)
+ */
+}
+
+
+/* Attribute selectors */
+
+/* Exact match:  */
+element[attribute=value]
+/* Match pattern anywhere in value:  */
+element[attribute*=value]
+/* Match pattern at beginning of value:  */
+element[attribute^=value]
+/* Match pattern at end of value:  */
+element[attribute$=value]

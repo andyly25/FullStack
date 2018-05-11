@@ -117,3 +117,37 @@ HTML and CSS: Structure and style
 - Viewing HTML without CSS can be viewed differently depending on the browser
 	- CSS reset with [Meyer Rest](https://meyerweb.com/eric/tools/css/reset/reset.css)
 	- [normalize.css](https://necolas.github.io/normalize.css/) is a css library that normalize subset of browser elements to be consistent between browsers
+
+## CSS Layouts
+- Explaining and implementing horizontal centering for inline and block-level elements
+	- `margin: auto` for horizontal centering if you put the left and right on auto.
+		- block level by default extend to the full width of their parent container
+			- can be overrided with width or max-width 
+		- **block-level**: gets displayed on a new line, may contain additional bloc level or inline elements
+			- height and width can be explicitly set.
+	- centering inline elements with: `text-align: center`
+		- in the case of h1 and h3, it's all of the text within to be centered, pictures can be as well
+		- **inline** element (e.g.: a, strong, em, span) usually contains just text
+			- dimensions determined by how much space its contents require. 
+	- **inline-block elements** : combines both; displays inline like a span or a element
+		- but can give explicit width, height, margin, padding
+		- `font-size: 0` is a trick to remove whitespace between inline-block elements
+		- line breaks are considered as a space
+	- NOTE: default settings is what you need, don't need to edit unless you have reason to do so.
+- Explaining and using the display: block vs. display: inline-block vs. display: inline
+	- explanations above
+- Explaining the so-called "white-space" problem and how to solve it
+	- blank space creates white spaces in between
+	- trick is to use `font-size: 0`
+- Explaining and using position: static vs. position: relative vs. position: fixed vs. position: absolute
+	- **position: static** : this is the default
+		- any HTML element with this will have **normal flow** (default way browsers renders content)
+		- things appear in the order they appear in HTML
+	- **fixed** : element position stays in place even when the user scrolls
+		- taken out of the normal flow, and other elements pos. as if fixed doesn't exist
+	- **relative** : it is still in the normal flow, but we can use offset properties
+	- **absolute** : similar to fixed, but they offset in relation to the first parent container with non-static position
+		- e.g. have a navbar and you want to align logo to the left and links to the right
+	- **offsets** : (left, top, right, bottom) can be used on fixed, relative, absolute
+- Explaining and using the float property to get text to wrap around images or other content
+- Coding up a wide range of layouts from designs.

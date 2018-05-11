@@ -1,0 +1,62 @@
+body * {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.boxContainer{
+  padding-top: 50px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+  font-size: 0;
+}
+
+.box{
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.topHalf{
+	height: 200px;
+	width: 50%;
+	/* display: inline-block; */
+}
+
+.bottomThird{
+	height: 300px;
+	width: 33.33%;
+	/* display: inline-block; */
+}
+
+/* I realized after looking at the solution I could save all the copy and pasting by making another class */
+.greenBox{
+	background-color: green;
+	/* border: 1px solid black;
+	display: inline-block; */
+}
+.blueBox{
+	background-color: blue;
+	/* border: 1px solid black;
+	display: inline-block; */
+	
+}
+.greyBox{
+	background-color: grey;
+	/* border: 1px solid black;
+	display: inline-block; */
+}
+.blackBox{
+	background-color: black;
+	/* border: 1px solid black;
+	display: inline-block; */
+	
+}
+.yellowBox{
+	background-color: yellow;
+	/* border: 1px solid black;
+	display: inline-block; */
+}

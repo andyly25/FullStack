@@ -7,3 +7,5 @@
 - lorempixel site is not working, so examples shows no image
 - For the practice drills that gives you a self time limit should we submit what we have at the time
 	- or do we go back and look at solution to edit and then submit?
+- specificity, margins, paddings, 
+- gist? when I copy and paste the tabbings are off?

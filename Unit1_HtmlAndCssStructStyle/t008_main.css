@@ -30,6 +30,7 @@ a:link{
 }
 a:hover{
   text-decoration: underline;
+  color: blue;
 }
 
 .logo{
@@ -52,6 +53,34 @@ a:hover{
 
 #searchButton{
 	height: 24px;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
   vertical-align: bottom;
+}
+
+.pageScroll{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* getting rid of spaces between elements */
+  font-size: 0;
+}
+
+.pageScroll a, .pageScroll span{
+  border: 1px solid lightgray;
+  font-size: 16px;
+  padding: 10px 10px 10px 10px;
+  color: black;
+}
+
+.jobPost{
+  padding-bottom: 10px;
+}
+
+.jobPost span{
+  color: grey;
+}
+
+.jobPost a{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
 }

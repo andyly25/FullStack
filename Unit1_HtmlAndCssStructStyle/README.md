@@ -150,4 +150,7 @@ HTML and CSS: Structure and style
 		- e.g. have a navbar and you want to align logo to the left and links to the right
 	- **offsets** : (left, top, right, bottom) can be used on fixed, relative, absolute
 - Explaining and using the float property to get text to wrap around images or other content
+	- **float** : getting text to wrap around an image or other container
+		- there's `float: left` and right, which will move the images to those sides of container
+		- floated images are taken out of the normal flow
 - Coding up a wide range of layouts from designs.

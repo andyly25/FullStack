@@ -3,6 +3,10 @@ body{
   margin: 0;
 }
 
+main{
+  padding: 40px 80px 10px 80px;
+}
+
 .navSection{
   /* width: 100%; */
   border-bottom: 1px solid grey;
@@ -32,11 +36,9 @@ a:hover{
   position: absolute;
   display: inline-block;
   left: 10px;
+  color: black;
 }
 
-.belowNav{
-  padding: 40px 80px 10px 80px;
-}
 
 #searchLabel{
   display: block;

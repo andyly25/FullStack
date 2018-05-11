@@ -1,6 +1,7 @@
 # Notes
 These will be notes for Unit 1.
 HTML and CSS: Structure and style
+Also note, most of the link for css will reference the generic main.css, so change accordingly or just go to the repl.it site provided at the top
 
 ## Lesson 1: Frontend first steps
 - simple intro on HTML: Hyper Text markup language
@@ -17,6 +18,7 @@ HTML and CSS: Structure and style
 		  <p id="second-paragraph">This is the second paragraph</p>
 		</div>
 	```
+
 	- **elements** : div, p, a
 		- element usually consists of some content wrapped by open and closing tags
 		- exceptions are `img` and some others

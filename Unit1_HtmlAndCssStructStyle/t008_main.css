@@ -1,0 +1,55 @@
+body{
+  /* This allows me to use full page width */
+  margin: 0;
+}
+
+.navSection{
+  /* width: 100%; */
+  border-bottom: 1px solid grey;
+  background-color: lightgrey;
+  padding: 20px 20px 40px 20px;
+  font-size: 20px;
+}
+
+nav{
+  float: right;
+  /* position: relative; */
+}
+
+nav a {
+  color: purple;
+  padding-left: 10px;
+}
+
+a:link{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+.logo{
+  position: absolute;
+  display: inline-block;
+  left: 10px;
+}
+
+.belowNav{
+  padding: 40px 80px 10px 80px;
+}
+
+#searchLabel{
+  display: block;
+  padding-bottom: 10px;
+}
+
+#searchBar{
+	height: 20px;
+  width: 300px;
+}
+
+#searchButton{
+	height: 24px;
+  border: 1px solid black;
+  vertical-align: bottom;
+}

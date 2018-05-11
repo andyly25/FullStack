@@ -8,3 +8,83 @@ a {
 }
 
 /** your styles go here **/
+
+nav{
+  position: fixed;
+  width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+  background-color: grey;
+}
+
+
+nav ul{
+  list-style: none;
+	display: inline-block;
+}
+
+
+nav li{
+  display: inline-block;
+}
+
+nav li::after{
+	content: "|";
+	/* otherwise it'll be squashed with the a elements */
+	margin-left: 5px;
+}
+
+body, html{
+	height: 100%;
+}
+
+body{
+	background-image: url("https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.3_the_position_property/outerspace_landscape.jpeg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.logo{
+	height: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  /* margin-top: auto;
+  margin-bottom: auto; */
+  /* This makes logo be centered */
+  vertical-align: middle;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.spaceDog, .spaceCat{
+	position:  absolute;
+	width: 200px;
+	height: 200px;
+}
+
+.spaceDog{
+	top:  -150px;
+	right: -50px;
+}
+
+.spaceCat{
+	top: -50px;
+	left: -50px;
+}
+
+/* 
+I used this as my reference for this
+https://stackoverflow.com/questions/356809/best-way-to-center-a-div-on-a-page-vertically-and-horizontally */
+.container{
+	width: 600px;
+	height: 300px;
+	position: absolute;
+	/* center it */
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 10px white dotted;
+}

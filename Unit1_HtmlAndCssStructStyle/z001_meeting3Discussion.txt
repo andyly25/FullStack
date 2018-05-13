@@ -1,1 +1,1 @@
-- camelCase or camel-case?
+- ~~camelCase or with dashes? follow the convention which is dashes in this case ~~

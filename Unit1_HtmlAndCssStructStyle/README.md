@@ -156,3 +156,39 @@ Also note, most of the link for css will reference the generic main.css, so chan
 		- there's `float: left` and right, which will move the images to those sides of container
 		- floated images are taken out of the normal flow
 - Coding up a wide range of layouts from designs.
+
+## Forms and Inputs
+- Following accessibility best practices for forms
+- Validating form inputs
+- Creating and describing forms and form elements
+- Learning new input types
+- terms:
+	- **forms** containers that hold a set of inputs
+		- the element wraps all inputs and labels.
+		- action and method will ensure user input can be submitted even if JS is disabled
+			- *action* is URL of server endpoint that submitted form data sent to
+			- *method* is the request method that browser uses when sending data to server
+	- **inputs** individual conponents that user interacts with (e.g. text, e-mail, pw...)
+		- labels used to tell human users and crawelers and etc what input is for using `for`
+			- goes on label and should be set to the ID of the input its for
+			- ```HTML
+				<label for="first-name">First name</label>
+				<input id="first-name" name="first-name" type="text">
+			```
+		- attributes: 
+			- placeholder: set text that initially displays before any user data
+			- required: used to indicate input must be filled out
+			- pattern: used to supply regular expression patterns and user input must match (e.g. e-mail format)
+			- type: how element looks and how validator works (e.g. `type='radio'` )
+	- **fieldset** : used to group together related input and labels
+		- helps web crawler and screen readers understand how inputs are grouped
+		- **legend** is a title for fieldset 
+	- `<select>` is used to let user choose from list of options
+		- `<option>` and can give a default using `selected attribute`
+		- `<optgroup>` can be used to wrap multiple options under a given group name
+	- `<buttons>` allows user to submit and reset the form by using the type attrib.
+	- accessibility of form:
+		- tree stores role of form elements (form and button)
+		- element's accessible names are determined by their labels
+		- state form elements are in  (selected and unselected)
+		- how to interact with those elements

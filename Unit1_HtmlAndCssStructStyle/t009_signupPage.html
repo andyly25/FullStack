@@ -1,0 +1,31 @@
+<!-- https://gist.github.com/thinkfulgist/c0570b8d7b232537810924c6735a38b5 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset=utf-8>
+    <meta name="description" content="AnalogSea SignUp Page">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <!-- logo -->
+    <img src="https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.5.2_challenge_signup_form/logo.png" alt="Analog Sea Logo" class="logo">
+    <!-- form -->
+    <form action="/signup" method="post" accept-charset="utf-8" class="signupForm" role="form">
+      <fieldset>
+        <legend>Sign up</legend>
+        <label for="userEmail">Email</label>
+        <input type="email" name="userEmail" id="userEmail" placeholder="foo@bar.com" required>
+        <label for="userPassword">Password</label>
+        <input type="password" name="userPassword" id="userPassword" placeholder="1234passw0rd" required>
+        <button type="submit" id="signupBtn">Sign up</button>
+      </fieldset>
+    </form>
+    <!-- login -->
+    <div class="loginPart">
+      <p>Already have an account? <a href="/login" class="login">Log In</a></p>
+    </div>
+  </body>
+</html>

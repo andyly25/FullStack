@@ -1,0 +1,86 @@
+body{
+  background: rgb(69, 128, 224);
+}
+
+/* fieldset seems to be messing with border, paddings, margins */
+fieldset{
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.logo{
+  display: block;
+  height: 35px;
+  width: auto;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.signupForm{
+  width: 400px;
+  height: auto;
+  padding: 40px;
+  background: white;
+  margin: 0 auto;
+  /* corner looks rounded */
+  border-radius: 1%;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.signupForm legend{
+  font-size: 40px;
+  color: rgb(80, 80, 80);
+  margin: 0 auto 25px;
+}
+
+
+input[type="email"],
+input[type="password"],
+button[type="submit"]{
+  box-sizing: border-box;
+  display: block;
+  width: 320px;
+  height: 55px;
+  padding: 15px;
+  margin: 15px 0 15px 0;
+  border: 2px solid rgb(217, 218, 221);
+}
+
+/* wanted to edit the placeholder */
+input::-moz-placeholder{
+  font-size: 20px;
+  color: rgb(180 , 180, 180);
+}
+input::-webkit-input-placeholder{
+  font-size: 20px;
+  color: rgb(180 , 180, 180);
+}
+
+button[type="submit"]{
+  background: rgb(71, 175, 65);
+  font-size: 30px;
+  /* vertical-align: center; */
+  height: auto;
+  color: white;
+}
+
+#signupBtn{
+  transition:0.3s;
+}
+button[type="submit"]:hover{
+  background: rgb(50, 123, 55)
+}
+
+.loginPart{
+  text-align: center;
+  color: white;
+}
+
+.loginPart a{
+  color: white;
+}
+.loginPart a:hover{
+  color: rgb(230,230,230)
+}

@@ -27,9 +27,7 @@
 		```
 - float property: https://gist.github.com/thinkfulgist/ee777760618b03c99c0130da67370eb3/revisions
 	- alternative to h3 tag provided in starter code. (p tag?)
-	- What if an editor wants to add six more nebulas at 6 am in the morning?
-+                ... and she has no access to the CSS in your CMS (content management system)...
-+                Can you think of something that would hold up to this requirement without your intervention?
+	- What if an editor wants to add six more nebulas at 6 am in the morning? ... and she has no access to the CSS in your CMS (content management system)... Can you think of something that would hold up to this requirement without your intervention?
 		- make 3 nebula class positions for nebula-left, nebula-middle, and nebula-right?
 	- is there any way you can give the image some room to breath from the text?
 		- giving the image margins can keep it away from the text

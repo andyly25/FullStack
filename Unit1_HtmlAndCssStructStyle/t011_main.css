@@ -1,0 +1,31 @@
+header{
+  background-color: #f7a956;
+  margin-bottom: 30px;
+}
+
+header h1{
+  /* margin-bottom: from inspect shows as default */
+  margin: 20px 0 0;
+}
+
+header p{
+  margin: 10px 0;
+}
+
+.tradingcard{
+  border: 1px solid #d8d8d8;
+  margin-bottom: 15px;
+}
+
+.tradingcard-img{
+  width: 100%;
+}
+
+.tradingcard-content{
+  padding: 15px;
+}
+
+.tradingcard-content h3, .tradingcard-content p{
+  /* margin shortcuts just figured it out,  https://www.w3schools.com/css/css_margin.asp */
+  margin: 0 0 10px;
+}

@@ -1,7 +1,7 @@
 # Notes
 These will be notes for Unit 1.
 HTML and CSS: Structure and style
-Also note, most of the link for css will reference the generic main.css, so change accordingly or just go to the repl.it site provided at the top
+**Also note, most of the link for css will reference the generic main.css, so change accordingly or just go to the repl.it or gist site provided at the top**
 
 ## Lesson 1: Frontend first steps
 - simple intro on HTML: Hyper Text markup language
@@ -192,3 +192,38 @@ Also note, most of the link for css will reference the generic main.css, so chan
 		- element's accessible names are determined by their labels
 		- state form elements are in  (selected and unselected)
 		- how to interact with those elements
+
+## Responsive Design Basics
+- Explaining the principles of responsive design (mobile-first, content-driven, responsive)
+	- **responsive** : creating layouts that dynamically respond to dimensions of user's viewport
+	- **content-driven** : recognizing users are real people with real goals
+		- people getting what they expect
+	- **mobile-first** : mobile devices has smallest screen size, so design first for good foundations
+		- then we can enhance for bigger screens
+- Using media queries to override default styles
+	- **media quereies** tools to apply block of CSS rules to only certain viewports
+		- can specify how things should look at one viewport size and different for another
+		- ```CSS
+			@media only screen and (min-width: 640px) {
+			  .foo {
+			    /* do something to
+			    override default settings*/
+			  }
+			}
+			@media only screen and (min-width: 800px) {
+			  .foo {
+			    /* do something to
+			    override settings at previous threshold settings*/
+			  }
+			}
+			```
+- Analyzing and explaining the float: left; approach to implementing a responsive grid
+	- one method uses `display: inline-block` another is from flexbox, and finally `float: left`
+		- float: left is guaranteed to work for all browsers
+- Coding up designs that call for more than one layout, depending on the width of the viewport
+	- classic grid: 960px, twelve columns
+		- 1000px container (prevent content from getting to close to edge on smaller screens)
+		- 960px row: max width and centered
+		- 60 px columns: child content contained within
+		- 20px gutter: each column has 10px right and left gutters
+	- column width should be *fluid* where they should scale in size relative to width of row

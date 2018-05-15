@@ -1,5 +1,10 @@
+
+
+
+
+
 # Questions for 3rd meeting
-- ~~ camelCase or with dashes? follow the convention which is dashes in this case ~~
+- ~~camelCase or with dashes? follow the convention which is dashes in this case~~
 - Look at tutor's revision after finishing unit 1 and go through them again!
 - ask about usage of `<main>` 
 	- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
@@ -24,18 +29,25 @@
 			*, *:before, *:after {
 			  box-sizing: inherit;
 			}
+			<!-- Create a component class afterwards and it can have something different-->
 		```
 - float property: https://gist.github.com/thinkfulgist/ee777760618b03c99c0130da67370eb3/revisions
 	- alternative to h3 tag provided in starter code. (p tag?)
 	- What if an editor wants to add six more nebulas at 6 am in the morning? ... and she has no access to the CSS in your CMS (content management system)... Can you think of something that would hold up to this requirement without your intervention?
-		- make 3 nebula class positions for nebula-left, nebula-middle, and nebula-right?
+		- make 3 nebula class positions for nebula-left, nebula-middle, and nebula-right? //not as good
+		- if we had a pattern of left and right we can use nth-child odd and even and have odds on left and evens on right side. 
 	- is there any way you can give the image some room to breath from the text?
 		- giving the image margins can keep it away from the text
 	- Note each picture of the nebula scales up and down
 		- removing % and giving images a fixed width and height?
 		- issues is if image becomes too small to view.
+		- Having it directly in the HTML giving a width and height
 - from designs to code: https://gist.github.com/thinkfulgist/bcc66f91b615cea3d4077133628075aa/revisions
 	- better tags
 	- play around with more resilient solution
 - challenge signup page: https://gist.github.com/thinkfulgist/c0570b8d7b232537810924c6735a38b5/revisions
 	- screen reader tools and playing around with one
+
+
+
+- Document flow: pos absolute etc..

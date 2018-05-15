@@ -50,3 +50,39 @@
       ```
   - **coercion** if you use `+` operators with two values of different data types, JS will coerce one of the vars data type to the other.
 - Using the JavaScript console to execute, debug, and inspect code
+
+## Functions, Strings, and Numbers
+- Explaining what a function is
+  - describes repeatable process or behavior
+    - define behavior once and call whenever you need to run set of instructions
+    - a well named function can make clear its purpose and has a single responsibility
+      - designed to do one thing and to do it well
+    - also *determinate* given same inputs on separate uses, results should be the same. 
+- Declaring and invoking functions in JavaScript
+  - `function` keyword signifies a func. is about to be defined. 
+    - nexts comes its name, then followed by *call signature* `()` 
+      - call signature refers to arguments or parameters
+    - `{}` is where the main block of the function goes
+  - defining and invoking two different things.
+    - define is where the code doesn't automatically run, calling runs it
+- functions declarations vs function expressions
+  - normal way above is function declaration `function someFunc(){console.log("Apples");}`
+  - function expression is containing a function in a var or const.
+    - `const myFunct = function(arg1, arg2){console.log("apples");}`
+  - function expressions the order you define matters, while function declarations you can call no matter where you place
+    - browsers initially read/parse JS code. and then finals all vars and sets aside space in mem as undefined
+      - then reads through code top to bottom, executing comands, aka **hoisting**
+- ES6 introduce default function params `function tenPower(power=3){return 10 ** power;}` which gives us 1000 if we don't provide an argument. 
+- ES6 introduces **arrow functions** : `const add = (num1, num2) => num1 + num2;`
+  - same as `const addAlt = function(num1, num2){return num1+num2;}`
+  - can use arrow func. takes no params `const alertMe = () => alert("you've been alerted);`
+    - with params within () you place your params, don't need a ()
+- Using built-in string methods like .length.
+  - .charAt(), .slice(), .split(), .toUpperCase(), .replace and many more
+- can use `′to escape quotation mark delimeter let doh = "Homer says \"DOH!\" "`
+  - `\t` for tabs `\n` for newlines
+  - if string too long, you can use \ to separate newlines, if you use + you need close quotes
+- ES6 introduces template strings. a way refer to vars and execute JS inside string using backticks
+  - const someString = `foo is set to ${someVar}. Let's say hello: ${helloWorld()}`;
+- Manipulating strings
+- Doing basic arithmetic in JavaScript

@@ -86,3 +86,48 @@
   - const someString = `foo is set to ${someVar}. Let's say hello: ${helloWorld()}`;
 - Manipulating strings
 - Doing basic arithmetic in JavaScript
+
+## Application Logic
+- writing programs that can behave differently depending on their inputs
+  - form logical assertions: true and false and logical operators (&& and ||)
+  - control flow: tools provided by programming langugae to conditionally det. which set instruct to run
+    - if, else, try/catch/finally
+- explaining the idea of "truthiness" in JavaScript
+  - `===` is stricter compared to `==` 
+    - e.g. `true === 1` is false and `true == 1` is true since == coerces 1 to boolean and boolean(1) is true
+  - values that evaluates to false are, and true will be for everything else (neg #, [], {}, and others)
+    - ```javascript
+        // values that evaluate to false
+        Boolean(false);
+        Boolean(""); // empty string
+        Boolean(0);
+        Boolean(null);
+        Boolean(undefined);
+        Boolean(NaN);
+     ```
+- Using logical operators and expressions
+  - `&&` and, `||` or, `!` not
+- Explaining what control flow is
+  - control flow: tools provided by programming langugae to conditionally det. which set instruct to run
+    - dictate how programs execute different sets of instructions based on differing conditions
+    - if, else, try/catch/finally
+    - we have ternary operator as shortcut for this situation
+      - `let myVar = condition1 ? "something other than default" : null;`
+      - logical expression followed by ? operator, folowed by value return if true, and then : and then value if false
+- Using conditionals (if, else, else if) to achieve control flow
+- Using try/catch blocks to handle errors. (haven't used these as much so this is good review)
+  - good to deal with conditional logic in case of errors
+  - `try` allow to specify block of behavior that is to be tried
+  - `catch` runs if try does not succeed, the e in catch(e) will be object representing error
+  - `finally` will run after either success or failure, you don't need finally with try/catch
+
+## Arrays
+- **arrays** data structures for storing lists of items
+  - store lists of items in JS usually contained in `[]`
+  - e.g. `const allTheThings = ['cats', 'dogs', 42, ['foo', 'bar'], true, function() { console.log('hello')}];`
+  - accessed through index, and always starts counting at 0
+  - add things at end using .push()
+  - .length() can count num. of items in array
+- **loops** allow you to execute a set of instructions numerous times
+- represent lists of things in JavaScript using arrays and how to repeatedly execute instructions using loops.
+- syntax for for loops memorized, as well as the syntax for interacting with arrays

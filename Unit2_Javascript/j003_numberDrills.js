@@ -22,7 +22,7 @@ testComputeArea();
 // is divisible drill
 function isDivisible(divisee, divisor) {
   // your code here
-  return divisee%divisor === 0;
+  return divisee % divisor === 0;
 }
 
 // tests

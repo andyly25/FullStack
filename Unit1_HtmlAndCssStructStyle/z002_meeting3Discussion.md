@@ -51,3 +51,16 @@
 
 
 - Document flow: pos absolute etc..
+
+
+## what we covered
+
+Multiple H1s:
+https://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824
+
+Chrome Extensions I shared:
+
+[Tota11y](http://khan.github.io/tota11y/) (validates your use of accessibility)
+[Landmark Navigation](https://chrome.google.com/webstore/detail/landmark-navigation-via-k/ddpokpbjopmeeiiolheejjpkonlkklgp?hl=en-GB) (lets you be a power user by jumping to landmarks)
+[disable-HTML](https://chrome.google.com/webstore/detail/disable-html/lfhjgihpknekohffabeddfkmoiklonhm?hl=en-GB) (to disable CSS, JS, etc. Great for debugging if JS is cause of page issues by disabling them)
+[Page Ruler](https://chrome.google.com/webstore/detail/page-ruler/jlpkojjdgbllmedoapgfodplfhcbnbpn?hl=en) (important when meeting design requirements)

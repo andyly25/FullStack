@@ -127,7 +127,54 @@
   - e.g. `const allTheThings = ['cats', 'dogs', 42, ['foo', 'bar'], true, function() { console.log('hello')}];`
   - accessed through index, and always starts counting at 0
   - add things at end using .push()
-  - .length() can count num. of items in array
+  - .length (note doesn't have `()` ) can count num. of items in array
 - **loops** allow you to execute a set of instructions numerous times
 - represent lists of things in JavaScript using arrays and how to repeatedly execute instructions using loops.
 - syntax for for loops memorized, as well as the syntax for interacting with arrays
+- built-in methods:
+  - `.pop()` removes the final item from array and returns the discarded item
+  - `.shift()` removes and return first item of a list
+  - `.slice()` creates a new array from an existing one
+  - `.sort()` sorts an array in place. by default is alphabetical
+    - can use sort functions for other kinds
+      - ```javascript
+          const myArray = [200, 20, 2, 100, 1, 10];
+          console.log(myArray); // => [200, 20, 2, 100, 1, 10]
+          function sortNumbers(a, b) {
+            return a - b;
+          }
+          myArray.sort(sortNumbers);
+          console.log(myArray) // => [1, 2, 10, 20, 100, 200]
+      ```
+    - can also use an anonymous function to do so. 
+      - ```javascript
+            const myArray = [200, 20, 2, 100, 1, 10];
+            myArray.sort(function(a, b) {
+                return a - b;
+            });
+            console.log(myArray) // => [1, 2, 10, 20, 100, 200]
+      ```
+    - array function like so
+      - ```javascript
+          const myArray = [200, 20, 2, 100, 1, 10];
+          myArray.sort((a, b) => a - b);
+          console.log(myArray) // => [1, 2, 10, 20, 100, 200]
+        ```
+    - `.map()` generates a new array of items by applying same function to each item in original array
+      - ```javascript
+            const myNumbers = [1, 2, 3, 4];
+            const doubledNumbersAlt = myNumbers.map(num => 2 * num);
+            console.log(doubledNumbersAlt); // => [2, 4, 6, 8];
+        ```
+    - `.forEach()` similar to map, applies function to each item in collection but does not return an array of transformed elements
+    - `.filter()` method to take one array of items and make a new one that contains only items that a filtering function returns true for
+      - can filter to only even numbers `const evensAlt = myNumbers.filter(num => num % 2 === 0);`
+    - `.reduce()` iterrates over the array while maintaining accumulation object (never used this before)
+      - ```
+          function sum(total, num) {
+            return total + num;
+          };
+          const numbers = [1, 2, 3, 4];
+          console.log(numbers.reduce(sum)); // => 10
+        ```
+    - `.find()` can be used to find a single item in an array

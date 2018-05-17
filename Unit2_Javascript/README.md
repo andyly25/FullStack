@@ -1,5 +1,5 @@
 # Programming in Javascript
-- **NOTE ONCE AGAIN: src and links references generic files, so change appropiately if you use**
+- **NOTE ONCE AGAIN: src and links references generic files, so change appropriately if you use**
 - **program** set of instrcutions for computers to carry out
 - **programming** process of translating a problem in plain lang. into a set of instructions for solving it
   - then expressing algorithm in terms that your computer can understand
@@ -129,6 +129,22 @@
   - add things at end using .push()
   - .length (note doesn't have `()` ) can count num. of items in array
 - **loops** allow you to execute a set of instructions numerous times
+  - `for` loop, runs block of instructions set number of times
+    - ```javascript
+        const countTo = 10;
+        for (let i = 1; i <= countTo; i++) {
+          console.log(i);
+        }
+      ```
+  - `while` loop, runs as long as some logical condition is true
+    - ```
+        let counter = 1;
+        const countTo = 10;
+        while (counter <= countTo) {
+           console.log(counter);
+           counter++;
+        }
+      ```
 - represent lists of things in JavaScript using arrays and how to repeatedly execute instructions using loops.
 - syntax for for loops memorized, as well as the syntax for interacting with arrays
 - built-in methods:
@@ -160,21 +176,50 @@
           myArray.sort((a, b) => a - b);
           console.log(myArray) // => [1, 2, 10, 20, 100, 200]
         ```
-    - `.map()` generates a new array of items by applying same function to each item in original array
-      - ```javascript
-            const myNumbers = [1, 2, 3, 4];
-            const doubledNumbersAlt = myNumbers.map(num => 2 * num);
-            console.log(doubledNumbersAlt); // => [2, 4, 6, 8];
-        ```
-    - `.forEach()` similar to map, applies function to each item in collection but does not return an array of transformed elements
-    - `.filter()` method to take one array of items and make a new one that contains only items that a filtering function returns true for
-      - can filter to only even numbers `const evensAlt = myNumbers.filter(num => num % 2 === 0);`
-    - `.reduce()` iterrates over the array while maintaining accumulation object (never used this before)
-      - ```
-          function sum(total, num) {
-            return total + num;
-          };
-          const numbers = [1, 2, 3, 4];
-          console.log(numbers.reduce(sum)); // => 10
-        ```
-    - `.find()` can be used to find a single item in an array
+  - `.map()` generates a new array of items by applying same function to each item in original array
+    - ```javascript
+          const myNumbers = [1, 2, 3, 4];
+          const doubledNumbersAlt = myNumbers.map(num => 2 * num);
+          console.log(doubledNumbersAlt); // => [2, 4, 6, 8];
+      ```
+  - `.forEach()` similar to map, applies function to each item in collection but does not return an array of transformed elements
+  - `.filter()` method to take one array of items and make a new one that contains only items that a filtering function returns true for
+    - can filter to only even numbers `const evensAlt = myNumbers.filter(num => num % 2 === 0);`
+  - `.reduce()` iterrates over the array while maintaining accumulation object (never used this before)
+    - ```javascript
+        function sum(total, num) {
+          return total + num;
+        };
+        const numbers = [1, 2, 3, 4];
+        console.log(numbers.reduce(sum)); // => 10
+      ```
+  - `.find()` can be used to find a single item in an array
+  - There's more so look it up if needed
+
+## Scope and problem with globals
+- Explaining what scope is, and the difference between global and local scope
+  - **variable scope** is set of rules that define which parts of your code can access a particular var
+    - can allow to reuse var names at diff points in our code without breaking
+  - any variable declared outside of a function in JS has global scope
+  - **block scope** : accessible within the function's block of instructions
+    - after function finished executing, the new var disappears
+  - **scope chain** : JS follows this to determine value of variable.
+    - looks at current scope, if not defined locally, looks at parent, until finally global
+      - if not found raises Uncaught ReferenceError
+- Explaining why global variables are to be avoided
+  - variabls that can be retrieved and alrered anywhere in your code base
+    - becomes bug prone and harder to collaborate on
+  - it can sometime span across files.
+  - can cause **side effects** where reaches outside its local scope up into a parent scope and alter value living there
+- Using strict mode to limit unintended globals
+  - best practice to put on top of all your JS files
+  - ``use strict``;
+- Explaining what side effects and pure functions are
+  - where reaches outside its local scope up into a parent scope and alter value living there
+  - sometimes it's good e.g. saving a record to database
+    - the bad is when it's *unintended*
+    - combo of global var and unintended side effects almost guarantees code become indeterminate
+      - **determinate** function returns the same value if provided same inputs. 
+  - **pure** is both determinate and no side effects (exception are things like database)
+- exceptions: it's okay for globals if using a JS library (e.g. JQuery)
+  - when browser loads JQuery, it puts a var called `$` in global scope.

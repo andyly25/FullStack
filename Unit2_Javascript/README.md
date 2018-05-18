@@ -223,3 +223,108 @@
   - **pure** is both determinate and no side effects (exception are things like database)
 - exceptions: it's okay for globals if using a JS library (e.g. JQuery)
   - when browser loads JQuery, it puts a var called `$` in global scope.
+
+## objects
+- complex data type allow to bring together common properties and behaviors into single entity
+  - organize code that belongs together, avoid gloabl vars, and represent individ. instances of some model
+- data struct. used to hold key/value pairs. `{}` used to create new obj.
+  - keys must be unique
+  - **method** when an obj. has a value that is a function
+  - ```javascript
+      const mammal = {
+        numEyes: 2,
+        warmBlooded: true,
+        evolve: function() {
+          console.log("I'm not mutating, I'm evolving.");
+          mammal.numEyes++;
+        },
+      };
+    ```
+- Working with objects
+  - can get values and run methods in 2 ways
+    1. dot notation: `mammal2.numEyes`
+    2. bracket notation: `mammal2['numEyes']`
+  - you can use those two methods to add new key/value pairs into object
+  - updating is similar as adding 
+  - to delete you need to use delete command: `delete mammal2.warmBlooded;`
+- Using factory functions to create instances of a model object
+  - generating individual instances of the idea of an object
+  - ```javascript
+      function mammal(name, numEyes) {
+        return {
+          name: name,
+          isWarmblooded: true,
+          numEyes: numEyes,
+          evolve: function() {
+            console.log("I'm not mutating, I'm evolving.");
+            this.numEyes++;
+          },
+          explainYourSelf: function() {
+            console.log(
+              `I'm just a ${this.name} with ${this
+                .numEyes}  eye(s). Nothing to see here.`
+            );
+          },
+        };
+      }
+    ```
+- Explaining the difference between an object method and object property
+- Explaining why you need to be careful when passing objects as an argument to a function
+  - when you pass onjects as an arg to a funct, value passed is a *reference*
+    - this means you don't pass a copy of the value, and if you mutate value, it persists
+- Using the this keyword in object literals to achieve self-referentiality in your code
+  - self-reference is used when you refer to other properties within the object
+  - `this` is used to achieve self-reference
+    - ```javascript
+        const myFamily = {
+          lastName: 'Doe',
+          mom: 'Cynthia',
+          dad: 'Paul',
+          // sayHi: function() {
+          //  console.log(`Hello from the ${this.lastName}s`);
+          // }
+          sayHi: () => {console.log(`Hello from the ${this.lastName}s`)}
+        };
+        myFamily.sayHi() // => Hello from the Does
+      ```
+- How to iterate key/value in JS obj
+  - ```javascript
+        const pageViewCounts = {
+          homePage: 399,
+          aboutPage: 400,
+          termsOfService: 22,
+        };
+        console.log(Object.keys(pageViewCounts));
+        Object.keys(pageViewCounts).forEach(function(key) {
+          console.log(`
+            the ${key} page has  ${pageViewCounts[key]} views.`);
+        });
+    ```
+- looping over collections of obj
+  - ```javascript
+      const users = [
+        {
+          name: 'Bernard',
+          age: 29,
+          birthMonth: 'April',
+        },
+        {
+          name: 'Bernice',
+          age: 14,
+          birthMonth: 'December',
+        },
+        {
+          name: 'Gerard',
+          age: 88,
+          birthMonth: 'June',
+        },
+        {
+          name: 'Stella',
+          age: 3,
+          birthMonth: 'September',
+        },  
+      ];
+      users.forEach(user =>
+        console.log(`${user.name} will be ${user.age + 1} in ${user.birthMonth}`)
+      );
+    ```

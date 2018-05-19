@@ -328,3 +328,6 @@
         console.log(`${user.name} will be ${user.age + 1} in ${user.birthMonth}`)
       );
     ```
+
+## Extras
+- https://eager.io/blog/everything-I-know-about-the-script-tag/

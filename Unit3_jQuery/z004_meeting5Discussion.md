@@ -1,0 +1,2 @@
+- Note to self: go over revisions again
+- review a little on objects, factory I haven't used much

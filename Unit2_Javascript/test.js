@@ -1,4 +1,4 @@
-function enrollInSummerSchool(students) {
+function enrollInSummerSchool (students) {
   // your code here
   // confused over this https://eslint.org/docs/rules/arrow-body-style
   // figured it out

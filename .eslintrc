@@ -4,7 +4,10 @@
         "browser": true,
         "node": true,
         "jasmine": true,
-        "mocha": true
+        "mocha": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
     },
     "rules": {
         "indent": ["error", 4],

@@ -64,3 +64,27 @@
     - ```html
           <input type="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-65/lightbulb.svg" alt="Lightbulb" role="button" aria-pressed="false" class="lightbulb js-lightbulb">
       ```
+
+### In your own words
+- What is DOM?
+DOM stands for Document Object Model and can be viewed as a tree of objects. 
+This is a W3C standard on how to access the document and the main functionality
+that can be accomplished is how to get, change, add or delete HTML elements. 
+We can use libraries such as jQuery to let our webpage listen for specific events
+and then do something in response. 
+- work more on this explanation next time
+
+### still to do
+- look up JSONlint.com for another validator and JSOn in general
+- anonymous self invoking function 
+  - ```javascript
+        var array = [];
+        // Andy's lib
+        (
+          (array) => {
+              if(array.length === 0) {
+                 throw('hey man, you gotta give me some stuff')
+              }
+           }
+        )(array);
+    ```

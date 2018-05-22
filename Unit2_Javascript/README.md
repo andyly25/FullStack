@@ -269,6 +269,7 @@
       }
     ```
 - Explaining the difference between an object method and object property
+  - method is a function within a class, while properties are like the variables
 - Explaining why you need to be careful when passing objects as an argument to a function
   - when you pass onjects as an arg to a funct, value passed is a *reference*
     - this means you don't pass a copy of the value, and if you mutate value, it persists

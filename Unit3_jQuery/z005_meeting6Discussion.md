@@ -1,0 +1,1 @@
+- Ask about eslint having red everywhere

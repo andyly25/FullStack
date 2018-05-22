@@ -65,6 +65,14 @@
           <input type="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-65/lightbulb.svg" alt="Lightbulb" role="button" aria-pressed="false" class="lightbulb js-lightbulb">
       ```
 
+## Architecting client-side apps
+- spaghetti code bad
+- describe app with user stories: which are short, plain language descriptions of what a user should be able to do with an app.
+  - coming up with clear, concise statements that describe what the app you're building will do. 
+  - These statements will tell you what you need to build and when a particular feature of the app is complete.
+  - They also provide a common language for speaking with non-technical stakeholders on a project.
+- function stubs with pseudocode
+
 ### In your own words
 - What is DOM?
 DOM stands for Document Object Model and can be viewed as a tree of objects. 

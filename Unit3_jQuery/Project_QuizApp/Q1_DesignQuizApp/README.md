@@ -63,3 +63,7 @@ Quiz Topic: Video Game Trivia
 ## Images:
 correct: https://images.pexels.com/photos/163157/mario-luigi-figures-funny-163157.jpeg
 wrong: https://images.pexels.com/photos/236229/pexels-photo-236229.jpeg
+logo: https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg
+
+
+

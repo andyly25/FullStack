@@ -1,0 +1,140 @@
+// Here's our variables that will be constantly altered
+let questionNum = 0;
+let score = 0;
+let error = 0;
+let mistake = 0;
+
+const IMAGES = [
+  {
+    imgSrc: 'https://images.pexels.com/photos/411207/pexels-photo-411207.jpeg',
+    imgAlt: 'Knocked over Chess Pieces'
+  },
+  {
+    imgSrc: 'https://images.pexels.com/photos/163157/mario-luigi-figures-funny-163157.jpeg',
+    imgAlt: 'Mario and Luigi Correct'
+  },
+  {
+    imgSrc: 'https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg',
+    imgAlt: 'Game over image'
+  },
+  {
+    imgSrc: 'https://i.ytimg.com/vi/me9oM1Gjiqs/maxresdefault.jpg',
+    imgAlt: 'The End'
+  }
+];
+
+// This will store the data for all of the questions
+const STORE = [
+  {
+    num: 1,
+    question: 'What does "Atari" from Atari games mean?',
+    imgSrc: 'https://cdn.pixabay.com/photo/2016/07/28/16/26/atari-2600-1548365_960_720.jpg',
+    imgAlt: 'atari 2600',
+    answer1: 'Freedom',
+    answer2: 'Success',
+    answer3: 'Justice',
+    answer4: 'Power',
+    solution: 'Success'
+  },
+  {
+    num: 2,
+    question: 'What video game did Mario, the Nintendo character first appear in?',
+    imgSrc: 'https://cdn.pixabay.com/photo/2013/07/12/16/53/tetris-151437_960_720.png',
+    imgAlt: 'mario blocky image',
+    answer1: 'Donkey Kong',
+    answer2: 'Mario Bros',
+    answer3: 'Super Mario Bros',
+    answer4: 'Mario\'s Cement Factory',
+    solution: 'Donkey Kong'
+  },
+  {
+    num: 3,
+    question: 'Which of the below is the oldest game console?',
+    imgSrc: 'https://cdn.pixabay.com/photo/2017/03/11/08/14/handheld-game-console-2134571_960_720.png',
+    imgAlt: 'retro games image',
+    answer1: 'NES',
+    answer2: 'Magnavox Odyssey',
+    answer3: 'Game Boy',
+    answer4: 'Atari 2600',
+    solution: 'Magnavox Odyssey'
+  },
+  {
+    num: 4,
+    question: 'Which of the below is \'not\' part of the triforce within The Legend of Zelda games?',
+    imgSrc: 'https://www.thinkgeek.com/images/products/additional/large/jipm_loz_triforce_light_vendor.jpg',
+    imgAlt: 'triforce nightlight image',
+    answer1: 'Triforce of Power',
+    answer2: 'Triforce of Courage',
+    answer3: 'Triforce of Speed',
+    answer4: 'Triforce of Wisdom',
+    solution: 'Triforce of Speed'
+  },
+  {
+    num: 5,
+    question: 'What color is the ring of death on an Xbox 360 signifying hardware failure?',
+    imgSrc: 'https://i.ytimg.com/vi/Tyxa3dsgR9o/maxresdefault.jpg',
+    imgAlt: 'buried xbox 360',
+    answer1: 'purple',
+    answer2: 'yellow',
+    answer3: 'red',
+    answer4: 'blue',
+    solution: 'red'
+  },
+  {
+    num: 6,
+    question: 'What character do you play as in The Legend of Zelda?',
+    imgSrc: 'https://i.pinimg.com/originals/be/8a/48/be8a4834cd1a44c18f36929729b68143.png',
+    imgAlt: 'The legend of zelda character silhouette',
+    answer1: 'Zelda',
+    answer2: 'Link',
+    answer3: 'Tinkle',
+    answer4: 'Mario',
+    solution: 'Link'
+  },
+  {
+    num: 7,
+    question: 'How many forms does the final boss of The Legend of Dragoon have?',
+    imgSrc: 'http://www.mobygames.com/images/covers/l/151002-the-legend-of-dragoon-playstation-front-cover.png',
+    imgAlt: 'The Legend of Dragoon PS cover',
+    answer1: '1',
+    answer2: '3',
+    answer3: '7',
+    answer4: '10',
+    solution: '7'
+  },
+  {
+    num: 8,
+    question: 'Who composed the music for Final Fantasy?',
+    imgSrc: 'https://i0.wp.com/twincitiesgeek.com/wp-content/uploads/2015/01/NNxLT.jpg',
+    imgAlt: 'Distant World Final Fantasy Orchestra image',
+    answer1: 'Jeremy Soule',
+    answer2: 'Junichi Masuda',
+    answer3: 'Yoko Shimomura',
+    answer4: 'Nobuo Uematsu',
+    solution: 'Nobuo Uematsu'
+  },
+  {
+    num: 9,
+    question: 'What were the first two versions of Pokemon?',
+    imgSrc: 'https://images.pexels.com/photos/163042/pokemon-pokemon-go-mobile-trends-smartphone-163042.jpeg',
+    imgAlt: 'Pokemon Go image',
+    answer1: 'Sun and Moon',
+    answer2: 'Gold and Silver',
+    answer3: 'Red and Green',
+    answer4: 'Ruby and Sapphire',
+    solution: 'Red and Green'
+  },
+  {
+    num: 10,
+    question: 'What was the name given to the Playstation 2\'s CPU?',
+    imgSrc: 'https://www.unilad.co.uk/wp-content/uploads/2017/05/FacebookThumbnailps222.jpg',
+    imgAlt: 'playstation 2 image',
+    answer1: 'Emotion Engine',
+    answer2: 'Broadway',
+    answer3: 'Espresso',
+    answer4: 'IBM PowerPC Gekko',
+    solution: 'Emotion Engine'
+  }
+];
+
+const total = STORE.length;

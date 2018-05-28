@@ -12,6 +12,10 @@ body {
   font: 1em/1.25 Arial, Helvetica, sans-serif;
 }
 
+main {
+  text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
   /* clearing default headers */
   margin: 0;
@@ -100,9 +104,16 @@ html {
 
 
 /* Below is my layout for individual parts 
- * for now filled with dummy values
- * I might have misplaced with main and layout css
+ * 
  */
+main form {
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+}
 
 .layout_heading {
   text-align: center;
@@ -111,34 +122,31 @@ html {
   padding: 20px 0;
 }
 
-.layout_content {
+/* .layout_content {
   margin: 20px;
   padding: 20px;
-}
+} */
 
 .layout_container{
-  margin: 20px;
-  height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px dotted red;
+  margin: 30px;
 }
 
 .layout_footer {
-  margin-top: 40px;
   padding: 20px;
 }
 
-.centered {
+/* .centered {
   vertical-align: middle;
-}
+} */
 
 .align_heading {
-  /* wow flex was so much simpler to use */
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   height: 100%;
+}
 
+#image_logo {
+  border-radius: 30px;
 }

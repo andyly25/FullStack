@@ -1,0 +1,63 @@
+<!-- Note to self, accessibilites, replace class dashes with _ 
+     after adding functionalities, make look nicer!
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Quiz App Graybox Wireframe</title>
+    <link href="layout.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- <header class="layout_heading main_heading">
+      <div class="row">
+        <h1 class="col-4 centered">QUIZ NAME</h1>
+        <img sclass="col-4 centered" src="#" width="50px" height="50px" >
+        <label class="col-4 centered">SOME SCORE</label>
+      </div>
+    </header> -->
+    <header class="layout_heading main_heading">
+      <div class="align_heading">
+        <h1>Gaming Triva</h1>
+        <img id="image_logo" src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg" width="200px" height="200px" alt="Quiz Logo">
+        <span class="current_score">0</span>
+      </div>
+    </header>
+
+    <main class="align_heading">
+      <form class="layout_container main_container row"> 
+        <fieldset class="question col-12">
+          <!-- <legend>title or explanatory caption</legend> -->
+        </fieldset>
+        <fieldset class="quiz_options col-12">
+          <!-- <legend>title or explanatory caption</legend> -->
+        </fieldset>
+        <fieldset class="quiz_answer col-12">
+          <!-- <legend>title or explanatory caption</legend> -->
+        </fieldset>
+      </form>
+    </main>
+
+    <footer class="layout_footer main_footer">
+      <div class="row">
+        <div class="col-6">
+          <span class="question_index">0 of 10</span>
+        </div>
+        <div class="col-6 progress_bar">
+          <!-- so I can edit progress bar with JS, I'll use inline style -->
+          <div class="progress_bar_color"></div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+    <script src="datastore.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

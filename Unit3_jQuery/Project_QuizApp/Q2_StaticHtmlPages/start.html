@@ -1,0 +1,33 @@
+<!-- Note to self: remember to add accessibilities e.g. roles -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Static HTML page</title>
+    <link href="layout.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="layout_heading main_heading">
+      <div class="row">
+        <div class="col-4">
+          <h1>QUIZ NAME</h1>
+        </div>
+        <div class="col-4">
+          <img src="#" width="50" height="50" alt="blank image">
+        </div>
+      </div>
+    </header>
+    
+    <!-- classes use dashes, consistency! -->
+    <main class="layout_content main_content">
+      <div class="feedback begin"> 
+        <h2>Welcome to the blah blah quiz</h2>
+        <p>Test you knowledge of random video game trivia here! Press the button below.</p>
+        <button type="submit" class="startQuiz">Start Quiz</button>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

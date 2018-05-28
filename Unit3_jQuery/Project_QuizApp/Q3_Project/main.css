@@ -1,0 +1,37 @@
+main img {
+  max-width: 640px;
+}
+
+form legend {
+  font-size: 25px;
+}
+
+button {
+  font-size: 20px;
+}
+button:hover {
+  background: #7a7a7a;
+}
+
+.main_heading {
+  background: #939393;
+}
+
+.main_content {
+  background: #e8e8e8;
+}
+
+.main_footer {
+  background:  #cecece;
+}
+
+.progress_bar {
+  padding: 0;
+  border: 1px solid black;
+}
+
+.progress_bar_color {
+  width: 0%;
+  height:20px;
+  background-color: #939393;
+}

@@ -1,0 +1,59 @@
+<!-- Note to self: remember to add accessibilities e.g. roles -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Static HTML page</title>
+    <link href="layout.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="layout_heading main_heading">
+      <div class="row">
+        <div class="col-4">
+          <h1>QUIZ NAME</h1>
+        </div>
+        <div class="col-4">
+          <img src="#" width="50" height="50" alt="blank image">
+        </div>
+        <div class="col-4">
+          <label>SOME SCORE</label>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout_content main_content">
+      <form class="main_quiz"> 
+        <!-- use JS later to automate this -->
+        <!-- grabbed from the form elements demo -->
+
+        <!-- NEEDS ID -->
+        <fieldset>
+          <legend class="question">Which is my least favorite vegetable?</legend>
+          <input type="radio" name="feelings-2" value="a">
+          <label for="ans-great-1">a. Asparagus</label>
+          <!-- NO BR -->
+          <br> 
+          <input type="radio" name="feelings-2" value="b">
+          <label for="ans-great-2">b. beet</label>
+          <br>
+          <input type="radio" name="feelings-2" value="c">
+          <label for="ans-great-3">c. carrot</label>
+          <br>
+          <input type="radio" name="feelings-2" value="d">
+          <label for="ans-great-3">d. daikon</label>
+        </fieldset>
+          <button type="submit" class="submitAnswer">Submit</button>
+      </form>
+    </main>
+
+    <footer class="layout_footer main_footer">
+      <div class="row">
+        <div class="col-6">TEXT</div>
+        <div class="col-6">TEXT</div>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

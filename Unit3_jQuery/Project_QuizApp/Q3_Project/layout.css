@@ -1,6 +1,7 @@
 /* https://www.lifewire.com/remove-default-styling-with-master-sheet-3466871 */
 
-html, body {
+html,
+body {
   /* zeroing out margin, padding, border */
   margin: 0px;
   padding: 0px;
@@ -16,7 +17,12 @@ main {
   text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   /* clearing default headers */
   margin: 0;
   padding: 0;
@@ -24,15 +30,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 /* Below is from float-grid.css that was used in examples, I liked it so I'll reuse */
+
 
 /* guarantees that the element will take up no more than that width
 https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 */
+
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -42,25 +54,42 @@ html {
   box-sizing: content-box;
 }
 
+
 /* ensure content doesn't come up to edge of viewport at small sizes */
+
 .row {
   max-width: 1000px;
   padding: 0 20px;
   margin: 0 auto;
 }
 
+
 /* clearfix */
-/* rows vertically contain all their content */
 .row::before,
-.row::after{
+.row::after {
   display: table;
   content: '';
 }
 
-/* content come after row act as if preceding row was in normal flow */
 .row::after {
   clear: both;
 }
+
+/* rows vertically contain all their content */
+
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+
+/* content come after row act as if preceding row was in normal flow */
+
+.row::after {
+  clear: both;
+}
+
 
 /* Grabbed from previous example
    * Gutters:
@@ -69,33 +98,41 @@ html {
    * Half a gutter is 10px, 10/960 (context) = 1.041666%
    *
    */
-.col-3, .col-4, .col-6, .col-12 {
+
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
   float: left;
   padding: 0 1.041666%;
 }
 
+
 /* mobile defaults */
-.col-3, .col-4, .col-6, .col-12 {
+
+.col-3,
+.col-4,
+.col-6,
+.col-12 {
   width: 100%;
 }
 
+
 /* non-mobile, grid */
-@media only screen and (min-width: 640px){
+
+@media only screen and (min-width: 640px) {
   /* 3 columns, 3/12 = 25% */
   .col-3 {
     width: 25%;
   }
-
   /* 4 columns 4/12 = 33.33 */
   .col-4 {
-    width:  33.33%;
+    width: 33.33%;
   }
-
   /* 6 columns 6/12 = 50%*/
   .col-6 {
-    width:  50%;
+    width: 50%;
   }
-
   /* 12 columns 12/12 = 100 */
   .col-12 {
     width: 100%;
@@ -106,10 +143,15 @@ html {
 /* Below is my layout for individual parts 
  * 
  */
+
 main form {
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+}
+
+form img {
+  width: 100%;
 }
 
 button {
@@ -124,22 +166,13 @@ button {
   padding: 20px 0;
 }
 
-/* .layout_content {
-  margin: 20px;
-  padding: 20px;
-} */
-
-.layout_container{
+.layout_container {
   margin: 30px;
 }
 
 .layout_footer {
   padding: 20px;
 }
-
-/* .centered {
-  vertical-align: middle;
-} */
 
 .align_heading {
   display: flex;

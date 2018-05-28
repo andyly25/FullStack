@@ -27,7 +27,7 @@ function generateStartPage () {
 /*
  * This is the function to create the quiz questions and options
  */
-function generateQuestions () {
+function generateQuestions  () {
   return `
     <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
     <legend>${STORE[questionNum].question}</legend>
@@ -60,7 +60,7 @@ function startQuiz () {
 }
 
 // a function to hide and show elements after picking an answer
-function showHideResult () {
+function showHideResult  () {
   $('.quiz_options').hide();
   $('.quiz_answer').show();
 }
@@ -104,10 +104,10 @@ function answerPicked () {
       updateScore();
       $('.results').parent().addClass('correct');
     } else {
-       $('.results').parent().addClass('incorrect');
-       mistake += 1;
-       error = 2;
-       updateScore();
+      $('.results').parent().addClass('incorrect');
+      mistake += 1;
+      error = 2;
+      updateScore();
     }
     $('.quiz_answer').html(generateResult());
   });

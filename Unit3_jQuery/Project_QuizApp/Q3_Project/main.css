@@ -9,9 +9,10 @@ main img {
   max-width: 640px;
 }
 
-form{
+form {
   background: black;
 }
+
 form legend {
   font-size: 25px;
   color: white;
@@ -24,6 +25,7 @@ fieldset h2 {
 button {
   font-size: 20px;
 }
+
 button:hover {
   background: #7a7a7a;
 }
@@ -46,7 +48,7 @@ button:hover {
 }
 
 .main_footer {
-  background:  #cecece;
+  background: #cecece;
 }
 
 .progress_bar {
@@ -56,6 +58,6 @@ button:hover {
 
 .progress_bar_color {
   width: 0%;
-  height:20px;
+  height: 20px;
   background-color: #939393;
 }

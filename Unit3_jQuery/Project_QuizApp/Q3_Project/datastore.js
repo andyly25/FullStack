@@ -5,18 +5,17 @@ let error = 0;
 let mistake = 0;
 
 // array of image objects
-const IMAGES = [
-  {
+const IMAGES = [{
     imgSrc: 'https://images.pexels.com/photos/411207/pexels-photo-411207.jpeg',
-    imgAlt: 'Knocked over Chess Pieces'
+    imgAlt: 'Starting Page image'
   },
   {
     imgSrc: 'https://images.pexels.com/photos/163157/mario-luigi-figures-funny-163157.jpeg',
-    imgAlt: 'Mario and Luigi Correct'
+    imgAlt: 'Correct Answer!'
   },
   {
     imgSrc: 'https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg',
-    imgAlt: 'Game over image'
+    imgAlt: 'Wrong Answer'
   },
   {
     imgSrc: 'https://i.ytimg.com/vi/me9oM1Gjiqs/maxresdefault.jpg',
@@ -25,11 +24,10 @@ const IMAGES = [
 ];
 
 // array of question objects
-const STORE = [
-  {
+const STORE = [{
     num: 1,
     question: 'What does "Atari" from Atari games mean?',
-    imgSrc: 'https://cdn.pixabay.com/photo/2016/07/28/16/26/atari-2600-1548365_960_720.jpg',
+    imgSrc: 'https://fthmb.tqn.com/j26Vc4ZEkajn69qKmq56zxxh1Vo=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/vintage-atari-video-game-system-2600-162192476-5a31e03b842b170037ac1248.jpg',
     imgAlt: 'atari 2600',
     answer1: 'Freedom',
     answer2: 'Success',
@@ -40,7 +38,7 @@ const STORE = [
   {
     num: 2,
     question: 'What video game did Mario, the Nintendo character first appear in?',
-    imgSrc: 'https://cdn.pixabay.com/photo/2013/07/12/16/53/tetris-151437_960_720.png',
+    imgSrc: 'http://www.playretrogames.com/gameimages/3172-super-mario-bros-2-n.jpg',
     imgAlt: 'mario blocky image',
     answer1: 'Donkey Kong',
     answer2: 'Mario Bros',
@@ -51,8 +49,8 @@ const STORE = [
   {
     num: 3,
     question: 'Which of the below is the oldest game console?',
-    imgSrc: 'https://cdn.pixabay.com/photo/2017/03/11/08/14/handheld-game-console-2134571_960_720.png',
-    imgAlt: 'retro games image',
+    imgSrc: 'https://sharing.turnto23.com/sharelstv/photo/2016/11/18/16x9/3_Radical_Retro_Video_Game_Consoles_Maki_0_50007012_ver1.0_640_480.jpg',
+    imgAlt: 'old console of NES',
     answer1: 'NES',
     answer2: 'Magnavox Odyssey',
     answer3: 'Game Boy',

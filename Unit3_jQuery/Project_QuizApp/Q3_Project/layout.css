@@ -108,6 +108,8 @@ html {
  */
 main form {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button {

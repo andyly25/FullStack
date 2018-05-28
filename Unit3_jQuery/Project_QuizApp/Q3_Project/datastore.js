@@ -4,6 +4,7 @@ let score = 0;
 let error = 0;
 let mistake = 0;
 
+// array of image objects
 const IMAGES = [
   {
     imgSrc: 'https://images.pexels.com/photos/411207/pexels-photo-411207.jpeg',
@@ -23,7 +24,7 @@ const IMAGES = [
   }
 ];
 
-// This will store the data for all of the questions
+// array of question objects
 const STORE = [
   {
     num: 1,
@@ -137,4 +138,5 @@ const STORE = [
   }
 ];
 
+// grabbing total length of questions array
 const total = STORE.length;

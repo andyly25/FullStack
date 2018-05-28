@@ -1,7 +1,3 @@
-<!-- Note to self, accessibilites, replace class dashes with _ 
-     after adding functionalities, make look nicer!
--->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,36 +8,32 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <!-- <header class="layout_heading main_heading">
-      <div class="row">
-        <h1 class="col-4 centered">QUIZ NAME</h1>
-        <img sclass="col-4 centered" src="#" width="50px" height="50px" >
-        <label class="col-4 centered">SOME SCORE</label>
-      </div>
-    </header> -->
-    <header class="layout_heading main_heading">
+    <!-- The header will contain the title, logo, score -->
+    <header class="layout_heading main_heading" role="banner">
       <div class="align_heading">
         <h1>Gaming Triva</h1>
         <img id="image_logo" src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg" width="200px" height="200px" alt="Quiz Logo">
         <span class="current_score">0</span>
       </div>
     </header>
-
-    <main class="align_heading">
-      <form class="layout_container main_container row"> 
-        <fieldset class="question col-12">
+    
+    <!-- main will contain starter page, question pages, final pages -->
+    <main class="align_heading" role="main">
+      <form class="layout_container main_container "> 
+        <fieldset class="question ">
           <!-- <legend>title or explanatory caption</legend> -->
         </fieldset>
-        <fieldset class="quiz_options col-12">
+        <fieldset class="quiz_options">
           <!-- <legend>title or explanatory caption</legend> -->
         </fieldset>
-        <fieldset class="quiz_answer col-12">
+        <fieldset class="quiz_answer ">
           <!-- <legend>title or explanatory caption</legend> -->
         </fieldset>
       </form>
     </main>
-
-    <footer class="layout_footer main_footer">
+    
+    <!-- The footer is where question index and progress bar lie -->
+    <footer class="layout_footer main_footer" role="contentinfo">
       <div class="row">
         <div class="col-6">
           <span class="question_index">0 of 10</span>

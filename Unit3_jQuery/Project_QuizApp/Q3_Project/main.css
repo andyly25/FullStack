@@ -1,9 +1,24 @@
+/* CSS that is more for aesthetics */
+
+main {
+  background: url("http://thisdayintechhistory.com/wp-content/uploads/2012/10/pac-man_arcade.jpg") center fixed;
+  background-size: fit;
+}
+
 main img {
   max-width: 640px;
 }
 
+form{
+  background: black;
+}
 form legend {
   font-size: 25px;
+  color: white;
+}
+
+fieldset h2 {
+  color: white;
 }
 
 button {
@@ -15,6 +30,15 @@ button:hover {
 
 .main_heading {
   background: #939393;
+}
+
+.align_heading h1 {
+  font-size: 50px;
+  color: white;
+}
+
+.current_score {
+  font-size: 25px;
 }
 
 .main_content {

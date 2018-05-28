@@ -1,3 +1,4 @@
+// Prevents creating global variables
 'use strict';
 
 /*
@@ -49,12 +50,10 @@ function generateQuestions () {
  */
 function startQuiz () {
   $('.question').on('click', '.startQuizBtn', function (event) {
-    // console.log('apples');
     $('.current_score').show();
     $('.question').hide();
     $('.quiz_options').show();
     $('.quiz_options').html(generateQuestions());
-    // updateIndex();
     $('footer').show();
 
   });
@@ -62,7 +61,6 @@ function startQuiz () {
 
 // a function to hide and show elements after picking an answer
 function showHideResult () {
-  console.log('hiding');
   $('.quiz_options').hide();
   $('.quiz_answer').show();
 }
@@ -72,21 +70,20 @@ function updateScore () {
   $('.current_score').text(`Correct: ${score}, Incorrect: ${mistake}`);
 }
 
+// function to tell you what question you're on
 function updateIndex () {
   $('.question_index').text(`${questionNum + 1} of ${total}`);
 }
 
-// This updates the footer with current question and progress bar
+// This updates progress bar
 function updateFooter () {
   $('.progress_bar_color').css('width', `${((questionNum + 1) * 10)}%`);
 }
 
-
 // render option picked results
 function generateResult () {
-  console.log('generate result');
   return `
-  <legend><span class="quiz_answer"></span>The right answer is: ${STORE[questionNum].solution}</legend>
+  <legend><span class="quiz_answer"></span>The right answer is: "${STORE[questionNum].solution}"</legend>
   <img src="${IMAGES[error].imgSrc}" alt="${IMAGES[error].imgAlt}" />
   <button type="button" class="nextQuestion" name="next button" value="Next Question">
     <span>Next Question</span>
@@ -94,9 +91,9 @@ function generateResult () {
 }
 
 // This will update our view based on correct or incorrect answer
+// Includes the scoring
 function answerPicked () {
   $('.quiz_options').on('click', '.option', function (event) {
-    // console.log('something');
     // update progress Bar after you picked an option
     updateFooter();
     showHideResult();
@@ -112,23 +109,19 @@ function answerPicked () {
        error = 2;
        updateScore();
     }
-    console.log(this);
     $('.quiz_answer').html(generateResult());
   });
 }
 
-// advance to next question, first check if you're on last one first
+// advance to next question, first check if you're on last question first
 function nextQuestion () {
   $('.quiz_answer').on('click', '.nextQuestion', function (event) {
-    console.log('NEXTQUESTIOn');
     $('.quiz_answer').hide();
     if (questionNum === STORE.length - 1) {
-      console.log('NEXTQUESTION IF')
       $('.question').show();
       $('.question').html(generateEndPage());
       resetQuiz();
     } else {
-      console.log('NEXTQUESTION ELSE')
       $('.quiz_options').show();
       questionNum += 1;
       // update index everytime we move to new question
@@ -143,6 +136,7 @@ function generateEndPage () {
   return `
     <legend>Congratulations! You've finished the quiz!</legend>
     <img src="${IMAGES[IMAGES.length-1].imgSrc}" alt="${IMAGES[IMAGES.length-1].imgAlt}" />
+    <h2>Do you like your score of: ${score} out of ${total}?</h2>
     <button type="button" name="restart" class="restartQuizBtn">
       <span>New Game ++</span>
     </button>`;

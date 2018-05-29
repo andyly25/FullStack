@@ -1,0 +1,58 @@
+# Behavioral Questions
+- Tell me about yourself
+  - I graduated from college recently with a BS degree
+  - Picked up coding as a hobby, a lot of possibilities and branches
+  - Been browsing at introductory courses of a variety of subjects
+  - the one branch I kept going back to was Web Development
+- Why do you want to work/apply here?
+  - originally recommended from a friend
+  - liked how the course is laid out with a lot of resources to become successful
+  - Saw as an opportunity to change myself 
+  - Change myself to be a more confident programmer
+  - resources available are program managers, Q&A, Slack community, and the tutor(s)
+  - Wanted to have skilled tutors who knew the ins and out of the programming lifestyle
+  - learn their tips and tricks on how to be more desirable in the field
+- Why should we hire you?
+  - I'm a curious person overall so when I encounter something I don't know I ask questions
+  - Since I have a CS major, I have the technical backgound needed
+    - Even if I do not know something I have the ability to pick up the skills when necessary
+  - during my time in college I played with Java to make text based adventure game
+    - Python programming for my AI course to guide pacman to eat all the food and avoid the ghosts
+    - played with a game editor tool to create a Warship-like game with GameMaker Studio
+    - variety more
+- What do you like to do in your spare time?
+  - I've been getting involved with online learning
+  - Been taking a lot of free online courses to see what I would enjoy 
+  - Recently, touched on learning how to use Tableau for data analysis (process data into charts and graphs)
+  - and one day hope to play with AI and Machine Learning in my spare time
+  - Other than that, submitting what I learned as often as I can on Github so I can always come back to it
+- Where do you see yourself in five years?
+  - I plan to use every tip and trick I have learned to become a more competent coder.
+  - Gain the confidence so that when someone asks me for help, I can give a clear answer
+  - write more efficient and concise code
+- What are your strengths and weaknesses?
+  - WEAKNESSES:
+    - Social anxiety: shy and nervous when speaking to others
+      - This is a problem where I plan to talk to more people in the future and get used to it
+    - Not completely detail oriented: sometimes I miss a semicolon or a period somewhere and it throws everything off
+      - double check my code and code checkers or tests as often as I can
+    - I get overwhelmed if I try to tackle too many at once.
+      - do things in small chunks at a time and build of of it 
+  - STRENGTHS:
+    - I like to ask questions on things that I don't know.
+      - Since I learn from example most times I would ask for a demonstration and then attempt it myself
+      - I would ask how it is until I get an approval that it's good and then I'll keep practicing
+      - Retail job I've learned how to fold clothes, close the store, check inventory, and use the cash register this way
+    - I am organized
+      - Plan out a list of things I need to do and set time for each things I needed to do
+      - like my Github, I like to separate my files within appropiate folders and in the order I submitted files
+    - Good planner
+      - I usually write a to do list and set up reminders often of due dates
+      - In college this was how I planned out my class times, breaks, and study time
+
+## Write stories:
+- Leadership / Influence
+- Teamwork
+- Successes
+- Challenges
+- Mistakes / Failures

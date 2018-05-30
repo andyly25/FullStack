@@ -1,6 +1,6 @@
 /* CSS that is more for aesthetics */
 
-main {
+body {
   background: url("http://thisdayintechhistory.com/wp-content/uploads/2012/10/pac-man_arcade.jpg") center fixed;
   background-size: fit;
 }

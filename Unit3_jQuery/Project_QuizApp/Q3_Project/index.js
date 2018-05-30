@@ -27,7 +27,7 @@ function generateStartPage () {
 /*
  * This is the function to create the quiz questions and options
  */
-function generateQuestions  () {
+function generateQuestions () {
   return `
     <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
     <legend>${STORE[questionNum].question}</legend>
@@ -60,7 +60,7 @@ function startQuiz () {
 }
 
 // a function to hide and show elements after picking an answer
-function showHideResult  () {
+function showHideResult () {
   $('.quiz_options').hide();
   $('.quiz_answer').show();
 }
@@ -77,7 +77,7 @@ function updateIndex () {
 
 // This updates progress bar
 function updateFooter () {
-  $('.progress_bar_color').css('width', `${((questionNum + 1) * 10)}%`);
+  $('.progress_bar_color').css('width', `${(((questionNum + 1) / total) * 100)}%`);
 }
 
 // render option picked results
@@ -135,17 +135,29 @@ function nextQuestion () {
 function generateEndPage () {
   return `
     <legend>Congratulations! You've finished the quiz!</legend>
-    <img src="${IMAGES[IMAGES.length-1].imgSrc}" alt="${IMAGES[IMAGES.length-1].imgAlt}" />
+    <img src="${IMAGES[IMAGES.length - 1].imgSrc}" alt="${IMAGES[IMAGES.length - 1].imgAlt}" />
     <h2>Do you like your score of: ${score} out of ${total}?</h2>
     <button type="button" name="restart" class="restartQuizBtn">
       <span>New Game ++</span>
     </button>`;
 }
 
+// Just in case, initialize our variables to 0
+function initValues () {
+  questionNum = 0;
+  score = 0;
+  error = 0;
+  mistake = 0;
+  $('.progress_bar_color').css('width', `${0}%`);
+}
+
 // Resets the quiz again to the start page
 function resetQuiz () {
-  $('.question').on('click', '.reset', function (event) {
-    location.reload();
+  $('.question').on('click', '.restartQuizBtn', function (event) {
+    initValues();
+    updateScore();
+    updateIndex();
+    renderQuiz();
   });
 }
 

@@ -155,6 +155,7 @@ HTML and CSS: Structure and style
 	- **float** : getting text to wrap around an image or other container
 		- there's `float: left` and right, which will move the images to those sides of container
 		- floated images are taken out of the normal flow
+		- **clear** : specifies on which sides of an element floating elements are not allowed to float
 - Coding up a wide range of layouts from designs.
 
 ## Forms and Inputs

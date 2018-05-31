@@ -94,6 +94,9 @@ What do you like to do in your spare time?
 
 Where do you see yourself in 5 years?
 - full stack web developer, more competent programmer, make a good ui that is accessible for all
+- alternative: I see myself moving up from junior developer into senior developer
+  - working in a team of 4-8 people on a product with audience from thousands to millions
+  - goal is for a content driven web application that has an easy to use interface
 
 strenghts and weaknesses:
 - nervous before presentations and exam like situations
@@ -104,6 +107,12 @@ strenghts and weaknesses:
     - ask for others to help when you did not realize it would take that long
 - I ask questions often
 
+What are your greatest strengths as a web developer?
+- organized
+What experience do you have working in a fast-paced environment?
+- retail, college?
+What technologies are you most excited to learn?
+- AI and Machine Learning
 
 ## Stories
 - Leadership: bring up capstone project
@@ -123,3 +132,4 @@ strenghts and weaknesses:
 - What is the culture like at the company?
 - How are people rewarded for their success in terms of the career?
 - What have you done to make yourself successful? (Show that you are interested in them)
+

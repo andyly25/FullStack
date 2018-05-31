@@ -100,13 +100,13 @@ function answerPicked () {
     const choice = $(this).val();
     if (choice === STORE[questionNum].solution) {
       score += 1;
-      error = 1;
+      error = 1; // In datastore, 1 is the correct choice image
       updateScore();
       $('.results').parent().addClass('correct');
     } else {
       $('.results').parent().addClass('incorrect');
       mistake += 1;
-      error = 2;
+      error = 2; // In datastore, 2 is the wrong choice image
       updateScore();
     }
     $('.quiz_answer').html(generateResult());

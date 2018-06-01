@@ -6,6 +6,7 @@ body {
   margin: 0px;
   padding: 0px;
   border: 0px;
+  height: 100%;
 }
 
 body {
@@ -164,11 +165,6 @@ input[type="button"] {
   padding: 10px;
 }
 
-/* label {
-  width: 95%;
-  padding: 10px;
-} */
-
 .layout_heading {
   text-align: center;
   width: 100%;
@@ -181,7 +177,7 @@ input[type="button"] {
 }
 
 .layout_footer {
-  padding: 20px;
+  padding: 10px;
 }
 
 .align_heading {
@@ -189,7 +185,6 @@ input[type="button"] {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  height: 100%;
 }
 
 #image_logo {

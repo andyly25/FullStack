@@ -3,6 +3,10 @@ let questionNum = 0;
 let score = 0;
 let error = 0;
 let mistake = 0;
+let resultsNotification = '';
+// the below will be used to toggle up and down with arrow key
+const elements = document.getElementsByClassName('arrow-togglable');
+let currentIndex = 0;
 
 // array of image objects
 const IMAGES = [{

@@ -1,23 +1,6 @@
 // Prevents creating global variables
 'use strict';
 
-// https://stackoverflow.com/questions/38850185/using-arrows-instead-of-mouse-in-html-form-to-navigate-inputs
-// since I wanted arrow keys to work I decided to do this
-const elements = document.getElementsByClassName('arrow-togglable');
-let currentIndex = 0;
-document.onkeydown = function (e) {
-  switch (e.keyCode) {
-    case 38:
-      currentIndex = (currentIndex === 0) ? elements.length - 1 : --currentIndex;
-      elements[currentIndex].focus();
-      break;
-    case 40:
-      currentIndex = ((currentIndex + 1) === elements.length) ? 0 : ++currentIndex;
-      elements[currentIndex].focus();
-      break;
-  }
-};
-
 /*
  * Render Quiz
  */
@@ -43,65 +26,29 @@ function generateStartPage () {
  * This is the function to create the quiz questions and options
  */
 function generateQuestions () {
-  // return `
-  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
-  //   <legend>${STORE[questionNum].question}</legend>
-  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer1}">
-  //     <span>${STORE[questionNum].answer1}</span>
-  //   </button>
-  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer2}">
-  //     <span>${STORE[questionNum].answer2}</span>
-  //   </button>
-  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer3}">
-  //     <span>${STORE[questionNum].answer3}</span>
-  //   </button>
-  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer4}">
-  //     <span>${STORE[questionNum].answer4}</span>
-  //   </button>`;
-
   return `
     <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
     <legend>${STORE[questionNum].question}</legend>
     <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer1}">
-    
     <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer2}">
-
     <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer3}">
-     
     <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer4}">`;
-
-  // return `
-  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
-  //   <legend>${STORE[questionNum].question}</legend>
-
-  //   <input type="radio" role="radio" id="q1" class="option" value="${STORE[questionNum].answer1}">
-  //   <label for="q1">${STORE[questionNum].answer1}</label>
-    
-  //   <input type="radio" role="radio" id="q2" class="option" value="${STORE[questionNum].answer2}">
-  //   <label for="q2">${STORE[questionNum].answer2}</label>
-
-  //   <input type="radio" role="radio" id="q3" class="option" value="${STORE[questionNum].answer3}">
-  //   <label for="q3">${STORE[questionNum].answer3}</label>
-   
-  //   <input type="radio" role="radio" id="q4" class="option" value="${STORE[questionNum].answer4}">
-  //   <label for="q4">${STORE[questionNum].answer4}</label>`;
-
-  // return `
-  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
-  //   <legend>${STORE[questionNum].question}</legend>
-    
-  //   <input type="button" role="radio" id="q1" class="option" value="${STORE[questionNum].answer1}">
-  //   <label for="q1">${STORE[questionNum].answer1}</label>
-    
-  //   <input type="button" role="radio" id="q2" class="option" value="${STORE[questionNum].answer2}">
-  //   <label for="q2">${STORE[questionNum].answer2}</label>
-
-  //   <input type="button" role="radio" id="q3" class="option" value="${STORE[questionNum].answer3}">
-  //   <label for="q3">${STORE[questionNum].answer3}</label>
-   
-  //   <input type="button" role="radio" id="q4" class="option" value="${STORE[questionNum].answer4}">
-  //   <label for="q4">${STORE[questionNum].answer4}</label>`;
 }
+
+// since I wanted arrow keys to work I decided to do this
+// https://stackoverflow.com/questions/38850185/using-arrows-instead-of-mouse-in-html-form-to-navigate-inputs
+document.onkeydown = function (e) {
+  switch (e.keyCode) {
+    case 38:
+      currentIndex = (currentIndex === 0) ? elements.length - 1 : --currentIndex;
+      elements[currentIndex].focus();
+      break;
+    case 40:
+      currentIndex = ((currentIndex + 1) === elements.length) ? 0 : ++currentIndex;
+      elements[currentIndex].focus();
+      break;
+  }
+};
 
 /*
  * We render the questions after clicking the start quiz button
@@ -130,10 +77,19 @@ function updateFooter () {
   $('.progress_bar_color').css('width', `${(((questionNum + 1) / total) * 100)}%`);
 }
 
+function resultText () {
+  if (error === 1) {
+    resultsNotification = 'You got it right with:';
+  } else {
+    resultsNotification = 'The right answer is:';
+  }
+}
+
 // render option picked results
 function generateResult () {
+  resultText();
   return `
-  <legend><span class="question"></span>The right answer is: "${STORE[questionNum].solution}"</legend>
+  <legend><span class="question"></span>${resultsNotification} "${STORE[questionNum].solution}"</legend>
   <img src="${IMAGES[error].imgSrc}" alt="${IMAGES[error].imgAlt}" />
   <button type="button" class="nextQuestion" name="next button" value="Next Question">
     <span>Next Question</span>

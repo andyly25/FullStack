@@ -4,15 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Video Game Quiz App</title>
+    <!-- Asset loads below -->
     <link href="layout.css" rel="stylesheet" type="text/css">
     <link href="main.css" rel="stylesheet" type="text/css" />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">    
+    </script>
   </head>
   <body>
     <!-- The header will contain the title, logo, score -->
     <header class="layout_heading main_heading" role="banner">
       <div class="align_heading">
         <h1>Gaming Triva</h1>
-        <img id="image_logo" src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg" alt="Quiz Logo">
+        <img 
+          id="image_logo" 
+          src="https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&dpr=2" 
+          alt="Quiz Logo">
         <span class="current_score">0</span>
       </div>
     </header>
@@ -26,19 +35,15 @@
     <!-- The footer is where question index and progress bar lie -->
     <footer class="layout_footer main_footer" role="contentinfo">
       <div class="row">
-        <div class="col-6">
+        <div class="col_6">
           <span class="question_index">0 of 10</span>
         </div>
-        <div class="col-6 progress_bar">
+        <div class="col_6 progress_bar">
           <div class="progress_bar_color"></div>
         </div>
       </div>
     </footer>
-    <!-- jQuery and JS files below -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+    <!-- JS files below -->
     <script src="datastore.js"></script>
     <script src="index.js"></script>
   </body>

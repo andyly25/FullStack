@@ -1,4 +1,9 @@
-/* https://www.lifewire.com/remove-default-styling-with-master-sheet-3466871 */
+/* This is the layout page for layouts in general */
+
+/* 
+ * I used this to clear some default styles
+ * https://www.lifewire.com/remove-default-styling-with-master-sheet-3466871 
+ */
 
 html,
 body {
@@ -7,6 +12,7 @@ body {
   padding: 0px;
   border: 0px;
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -32,13 +38,9 @@ h6 {
 }
 
 
-/* Below is from float-grid.css that was used in examples, I liked it so I'll reuse */
-
-
 /* guarantees that the element will take up no more than that width
 https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 */
-
 html {
   box-sizing: border-box;
 }
@@ -55,15 +57,13 @@ html {
   box-sizing: content-box;
 }
 
-
+/* Below is from float-grid.css that was used in examples, I liked it so I'll reuse */
 /* ensure content doesn't come up to edge of viewport at small sizes */
-
 .row {
   max-width: 1000px;
   padding: 0 20px;
   margin: 0 auto;
 }
-
 
 /* clearfix */
 .row::before,
@@ -92,18 +92,17 @@ html {
 }
 
 
-/* Grabbed from previous example
-   * Gutters:
-   * Each column is padded by half-a-gutter on each side,
-   *
-   * Half a gutter is 10px, 10/960 (context) = 1.041666%
-   *
-   */
-
-.col-3,
-.col-4,
-.col-6,
-.col-12 {
+/* 
+ * Gutters:
+ * Each column is padded by half-a-gutter on each side,
+ *
+ * Half a gutter is 10px, 10/960 (context) = 1.041666%
+ *
+ */
+.col_3,
+.col_4,
+.col_6,
+.col_12 {
   float: left;
   padding: 0 1.041666%;
 }
@@ -111,10 +110,10 @@ html {
 
 /* mobile defaults */
 
-.col-3,
-.col-4,
-.col-6,
-.col-12 {
+.col_3,
+.col_4,
+.col_6,
+.col_12 {
   width: 100%;
 }
 
@@ -123,26 +122,26 @@ html {
 
 @media only screen and (min-width: 640px) {
   /* 3 columns, 3/12 = 25% */
-  .col-3 {
+  .col_3 {
     width: 25%;
   }
   /* 4 columns 4/12 = 33.33 */
-  .col-4 {
+  .col_4 {
     width: 33.33%;
   }
   /* 6 columns 6/12 = 50%*/
-  .col-6 {
+  .col_6 {
     width: 50%;
   }
   /* 12 columns 12/12 = 100 */
-  .col-12 {
+  .col_12 {
     width: 100%;
   }
 }
 
 
-/* Below is my layout for individual parts 
- * 
+/*  
+ * Below is my layout for individual parts 
  */
 
 main form {
@@ -185,8 +184,5 @@ input[type="button"] {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-}
-
-#image_logo {
-  border-radius: 30px;
+  margin: 10px 0;
 }

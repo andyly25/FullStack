@@ -1,14 +1,29 @@
 // Prevents creating global variables
 'use strict';
 
+// https://stackoverflow.com/questions/38850185/using-arrows-instead-of-mouse-in-html-form-to-navigate-inputs
+// since I wanted arrow keys to work I decided to do this
+const elements = document.getElementsByClassName('arrow-togglable');
+let currentIndex = 0;
+document.onkeydown = function (e) {
+  switch (e.keyCode) {
+    case 38:
+      currentIndex = (currentIndex === 0) ? elements.length - 1 : --currentIndex;
+      elements[currentIndex].focus();
+      break;
+    case 40:
+      currentIndex = ((currentIndex + 1) === elements.length) ? 0 : ++currentIndex;
+      elements[currentIndex].focus();
+      break;
+  }
+};
+
 /*
  * Render Quiz
  */
 function renderQuiz () {
   $('.question').html(generateStartPage());
   $('.current_score').hide();
-  $('.quiz_options').hide();
-  $('.quiz_answer').hide();
   $('footer').hide();
 }
 
@@ -28,21 +43,64 @@ function generateStartPage () {
  * This is the function to create the quiz questions and options
  */
 function generateQuestions () {
+  // return `
+  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
+  //   <legend>${STORE[questionNum].question}</legend>
+  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer1}">
+  //     <span>${STORE[questionNum].answer1}</span>
+  //   </button>
+  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer2}">
+  //     <span>${STORE[questionNum].answer2}</span>
+  //   </button>
+  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer3}">
+  //     <span>${STORE[questionNum].answer3}</span>
+  //   </button>
+  //   <button type="button" role="radio" class="option" value="${STORE[questionNum].answer4}">
+  //     <span>${STORE[questionNum].answer4}</span>
+  //   </button>`;
+
   return `
     <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
     <legend>${STORE[questionNum].question}</legend>
-    <button type="button" role="radio" class="option" value="${STORE[questionNum].answer1}">
-      <span>${STORE[questionNum].answer1}</span>
-    </button>
-    <button type="button" role="radio" class="option" value="${STORE[questionNum].answer2}">
-      <span>${STORE[questionNum].answer2}</span>
-    </button>
-    <button type="button" role="radio" class="option" value="${STORE[questionNum].answer3}">
-      <span>${STORE[questionNum].answer3}</span>
-    </button>
-    <button type="button" role="radio" class="option" value="${STORE[questionNum].answer4}">
-      <span>${STORE[questionNum].answer4}</span>
-    </button>`;
+    <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer1}">
+    
+    <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer2}">
+
+    <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer3}">
+     
+    <input type="button" role="radio" class="option arrow-togglable" value="${STORE[questionNum].answer4}">`;
+
+  // return `
+  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
+  //   <legend>${STORE[questionNum].question}</legend>
+
+  //   <input type="radio" role="radio" id="q1" class="option" value="${STORE[questionNum].answer1}">
+  //   <label for="q1">${STORE[questionNum].answer1}</label>
+    
+  //   <input type="radio" role="radio" id="q2" class="option" value="${STORE[questionNum].answer2}">
+  //   <label for="q2">${STORE[questionNum].answer2}</label>
+
+  //   <input type="radio" role="radio" id="q3" class="option" value="${STORE[questionNum].answer3}">
+  //   <label for="q3">${STORE[questionNum].answer3}</label>
+   
+  //   <input type="radio" role="radio" id="q4" class="option" value="${STORE[questionNum].answer4}">
+  //   <label for="q4">${STORE[questionNum].answer4}</label>`;
+
+  // return `
+  //   <img src="${STORE[questionNum].imgSrc}" alt="${STORE[questionNum].imgAlt}">
+  //   <legend>${STORE[questionNum].question}</legend>
+    
+  //   <input type="button" role="radio" id="q1" class="option" value="${STORE[questionNum].answer1}">
+  //   <label for="q1">${STORE[questionNum].answer1}</label>
+    
+  //   <input type="button" role="radio" id="q2" class="option" value="${STORE[questionNum].answer2}">
+  //   <label for="q2">${STORE[questionNum].answer2}</label>
+
+  //   <input type="button" role="radio" id="q3" class="option" value="${STORE[questionNum].answer3}">
+  //   <label for="q3">${STORE[questionNum].answer3}</label>
+   
+  //   <input type="button" role="radio" id="q4" class="option" value="${STORE[questionNum].answer4}">
+  //   <label for="q4">${STORE[questionNum].answer4}</label>`;
 }
 
 /*
@@ -51,18 +109,10 @@ function generateQuestions () {
 function startQuiz () {
   $('.question').on('click', '.startQuizBtn', function (event) {
     $('.current_score').show();
-    $('.question').hide();
-    $('.quiz_options').show();
-    $('.quiz_options').html(generateQuestions());
+    $('.question').html(generateQuestions());
     $('footer').show();
 
   });
-}
-
-// a function to hide and show elements after picking an answer
-function showHideResult () {
-  $('.quiz_options').hide();
-  $('.quiz_answer').show();
 }
 
 // Update the score
@@ -83,7 +133,7 @@ function updateFooter () {
 // render option picked results
 function generateResult () {
   return `
-  <legend><span class="quiz_answer"></span>The right answer is: "${STORE[questionNum].solution}"</legend>
+  <legend><span class="question"></span>The right answer is: "${STORE[questionNum].solution}"</legend>
   <img src="${IMAGES[error].imgSrc}" alt="${IMAGES[error].imgAlt}" />
   <button type="button" class="nextQuestion" name="next button" value="Next Question">
     <span>Next Question</span>
@@ -93,40 +143,35 @@ function generateResult () {
 // This will update our view based on correct or incorrect answer
 // Includes the scoring
 function answerPicked () {
-  $('.quiz_options').on('click', '.option', function (event) {
+  $('.question').on('click', '.option', function (event) {
     // update progress Bar after you picked an option
     updateFooter();
-    showHideResult();
     const choice = $(this).val();
     if (choice === STORE[questionNum].solution) {
       score += 1;
       error = 1; // In datastore, 1 is the correct choice image
       updateScore();
-      $('.results').parent().addClass('correct');
     } else {
-      $('.results').parent().addClass('incorrect');
       mistake += 1;
       error = 2; // In datastore, 2 is the wrong choice image
       updateScore();
     }
-    $('.quiz_answer').html(generateResult());
+    $('.question').html(generateResult());
   });
 }
 
 // advance to next question, first check if you're on last question first
 function nextQuestion () {
-  $('.quiz_answer').on('click', '.nextQuestion', function (event) {
-    $('.quiz_answer').hide();
+  $('.question').on('click', '.nextQuestion', function (event) {
     if (questionNum === STORE.length - 1) {
-      $('.question').show();
       $('.question').html(generateEndPage());
       resetQuiz();
     } else {
-      $('.quiz_options').show();
       questionNum += 1;
+      currentIndex = 0;
       // update index everytime we move to new question
       updateIndex();
-      $('.quiz_options').html(generateQuestions());
+      $('.question').html(generateQuestions());
     }
   });
 }

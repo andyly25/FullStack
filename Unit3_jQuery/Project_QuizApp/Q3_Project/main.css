@@ -26,7 +26,18 @@ button {
   font-size: 20px;
 }
 
-button:hover {
+button:hover, button:focus {
+  background: #7a7a7a;
+}
+
+input[type="button"] {
+  font-size: 20px;
+  background: white;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+input[type="button"]:hover, input[type="button"]:focus {
   background: #7a7a7a;
 }
 

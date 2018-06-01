@@ -159,6 +159,16 @@ button {
   padding: 10px;
 }
 
+input[type="button"] {
+  width: 100%;
+  padding: 10px;
+}
+
+/* label {
+  width: 95%;
+  padding: 10px;
+} */
+
 .layout_heading {
   text-align: center;
   width: 100%;

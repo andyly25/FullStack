@@ -1,7 +1,7 @@
 // array of image objects
 const IMAGES = [
   {
-    imgSrc: 'https://images.pexels.com/photos/411207/pexels-photo-411207.jpeg?auto=compress&cs=tinysrgb&dpr=2',
+    imgSrc: 'https://i.imgur.com/yeGtNsv.jpg',
     imgAlt: 'Starting Page image'
   },
   {
@@ -14,12 +14,12 @@ const IMAGES = [
 const RESULTS_NOTIFICATION = {
   'CORRECT': {
     'message': 'You got it right with:',
-    'imgSrc': 'https://images.pexels.com/photos/163157/mario-luigi-figures-funny-163157.jpeg?auto=compress&cs=tinysrgb&dpr=2',
+    'imgSrc': 'https://i.imgur.com/t2feeOc.jpg',
     'imgAlt': 'Correct Answer!'
   },
   'INCORRECT': {
     'message': 'The right answer is:',
-    'imgSrc': 'https://images.pexels.com/photos/14303/pexels-photo-14303.jpeg?auto=compress&cs=tinysrgb&dpr=2',
+    'imgSrc': 'https://i.imgur.com/lZ0YY4l.jpg',
     'imgAlt': 'Wrong Answer'
   }
 };
@@ -116,7 +116,7 @@ const STORE = [{
   {
     num: 9,
     question: 'What were the first two versions of Pokemon?',
-    imgSrc: 'https://images.pexels.com/photos/163042/pokemon-pokemon-go-mobile-trends-smartphone-163042.jpeg?auto=compress&cs=tinysrgb&dpr=2',
+    imgSrc: 'https://i.imgur.com/GNqWvEH.jpg',
     imgAlt: 'Pokemon Go image',
     answer1: 'Sun and Moon',
     answer2: 'Gold and Silver',

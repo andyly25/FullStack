@@ -72,7 +72,6 @@ function generateResult () {
   const message = resultsNotification.message;
   const imgSrc = resultsNotification.imgSrc;
   const imgAlt = resultsNotification.imgAlt;
-  // getResultText();
   return `
   <legend><span class="question"></span>${message} "${STORE[questionNum].solution}"</legend>
   <img src="${imgSrc}" alt="${imgAlt}" />

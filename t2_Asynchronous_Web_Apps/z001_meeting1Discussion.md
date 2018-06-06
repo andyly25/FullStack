@@ -21,3 +21,5 @@
   - capstone
 - Communication
 - Submission process
+- Lesson 1: says to keep API key in safe location
+  - where is a safe location and how about when you collaborate with others?

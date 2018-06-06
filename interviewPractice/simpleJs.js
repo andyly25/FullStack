@@ -51,3 +51,62 @@ function userClick () {
     $("h1").append('HELLO WORLD!');
   });
 }
+
+// Data merge
+// In this drill, you'll write a function called mergeDataStreams that merges
+// together data from two sources. The first data set is an array of objects
+// which looks like this:
+const array1 = [{
+  id: 'aBcDeFgH',
+  firstName: 'Juan',
+  lastName: 'Doe',
+  age: 32
+},
+{
+  id: 'zYxWvUt',
+  firstName: 'Alex',
+  lastName: 'Smith',
+  age: 24
+}];
+
+const array2 = [{
+  id: 'aBcDeFgH',
+  occupation: 'architect',
+  address: {
+    street: '123 Main St',
+    city: 'CityTown',
+    Country: 'USA'
+  }
+},
+{
+  id: 'zYxWvUt',
+  occupation: 'receptionist',
+  address: {
+    street: '555 Ocean Ave',
+    city: 'Beach City',
+    Country: 'USA'
+  }
+}];
+
+function mergeDataStreams (a1, a2) {
+  for (let i = 0; i < array1.length; i += 1) {
+    if (a1[i].id === a2[i].id) {
+      Object.assign(a1[i], a2[i]);
+    }
+  }
+}
+
+mergeDataStreams(array1, array2);
+console.log(array1);
+
+// function mergeDataStreams2 (array1, array2) {
+//   let someArray = [];
+//   for (let i = 0; i < array1.length; i += 1) {
+//     if (array1[i].id === array2[i].id) {
+//       someArray.push({ ...array1, location: array2});
+//     }
+//   }
+//   return someArray;
+// }
+// const newArray = mergeDataStreams2(array1, array2);
+// console.log(newArray);

@@ -5,6 +5,7 @@ body {
 a {
   text-decoration: none;
   color: #7328ba;
+  display: inline-block;
 }
 
 a:link {
@@ -13,4 +14,37 @@ a:link {
 
 a:hover {
   color: #00A0C6;
+}
+
+div {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+button, button:active {
+  padding: 10px;
+  margin: 0 15px;
+  /* transition: 1s; */
+}
+
+button:hover, button:focus, button:visited {
+  background: #999;
+}
+
+.channel-link {
+  font-size: 20px;
+  display: block;
+  width: 200px;
+}
+
+.video-description {
+  display: inline-block;
+}
+
+.next-page {
+  margin: 10px 0;
+}
+
+.hidden {
+  display: none;
 }

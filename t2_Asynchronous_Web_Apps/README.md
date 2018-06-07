@@ -47,6 +47,7 @@
     - `?q=thinkful%20in:name&page=1&per_page=5` is a *query string*
     - `&` separates name and value pairs
     - `q` param is for indicating the phrase we want to search by
+    - e.g.: https://api.github.com/search/repositories?q=apple
     - data is provided in **JSON** (JavaScript object Notation) format
       - format used to serialize JS
 - Using jQuery to get data from third party APIs

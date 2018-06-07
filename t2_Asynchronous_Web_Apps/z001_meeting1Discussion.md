@@ -15,6 +15,7 @@
 
 ## Questions:
 - Goals for this phase
+- Sessions on which days?
 - Things to be expected
   - attend meetup
   - interview developer

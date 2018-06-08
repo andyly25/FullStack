@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- This is more or less a copy and paste layout from example -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Thinkful Tube</title>
+        <link href="index.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+      <div class="container">
+        <header role="banner">
+          <h1>Thinkful Tube</h1>
+          <form action="#" class="js-search-form search-form">
+            <label for="query">Enter Search Term Below:</label>
+            <input type="text" class="js-query" id="query" placeholder="Enter your search term">
+            <button type="submit">Search</button>
+          </form>
+        </header>
+        <h2>Results</h2>
+        <main role="main" class="js-search-results search-results" aria-live="assertive" hidden>
+          <!-- Main content within here -->
+        </main>
+        <button class="next-page hidden">Next Page</button>
+      </div> <!-- end of container -->
+      <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+      <script src="index.js"></script>
+    </body>
+</html>

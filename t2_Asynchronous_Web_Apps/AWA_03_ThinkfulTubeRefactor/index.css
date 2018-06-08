@@ -1,0 +1,86 @@
+html {
+  font-size: 100%;
+}
+
+body {
+  padding-top: 50px;
+  font-family: Sans-Serif;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #7328ba;
+  /* display: inline-block; */
+}
+
+a:link {
+  color: #0060B6;
+}
+
+a:hover {
+  color: #00A0C6;
+}
+
+div {
+  padding: 10px;
+}
+
+button, button:active {
+  padding: 10px;
+  margin: 0 15px;
+  /* transition: 1s; */
+}
+
+button:hover, button:focus, button:visited {
+  background: #999;
+}
+
+.container {
+  max-width: 42rem;
+  min-height: 38rem;
+  padding: 1em;
+  margin: 1em auto;
+}
+
+.search-form label,
+.search-form input,
+.search-form button {
+  display: block;
+  width: 100%;
+  padding: .2em .5em;
+  margin: .25em 0;
+}
+
+.search-content {
+  border-bottom: 1px solid black;
+}
+
+.channel-link {
+  font-size: 20px;
+  width: 14rem;
+}
+
+/* .video-description {
+  display: inline-block;
+} */
+
+.search-results {
+  text-align: center;
+}
+
+/* .search-content {
+  text-align: left;
+} */
+
+.next-page {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.hidden {
+  display: none;
+}

@@ -53,7 +53,20 @@
 - Using jQuery to get data from third party APIs
 
 ## Architecture of accessible client-side apps
-- Macs: System Preference -> Accessibility -> click `Enable VoiceOver`
+- MacOS: System Preference -> Accessibility -> click `Enable VoiceOver`
   - `Command + F5` to turn off
   - https://www.apple.com/voiceover/info/guide/_1131.html for shortcuts
-  
+- use the Google Chrome extension [aXe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US) for profilling accessibility
+  - It will be located on the right side of the dev tools to the right of Performance
+  - will describe Violations and what needs review for your static code.
+- add in a `.fail()` method so users will know if something goes wrong
+- **ARIA** live can deliver aural updates to users
+  - this is from `arial-live` attribute which takes a value that determins politeness setting
+    - `polite` waits for screen reader to finish whatever in queue
+    - `assertive` jumps the queue; changes will interrupt whatever the user is hearing
+  - `aria-live` attributes are referred to as *live regions*
+    - used for when submit form
+    - `aria-live="assertive"`
+- `hidden` : visually hidden and unavailable to screen readers
+  - one line in JS to handle: `.prop('hidden', false)`
+    - can perceive when new info is ready

@@ -1,0 +1,81 @@
+/* CSS that is more for aesthetics */
+
+html {
+  background: url("https://i.imgur.com/2gJ0nXV.jpg") center fixed;
+}
+
+main img {
+  max-width: 640px;
+}
+
+form {
+  background: #000;
+}
+
+form legend {
+  font-size: 25px;
+  color: #fff;
+}
+
+fieldset h2 {
+  color: #fff;
+}
+
+button {
+  font-size: 20px;
+  transition: all 0.3s ease-out;
+}
+
+button:hover, button:focus {
+  background: #7a7a7a;
+}
+
+input[type="button"] {
+  font-size: 20px;
+  background: #fff;
+  border: 1px solid #000;
+  transition: all 0.3s ease-out;
+}
+
+input[type="button"]:hover, input[type="button"]:focus {
+  background: #7a7a7a;
+}
+
+.main_heading {
+  background: rgba(147, 147, 147, 0.95);
+}
+
+.align_heading h1 {
+  font-size: 50px;
+  color: #fff;
+}
+
+.current_score {
+  font-size: 25px;
+  color: #fff;
+}
+
+.main_content {
+  background: #e8e8e8;
+}
+
+.main_footer {
+  background: #cecece;
+}
+
+.progress_bar {
+  padding: 0;
+  border: 1px solid #000;
+}
+
+.progress_bar_color {
+  width: 0%;
+  height: 20px;
+  background-color: #939393;
+}
+
+#image_logo {
+  width: 200px; 
+  height: 200px;
+  border-radius: 30px;
+}

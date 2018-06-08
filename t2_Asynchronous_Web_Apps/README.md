@@ -51,3 +51,8 @@
     - data is provided in **JSON** (JavaScript object Notation) format
       - format used to serialize JS
 - Using jQuery to get data from third party APIs
+
+## Architecture of accessible client-side apps
+- Macs: System Preference -> Accessibility -> click `Enable VoiceOver`
+  - `Command + F5` to turn off
+  - https://www.apple.com/voiceover/info/guide/_1131.html for shortcuts

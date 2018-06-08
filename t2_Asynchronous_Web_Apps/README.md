@@ -56,3 +56,4 @@
 - Macs: System Preference -> Accessibility -> click `Enable VoiceOver`
   - `Command + F5` to turn off
   - https://www.apple.com/voiceover/info/guide/_1131.html for shortcuts
+  

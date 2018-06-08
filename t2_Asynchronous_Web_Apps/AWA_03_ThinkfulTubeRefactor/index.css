@@ -14,7 +14,6 @@ body * {
 a {
   text-decoration: none;
   color: #7328ba;
-  /* display: inline-block; */
 }
 
 a:link {
@@ -32,7 +31,6 @@ div {
 button, button:active {
   padding: 10px;
   margin: 0 15px;
-  /* transition: 1s; */
 }
 
 button:hover, button:focus, button:visited {
@@ -64,17 +62,9 @@ button:hover, button:focus, button:visited {
   width: 14rem;
 }
 
-/* .video-description {
-  display: inline-block;
-} */
-
 .search-results {
   text-align: center;
 }
-
-/* .search-content {
-  text-align: left;
-} */
 
 .next-page {
   width: 100%;

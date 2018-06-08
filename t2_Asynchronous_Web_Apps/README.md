@@ -70,3 +70,9 @@
 - `hidden` : visually hidden and unavailable to screen readers
   - one line in JS to handle: `.prop('hidden', false)`
     - can perceive when new info is ready
+
+## NOTES TO SELF:
+- play around with screen readers more
+  - learn a little more about ARIA (e.g. aria-live, aria-hidden, aria....)
+- Play a little more with AJAX, JSON to better understand
+- remember to grab useful URLs and include below

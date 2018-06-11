@@ -13,5 +13,6 @@
   - process of phone interview, webcam interview, white board/lunch interview
   - advice on how to prepare, calm your nerves, 
 - How should I structure my github account?
+  - Should I make new repository each time? Or add onto existing one?
 - What are some of the best Capstone project you have seen?
 - Still thinking about what I want to make. 

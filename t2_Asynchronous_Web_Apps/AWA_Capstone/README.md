@@ -24,3 +24,21 @@
   - follow a11y best practices
 
 ## Choosing an API
+- ... first what do I want to make? What do I want to convey?
+  - I'm not that interested in music
+  - informational sites maybe?
+    - what kind?
+  - something with Google APIs like Google Map?
+  - Food and nutritional content?
+  - Graphs and charts of something interesting?
+  - Searching up news article of particular subject?
+- Current idea:
+  - Book recommendation site
+    - can search by: ISBN/Book title, Author, genre
+      - display book image, title, description, amazon link etc
+      - offer recommendations of similar type?
+    - Displays popular books list
+      - can view by genres
+  - Usage of nytimes books api: https://developer.nytimes.com/books_api.json#/README
+  - usage of Google Books API to grab subject for our genres
+  - create an add button to place interested books into a temp list

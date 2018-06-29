@@ -1,0 +1,35 @@
+<!-- in a repl.it using the swapi.co api find the planet with the name "Tatooine" then find all the residents that have a gender of male and print them to the screen (edited)
+Will require 3 different api calls
+Actually more than that, but one to all the planets to find the id of the planet you need
+then a promise.all to find all the residents for that planet -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Star Wars Planet Search</title>
+    <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Star Wars Resident Search</h1>
+    <form action="#" class="js-search-form">
+      <fieldset name="Star wars resident search">
+        <legend>Search for Residents</legend>
+        <label for="query-planet">Planet:</label>
+        <input type="text" id="query-planet" class="js-query-planet" placeholder="Tatooine">
+        <label for="query-gender">Gender:</label>
+        <input type="text" id="query-gender" class="js-query-gender" placeholder="Male or Female">
+        <button type="submit">Search</button>
+      </fieldset>
+    </form>
+    <main class="js-search-results" role="main" aria-live="assertive" hidden>
+            
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

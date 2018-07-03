@@ -1,0 +1,36 @@
+# Useful aliases for a variety of things
+
+# Fundamentals
+alias dsk="cd ~/Desktop"
+alias dev="cd ~/dev"
+alias ll="ls -al"
+alias h="history" # ctrl + r to str search through it
+alias p="subl ~/.profile" # requires sublime path setup
+alias psrc="source ~/.profile" # you'll have to run the full command the first time you install this
+
+# Node / NPM
+alias npm_exec='function npm_exec(){ ./node_modules/.bin/"$@"; }; npm_exec' # allow lib commands to be installed and run only locally
+
+# GIT
+alias gss="git status"
+alias gb="git branch"
+alias gbd='function gbd(){ git branch -D $1; };gbd'
+alias gd="git diff"
+alias gl="git log"
+alias gcob='function gcob(){ git checkout -b $1; };gcob'
+alias gco='function gco(){ git checkout $1; };gco'
+alias ga='function ga(){ git add $1; };ga'
+alias gcam='function gcam(){ git commit -am "$1"; };gcam'
+alias gcm='function gcm(){ git commit -m "$1" $2; };gcm'
+alias gpl='function gpl(){ git pull origin $(git rev-parse --abbrev-ref HEAD); };gpl' # git push origin {current_branch}
+alias gp='function gp(){ git push origin $(git rev-parse --abbrev-ref HEAD); };gp' # git push origin {current_branch}
+
+# React
+# Search contents of all files or folders excluding irrelevant ones
+# Need to install `ack` first (Google "how to install ack")
+alias rack="ack --ignore-dir={build,components-dist} --ignore-file=is:.eslintcache --ignore-file=is:main.jsbundle --ignore-file=is:sourcemap.js" # use ={..., ...} to pluralize?
+alias racki="ack -i --ignore-dir={build,components-dist} --ignore-file=is:.eslintcache --ignore-file=is:main.jsbundle  --ignore-file=is:sourcemap.js" # use ={..., ...} to pluralize?
+
+# Heroku
+alias hs='heroku local -f Procfile_dev'
+alias hl='function hl(){ heroku logs -t -a $1; };hl'

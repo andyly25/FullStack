@@ -62,13 +62,39 @@
   - server side programming is about **security**
     - securitu becomes important concern, especially *access control*
       - how system ensures resources are accessible to the right users
-  - server side programming is about software testing
+  - server side programming is about **software testing**
     - complex quick so automated software testing is needed.
     - piece of code that checks if another piece of code behaves properly. Need to fix problems before release into production
-  - server side programming is about DevOps
+  - server side programming is about **DevOps**
     - stands for: software **DEV**elopment + information technology **OP**eration**S**
     - need to know how to do things like provision new Heroku instances, set up continuous integrations, set up maintain DB, and version control.
 - Explaining what Node and Express are.
-  - [Node.js](https://nodejs.org/en/){:target="_blank"}
+  - **[Node.js](https://nodejs.org/en/)** allows to write JS code that executes on server
+    - **Glitch** is cloud based Node environment use to practice server side programming conceps in node
+      - simple [Counter App](https://glitch.com/edit/#!/express-counter-app-example)
+        - index loads counter value as 0
+        - link jquery and app code at public/client.js
+          - ajax GET req to server for resource /the-count
+        - pakage.json lists of JS libraries and other config
+        - server.js: import Express to use, create new app instance
+          - variable theCOunt store state for app
+          - `app.use(express.static('public'));` activates static asset sharing allow serve HTML, CSS, etc from public folder
+          - set up route on app that clients access with GET
+          - app.listen() for server pay attention for client req at specified port and logs when it begins listening
+  - **[Express](http://expressjs.com/)** is a minimalist web framework for node.js that simplifies creating modern server-side apps in Node
+    - used to serve static assest like HTML, CSS, client-side JS and images
+    - expose RESTful APIs that clients can make req to retrieve data
+    - persist data to and retrieve from db
+    - steps
+      - a way to listen for HTTP requests over a port
+      - a way to inspect and interact with HTTP request and response objects
+      - a way to route HTTP requests from clients to the right request handlers
+      - a way to serve static assets to client browsers (e.g., our route for /)
+a way to serve data to clients (e.g., our route for /the-count)
 - Serving static assets in an Express app.
+  - **static assets**: files that don't change between requests
+    - common to host static assets on content delivery network separate from Express app that provides an API to improve load times for users
+  - create a folder called `public` used to hold CSS and JS files
+    - `app.use(express.static('public'));` tells express app serve assets located in folder named public
+      - since we set up server to serve from public, we don't need to write individual routes to load /style.css or /client.js
 - Working with request and response objects in an Express app.

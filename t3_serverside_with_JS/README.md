@@ -60,7 +60,7 @@
     - purpose is to implement one or more pieces of business logic
     - should drive decisions about URL naming schemas, db queries, etc
   - server side programming is about **security**
-    - securitu becomes important concern, especially *access control*
+    - security becomes important concern, especially *access control*
       - how system ensures resources are accessible to the right users
   - server side programming is about **software testing**
     - complex quick so automated software testing is needed.
@@ -70,7 +70,7 @@
     - need to know how to do things like provision new Heroku instances, set up continuous integrations, set up maintain DB, and version control.
 - Explaining what Node and Express are.
   - **[Node.js](https://nodejs.org/en/)** allows to write JS code that executes on server
-    - **Glitch** is cloud based Node environment use to practice server side programming conceps in node
+    - **Glitch** is cloud based Node environment use to practice server side programming concepts in node
       - simple [Counter App](https://glitch.com/edit/#!/express-counter-app-example)
         - index loads counter value as 0
         - link jquery and app code at public/client.js
@@ -98,3 +98,105 @@ a way to serve data to clients (e.g., our route for /the-count)
     - `app.use(express.static('public'));` tells express app serve assets located in folder named public
       - since we set up server to serve from public, we don't need to write individual routes to load /style.css or /client.js
 - Working with request and response objects in an Express app.
+  - HTTP req ask servers to return a res available at a particular place
+    - the host specified in req headers + path in initial line
+  - server's job to route the req to correct req handler
+    - needs to know how to translate info into correct res to send back
+  - Requests received by Express app will have a method
+    - **GET** used to read or retried res
+    - **POST** used to create new res
+    - **PATCH** used to update part of existing res
+    - **PUT** used to replace existing res
+    - **DELETE** used to delete res
+  - req method along with req path used to route the req to right *request handler* 
+    - func. that knows how to supply req res.
+    - contain min HTTP status code and some headers (deafault 200) and content goes to response body
+---
+
+### Lesson 2: Adventure with middleware
+- Node listens for HTTP request and sends an HTTP response previously. 
+- **middleware** how Express performs series of steps between receive req and sending a res.
+- learn about **modularization** (break Express apps into separate files or modules that import one another) and logging
+
+#### Notes/Wrap-up Questions
+- Explaining the role of middleware in Express apps.
+  - organizing principle of Express apps
+    - works like bucket brigade, pass req from one func to next
+  - each func in middleware gets access to req, res, and `next` func
+    - called to pass control to next middleware in stack
+    - **All middleware must do one of 2 things: return a res or call next()**
+      - otherwise will hand up or app blocked
+  - when req comes to app, it will first go through the middleware func and depend what happens, may or may not end at route func
+  - middleware encourages to write modular, reusable, functional code
+  - app.use(someFunc) to add the middleware to our entire app, even nonexistent endpoints
+    - can add single route: `app.get('/someURL', someFunc, (req, res) => res.send('request made to /someURL'));` 
+- **CORS**
+  - Cross origin resource sharing allow browsers make req to server on domain other than one HTMl page hosted on
+  - browsers prohibits req for COR from inside script
+    - some browser configured serve JSONP: JS file with single callback function that returns JS object
+      - inject script tags into page to circumvent cross domain policies
+    - other solution is config response headers allow scripts hosted on other domains make req to your app.
+      - can tell which domains allowed to make req and what methods can use
+      - need response header with ey/value pair
+      - `'Access-Control-Allow-Origin', '*'`
+        - indicates which origins can access the res
+        - can limit to single url or wildcard * to allow any origin to req
+      - `'Access-Control-Allow-Headers', 'Content-Type'`
+        - indicate which header can be used in actual req
+        - has something with preflighting
+      - `'Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE'`
+        - indicate which HTTP methods enabled for CORS req
+      - ```javascript
+          app.use(function (req, res, next) {
+          res.header('Access-Control-Allow-Origin', '*');
+          res.header('Access-Control-Allow-Headers', 'Content-Type');
+          res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+          next();
+        });
+        ```
+- handling redirects
+  - sample: https://glitch.com/edit/#!/coal-verse
+- Using third-party middleware and writing your own.
+- Creating error-handling middleware.
+  - we can use try and catch (considered 'defensive programming')
+    - when working on func where have reason to believe exceptions can occur
+  - how about exceptions we don't anticipate?
+    - Express has its own catch-all error handling middleware func
+      - ```javascript
+          function logErrors(err, req, res, next) {
+            console.error(err);
+            return res.status(500).json({error: 'Something went wrong'})
+          }
+        ```
+    - needs 4 params: err, req, res, next
+      - err will be error obj bubbled up to middleware layer (AKA Error-First Callbacks)
+- Using require and module.exports to modularize your applications.
+  - good to separate into separate modules (files)
+  - import local app modules using `require`
+    - if modA and modB siblings and modB imports modA
+      - `const modB = require('./modA')`;
+      - .js suffix can be omitted, Node looks by default
+    - `const {handleRedirects} = require('./middlewares/redirects');`
+      - equivalent to
+      - ```javascript
+          const redirectMiddleware = require('./middlewares/redirects');
+          const handleRedirects = redirectMiddleware.handleRedirects;
+        ```
+  - `module.exports = {handleRedirects};`
+    - equivalent to: `module.exports = {handleRedirects: handleRedirects};`
+    - only vars that the outside world can import from module are the ones explicitly exported
+- Logging:
+  - when things crash, **server logs** are first place you check
+    - record of what happens on the server
+    - min want log of HTTP requests made to server
+    - IP address, time of request, req method and path, protocol, status code 
+  - helps understand when errors occur and try to catch errors
+- Using Morgan to log the HTTP layer of your app.
+  - it is a HTTP logging middleware for Express apps
+  - import morgan `const morgan = require('morgan')`
+    - then tell the app to use the middleware returned by `morgan('common')`
+  - initialized with 2 params: format and options
+    - format determines what appear in log entries
+      - can use presets or create custom formatter
+      - common uses Apache server style logging
+      - sample custom: `app.use(morgan(':date[iso] :method :url :response-time'));`

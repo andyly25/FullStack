@@ -200,6 +200,7 @@ a way to serve data to clients (e.g., our route for /the-count)
       - can use presets or create custom formatter
       - common uses Apache server style logging
       - sample custom: `app.use(morgan(':date[iso] :method :url :response-time'));`
+---
 
 ### Lesson 3: The Development Environment
 - for MACs Homebrew can be used to set up Node

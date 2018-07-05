@@ -200,3 +200,52 @@ a way to serve data to clients (e.g., our route for /the-count)
       - can use presets or create custom formatter
       - common uses Apache server style logging
       - sample custom: `app.use(morgan(':date[iso] :method :url :response-time'));`
+
+### Lesson 3: The Development Environment
+- for MACs Homebrew can be used to set up Node
+  - to install Homebrew: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+  - now you can run `brew install node`
+  - can check if work by creating a console log hello world js file then run `node fileName`
+- `npm install -g express-generator` to allow run express locally
+  - `express hello_express` creates a new project folder with basic express app
+  - now you need install dependencies listed in package.json using `npm install`
+  - once done run `npm start`
+- **NPM** a JS package manager used for managing software dependencies, publish packages so others can use, and running apps
+  - manages software dependencies located in *package.json*
+  - `mkdir learn-npm && cd learn-npm` make folder and go into
+    - `npm init` initialize new NPM project
+      - add name, desc, and go with defaults by press enter
+      - this will create a package.json for your use
+      - `npm install express` installs Express, saving into node_modules directory and adding entry into pakage.json
+  - should **NOT** add node_modules folder to git.
+    - create .gitignore and add in `node_modules`
+    - usually other collab members run npm install when they clone
+  - scripting is the scripts property in package.json
+    - you can run commands that can executes tasks like start an app
+  - watching changes by default you run app then when you make new changes you have to stop server and restart server
+    - can use package `nodemon` to auto reload apps when source files changed and saved
+    - `npm install -g nodemon` makes available globally so our local projects has access to it.
+    - instead of `npm start` you can now run with `nodemon server.js` and any changes you make and then saved will update on localhost:something
+- **[HEROKU](http://heroku.com/)** is a platform as a service allowing to deploy web aps to virtual machines called *dynos*
+  - after you set up an account, install [Heroku Command Line](https://devcenter.heroku.com/articles/heroku-cli)
+    - `brew install heroku/brew/heroku` if using mac
+  - can now use heroku with `heroku login`
+  - in whatever github directory in terminal enter `heroku create`
+    - now ready to push to Heroku: type in `git push heroku master`
+    - Use `heroku ps:scale web=1` to make sure you have dyno
+    - finally you can open app with `heroku open`
+- DevTools Network Panel
+  - `option + command + I` to open console log then choose Network panel
+  - click on 1st req to view.
+    - General shows req method and status code returned with res
+    - Response headers: additional info about req and res
+    - Request headers: inlcuded in browser with each req. 
+      - `User-Agent` header that communicates to server the type of comp and browser used to make req. can log this info to generate reports
+    - Preview tab: view image and fonts sent back from server 
+      - also formatted views of text content like HTML, CSS, JS
+    - Response Tab: see raw resp. data include unformatted HTML, CSS, JS
+    - Timing Tab: show how long took to send req, time wait res, and how long for res to be received
+    - Extras: gives convenient tools to make and receive req
+      - disable cache: prevent chrome using files stored in browser cache
+        - good to prevent seeing changes to project
+      - disabled/presets/custom: see how well website loads over slow internet connection

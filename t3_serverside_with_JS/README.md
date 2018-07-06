@@ -268,6 +268,10 @@ a way to serve data to clients (e.g., our route for /the-count)
     - **Deleting** res
   - endpoints are *nouns* and we use HTTP methods as *verbs*
     - *GET* for reading, retrieving
+      - Below is based on s005_GET_Enpoint directory
+      - we import our model from another module
+      - when server starts we can add data into our module so there's something to retrieve
+      - Finally set up a GET endpoint for the route
     - *POST* for creating
     - *PUT/PATCH* for updating res
     - *DELETE* for deleting res

@@ -273,6 +273,11 @@ a way to serve data to clients (e.g., our route for /the-count)
       - when server starts we can add data into our module so there's something to retrieve
       - Finally set up a GET endpoint for the route
     - *POST* for creating
+      - for s006_POST_Endpoint
+      - it will parse data about new shop list items from req
+      - need call ShoppingList.create to create new item
+      - return JSON obj represent newly created obj and status code
+      - note we are using `body-parser` JSON parser to parse JSON data sent by clients
     - *PUT/PATCH* for updating res
     - *DELETE* for deleting res
   - Model layer: separate storage layer (db) from our API

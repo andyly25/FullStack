@@ -280,4 +280,7 @@ a way to serve data to clients (e.g., our route for /the-count)
       - note we are using `body-parser` JSON parser to parse JSON data sent by clients
     - *PUT/PATCH* for updating res
     - *DELETE* for deleting res
+      - in s007_DELETE_endpoint 
+      - need include path var for id of item to be deleted
+      - need to call module.delete supplying id to be deleted
   - Model layer: separate storage layer (db) from our API

@@ -250,3 +250,25 @@ a way to serve data to clients (e.g., our route for /the-count)
       - disable cache: prevent chrome using files stored in browser cache
         - good to prevent seeing changes to project
       - disabled/presets/custom: see how well website loads over slow internet connection
+---
+
+### Lesson 4: The modern Classic
+- creating CRUD endpoints
+- validating the contents of requests
+- using Express router to modularize your apps
+
+#### Notes
+- **REST** (Representational State Transfer) is a style of software architecture, set principles for designing APIs
+  - main concern is communicating the state of *resources*
+    - resource: can be shopping list, blog post, representation of user etc..
+  - 4 operations:
+    - **Create** new resources
+    - **Reading** or retrieve existing res
+    - **Updating** resources
+    - **Deleting** res
+  - endpoints are *nouns* and we use HTTP methods as *verbs*
+    - *GET* for reading, retrieving
+    - *POST* for creating
+    - *PUT/PATCH* for updating res
+    - *DELETE* for deleting res
+  - Model layer: separate storage layer (db) from our API

@@ -279,6 +279,11 @@ a way to serve data to clients (e.g., our route for /the-count)
       - return JSON obj represent newly created obj and status code
       - note we are using `body-parser` JSON parser to parse JSON data sent by clients
     - *PUT/PATCH* for updating res
+      - s008_PUT_Endpoint
+      - add a path var for id of to-be-updated res
+      - need to parse data about updated item
+        - validate data sent by client
+        - if good then call module.update with updated data
     - *DELETE* for deleting res
       - in s007_DELETE_endpoint 
       - need include path var for id of item to be deleted

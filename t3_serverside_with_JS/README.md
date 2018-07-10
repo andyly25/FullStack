@@ -289,3 +289,153 @@ a way to serve data to clients (e.g., our route for /the-count)
       - need include path var for id of item to be deleted
       - need to call module.delete supplying id to be deleted
   - Model layer: separate storage layer (db) from our API
+- Modularizing with Express Router
+  - we separate our routers into separate files then import within server.js
+    - we import by: `const router1 = require('./router1');`
+    - then use app.use to route requests to /router1 to right router
+      - `app.use('/some-list', router1);`
+    - within our router1.js along with import Express, body-parser we create new router instance
+      - `const router = express.Router();`
+      - then we add individual routes to the router (GET, POST etc..)
+      - endpoints are just / not /recipes like before
+      -then we export our router instance at bottom
+  - how app works is: req from client -> logging middleware 
+    - -> static server (`app.user(express.static('public'));`)
+    - -> req matched to / (root endpoint) 
+    - -> sends res back to client including HTML needed t load the page
+  - requests works similarly to the above
+    - note not all single req might pass through all of the middleware in an app
+
+---
+
+### 5: Server-side testing and continuous integration
+- *Software test* us a routine that runs another piece of code (subject under test) and whether code follows expectations
+- write tests for 2 reasons:
+  1. well written tests prevents *regression*
+    - any change to a code base that unintentionally breaks previous working behavior
+  2. well written tests works as documentation for collaborators
+    - illustrates the way we expect code to be used and what should happen
+    - it is also code that must be maintained
+- Go over promises, a way to use callbacks for asynchronoous actions
+- 2 tests: unit tests and API integration tests
+  - **unit tests** isolates specific function, showing behaves as expected
+  - **Api integration tests** focus on testing a server at HTTP level.
+- **Continuous integration**: is approach to controlling software releases
+  - using Travis CI and Heroku
+
+#### Notes
+- Explaining the value of software testing.
+- Using promises instead of callbacks for asynchronous operations.
+  - callbacks unworkable when performing a series of async ops. 
+    - nesting callbacks aka "Callback Hell" or "The pyramid of Doom"
+  - Promises: gives a func. something to return before func finishes executing
+    - When func returns a promise, we use promise's `.then` to write code executing once promise resolves
+    - we can also chain the .then
+    - usage of `.catch` to handle error from anywhere inside promise chain
+    - if if operation inside .then is async, make sure returns a promist to next .then call so it waits to complete before executing
+    - ```javascript
+          const timeoutPromise = new Promise((resolve, reject) => {
+            setTimeout(function () {
+              resolve('Success!');
+            }, 1000);
+          });
+          const anotherPromise = new Promise((resolve, reject) => {
+            setTimeout(function () {
+              resolve('Another success!');
+            }, 1000);
+          });
+          timeoutPromise
+            .then(msg => {
+              console.log(msg);
+              return anotherPromise;
+            })
+            .then(promise => {
+              console.log(promise);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+      ```
+- Using Mocha and Chai to write unit and integration tests.
+  - **Mocha** is a test framework
+    - provides command line argument to look for and execute tests
+      - `--save-dev` flag with npm install mocha cause NPM to install Mocha only as a dependency for dev env.
+      - Mocha recursively looks for .js files in a test folder
+        - conventions name test files with `test-somefilename`
+      - Mocha says test pending since there is no callback func to `it`
+        - `describe` takes 2 args, string val indicate entity to be tested and a calback func. including one or more it statements
+        - each `it` takes 2 args, a string value indicate behavior or specification to be tested in that blcok and callback func provide test of specified behavior
+        - we need assertion library to compare actual answers produced by our code to expected answers
+          - we'll use **ChaiJS** for this
+          - we'll run `npm install chai --save-dev` then updated test/test-is-equal.js
+            - *expect-style assertions* refers to presence of expect function as starting point for chaining other keywords like `be` and `contain` 
+            - documentation for [ChaiJS](http://chaijs.com/api/bdd/)
+      - sample look at s009_mocha-chai-demo for more:
+      - ```javascript
+          mkdir mocha-chai-demo && cd mocha-chai-demo && npm init -y
+          npm install mocha --save-dev
+          echo "module.exports = function(a, b) {return a === b}" >> isEqual.js
+          mkdir test
+          touch test/test-is-equal.js
+        ```
+  - recommend to test *normal case*
+    - representative range of normal inputs
+  - after that is to test important *edge cases*
+    - inputs that might break our expectations
+  - **integration testing**: targets an app's HTTP layer and test/document how clients will interact with your API
+    - we use chai-http gives us method like `chai.request()` use to make arbitrary req to server and assert results of our req
+      - use `before` hook to run server before tests run
+      - `after` to close our server after tests in module run
+      - for example (user endpoint should list users on GET req.) tests normal case
+        - check status code, and show data gets back particular schema
+      - use return with chai.requst because working with async ops in Mocha tests, need to return a Promise of call done callback
+      - check out repository for [node-shopping-list-integration for more](https://github.com/birisora/node-shopping-list-integration-tests)
+      - ```javascript
+          const chai = require('chai');
+          const chaiHttp = require('chai-http');
+          // Import server.js and use destructuring assignment to create variables for
+          // server.app, server.runServer, and server.closeServer
+          const {app, runServer, closeServer} = require('../server');
+          // declare a variable for expect from chai import
+          const expect = chai.expect;
+          chai.use(chaiHttp);
+          describe('Users', function() {
+            // Before our tests run, we activate the server. Our `runServer`
+            // function returns a promise, and we return the promise by
+            // doing `return runServer`. If we didn't return a promise here,
+            // there's a possibility of a race condition where our tests start
+            // running before our server has started.
+            before(function() {
+              return runServer();
+            });
+            // Close server after these tests run in case
+            // we have other test modules that need to 
+            // call `runServer`. If server is already running,
+            // `runServer` will error out.
+            after(function() {
+              return closeServer();
+            });
+            // `chai.request.get` is an asynchronous operation. When
+            // using Mocha with async operations, we need to either
+            // return an ES6 promise or else pass a `done` callback to the
+            // test that we call at the end. We prefer the first approach, so
+            // we just return the chained `chai.request.get` object.
+            it('should list users on GET', function() {
+              return chai.request(app)
+                .get('/users')
+                .then(function(res) {
+                  expect(res).to.have.status(200);
+                  expect(res).to.be.json;
+                  expect(res.body).to.be.a('array');
+                  expect(res.body.length).to.be.above(0);
+                  res.body.forEach(function(item) {
+                    expect(item).to.be.a('object');
+                    expect(item).to.have.all.keys(
+                      'id', 'firstName', 'lastName', 'birthYear');
+                  });
+                });
+            });
+          });
+        ```
+- Setting up Travis CI for Node projects.
+- Writing tests for normal case and a small number of edge cases.

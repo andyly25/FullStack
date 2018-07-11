@@ -594,3 +594,18 @@ a way to serve data to clients (e.g., our route for /the-count)
         {'addres.zipcode': '10035'},
         {$set: {'address.zipcode': '10036'}}
       );`
+- Sign up for **[mLab](https://mlab.com/signup/)**
+  - after set account do: MongoDb Deployment -> Create New
+    - -> service provider: Amazon Web Services
+    - -> plan type: Sandbox
+    - -> service region: choose whichever closests
+    - -> finish the rest up
+  - now you can create a user within user tab
+    - after that head back and find "To connect using Mongo shell"
+    - paste in terminal and enter in username and pw of user you created
+  - with user you can also head back and within tools you can import your own collection then play with it
+- [Robo3T](https://robomongo.org/) is a software for working with Mongo DB
+  - let's work more directly with queries and docs
+  - go to create and then provide valid info to connect
+  - if using mLab grab [YOUR-MLAB-SUBDOMAIN].mlab.com and also copy port number and go into authentication and enter in db name and etc 
+    - press test and see if it works

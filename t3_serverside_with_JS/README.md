@@ -438,4 +438,159 @@ a way to serve data to clients (e.g., our route for /the-count)
           });
         ```
 - Setting up Travis CI for Node projects.
+  - go to **[TravisCI's main page](https://travis-ci.org/)** and sign up
+  - now toggle the project you want to work on
+  - check out repository for [node-shopping-list-integration for more](https://github.com/birisora/node-shopping-list-integration-tests)
+  - create a `.travis.yml` file and tell travis treat project as Node Project
+    - and to use latest stable release for test environment
+    - ```yml
+        language: node_js
+        node_js: node
+      ```
+  - add and commit to github will trigger build on TravisCI
+  - now to configure to work with HEROKU so if tests pass, it can deploy to Heroku
+    - need to install [travis CI command interface](https://github.com/travis-ci/travis.rb)
+      - mac users should have Ruby installed so run `gem install travis`, use sudo if permission error
+    - now use `travis login` and supply github username and password
+    - `travis setup heroku` to set travis to deploy to Heroku
+      - can hit return for all the questions
+    - now you can run `heroku create` 
+    - then copy new app name and paste in `deploy:app:` in `.travis.yml` file
+      - save and push to github
+    - now after every time tests pass, TravisCI will attempt to publish app to Heroku
 - Writing tests for normal case and a small number of edge cases.
+---
+
+## Data Persistence and Modeling
+- learn how to model and persist
+- explore data management using MongoDB and Mongoose
+  - [MongoDB](https://www.mongodb.com/): non-relational document based db
+  - [Mongoose](http://mongoosejs.com/docs/2.7.x/index.html): a library for creating Mongo backed models representing data in apps
+- lesson 1, Mongo running locally on [mLab](https://mlab.com/): cloud based Mongo provider
+  - see how Mongo organizes a db in terms of collections of documents
+  - learn to use [Robo 3T](https://robomongo.org/) a MongoDB GUI
+- lesson 2: learn db schema design and use Mongoose to bring persistence
+- lesson 3: lean how real persistence later changes testing strat and deployment flow
+
+---
+
+### Lesson 1: Introducing Mongo
+- set up Mongo db server in local development and on mLAB
+
+#### Notes
+- installation
+  - `brew doctor` and `brew update` to find any problems beforehand
+  - `brew install mongo` to install mongo
+  - `sudo mkdir -p /data/db` and then `sudo chown $USER /data/db`
+    - creates a default db directory
+  - now you can run server with `mongod` and if you make a new tab and run `mongo` you can interact with mongo
+    - use `quit()` or ctrl + C to end
+- in s010_mongoBasics download JSON file then run this command
+  - `mongoimport --db tempTestDb --collection restaurants --drop --file ~/<path-to-unzipped-data-file>`
+  - this tells Mongo to import content of primer-dataset.json into tempTestDb
+    - into collection called restaurants. 
+    - -- drop flag tells Mongo drop existing restaurant if already exists
+  - run Mongo shell with `mongo` and see which db available use `show dbs`
+    - current db with `db`
+    - `use` is to select existing db and create new one
+- DB is made up of *collections* which are made up of *documents*
+  - comparable to a table in relational db
+  - can view collections in db with `db.getCollectionNames()`
+    - can run `db.restaurants.findOne()` to look at single doc from restaurant collection
+  - Mongo document is object of keys and values and can accept all kinds of types (strings, ints, decimals etc...)
+  - features *flexible* schema
+    - all of documents in given collection don't necessarily need to have the same struct.
+  - can add new restaurant doc with `insertOne`, also `insertMany`
+    - ```javascript
+          var myRestaurant = {
+            address: {},
+            borough: "Queens",
+            cuisine: "Colombian",
+            grades: [],
+            name: "Seba Seba",
+            restaurant_id: "373737373737373737"
+          }
+          db.restaurants.insertOne(myRestaurant);
+      ```
+  - **reading** there are 2 things
+    - **querying**: need to get docs relevent to specific query
+      - done by using .find method
+        - returns cursor object we use to traverse over the results
+        - 2 optional params: query obj and a projection obj
+        - can chain methods like `.limit .sort` to query obj
+        - ```mongo
+            db.restaurants.
+              find({borough: "Manhattan"}, {_id: 1, name: 1, address: 1}).
+              sort({name: 1}).
+              limit(5);
+          ```
+    - **arranging**: need to decide the data we want to return base on query
+  - **updating** need to specify set of docs to update and how should be updated
+    - use `.update` method
+      - 3 args: 
+        1. query for characteristics for doc to be updated
+        2. update obj that update specific fields or replaces doc
+        3. options object
+      - update specific fields on single doc using `$set` operator
+      - ```javascript
+          // update name on this single restaurant
+          var objectId = db.restaurants.findOne({}, {_id: 1})._id
+          // note that we're not using method chaining here to get
+          // the object id. the code above is equivalent to this:
+          // var myObject = db.restaurants.findOne({}, {_id: 1});
+          // var objectId = myObject._id
+          db.restaurants.updateOne(
+            {_id: objectId},
+            {$set: {name: "Foo Bar Bizz Bang"}}
+          );
+          // see our changes
+          db.restaurants.findOne({_id: objectId});
+        ```
+      - **replacing**: can replace using `replaceOne` method
+        - ```javascript
+            db.restaurants.replaceOne(
+              {_id: objectId},
+              {name: "Yummy Yum Yum's"}
+            );
+            // this will return a document that ONLY
+            // has a name property, because we *replaced* the original document
+            db.restaurants.findOne({_id: objectId});
+          ```
+  - **deleting**: can use `db.myCollection.remove()` or `.deleteOne or .deleteMany`
+    - ```javascript
+        var objectId = db.restaurants.findOne({}, {_id: 1})._id
+        db.restaurants.find({_id: objectId}).count(); // => 1
+        db.restaurants.remove({_id: objectId});
+        db.restaurants.find({_id: objectId}).count(); // => 0
+      ```
+  - can end mongo shell and server with `ctrl-c` 
+- Mongo drills
+  - run mongo server and reset restaurant db with
+    - `mongoimport --db tempTestDb --collection restaurants --drop --file ~/OriginalDownloadFolder/primer-dataset.json`
+  - Get all: command that retrives all restaurants
+    - `db.restaurants.find()`
+  - Limit and Sort: makes first 10 restaurant appear when restaurants alphabetically sorted by name property
+    - `db.restaurants.find().sort({name: 1}).limit(10);`
+  - Get by \_id: retrieve single restaurant by id from restaurants collection
+    - `let myId = db.restaurants.findOne({}, {_id: 1})._id;`
+    - `db.restaurants.findOne({_id: myId});`
+  - Get by value: get all restaurants from `borough` of "Queens"
+    - `db.restaurants.find({borough: 'Queens'});`
+  - Count: give num docs in db.restaurants
+    - `db.restaurants.count()`
+  - Count by nested Value: give num restaurants whose zip code value is '11206'
+    - `db.restaurants.find({'address.zipcode': '11206'}).count();`
+  - Delete by id: deletes a doc from db.restaurants
+    - `let objectId = db.restaurants.findOne({}, {_id: 1})._id`
+    - `db.restaurants.remove({_id: objectId});`
+  - Update a single document: sets name property of a document with specific \_id to 'Bizz Bar Bang'
+    - `let myId = db.restaurants.findOne({}, {_id: 1})._id;`
+    - `db.restaurants.updateOne(
+        {_id: myId},
+        {$set: {name: 'Bizz Bar Bang'}}
+      );`
+  - Update many docs: The '10035' zip code is being retired, and addresses with '10035' will now fall under the '10036' zip code. Write a command that updates values accordingly.
+    - `db.restaurants.updateMany(
+        {'addres.zipcode': '10035'},
+        {$set: {'address.zipcode': '10036'}}
+      );`

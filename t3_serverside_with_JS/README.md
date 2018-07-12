@@ -609,3 +609,137 @@ a way to serve data to clients (e.g., our route for /the-count)
   - go to create and then provide valid info to connect
   - if using mLab grab [YOUR-MLAB-SUBDOMAIN].mlab.com and also copy port number and go into authentication and enter in db name and etc 
     - press test and see if it works
+---
+
+### Lesson 2: Data Modeling and Persistence with Mongoose
+
+#### Notes:
+- Usage: import mongoose
+  - configure Mongoose to use ES6 promises
+  - import values from config.js to easily config values for Mongo DB URL and port
+- Describing the purpose of Mongoose (i.e., why not just use Mongo directly?).
+- Creating Mongoose schemas, models, and instances.
+  - **schema** specifies how all docs in particular collection should look
+    - specify property doc has, along schema type, and other settings
+  - we can create a new Mongoose model using the schema we defined
+    - `const Restaurant = mongoose.model("Restaurant", restaurantSchema);`
+      - behind the scene it will work with db.restaurants
+  - we can pass a third argument to mongoose.model: string indicate collection name
+    - default refers to collection name from model name
+  - **virtuals** allow to create derived properties on model instances
+    - example: client wants human-readable string representing some data
+  - **serialize** method lets us specify how our schema represented outside of our app via API
+- Using Mongoose's built-in methods like find, findById, create, etc. in your API endpoints.
+  - how to find docs, find returns array of docs
+    - ```javascript
+        app.get('/restaurants', (req, res) => {
+          Restaurant
+            .find()
+            .then(restaurants => {
+              res.json({
+                restaurants: restaurants.map(
+                  (restaurant) => restaurant.serialize())
+              });
+            })
+            .catch(
+              err => {
+                console.error(err);
+                res.status(500).json({message: 'Internal server error'});
+            });
+        });
+      ```
+    - how to find id returns a single doc:
+      - ```javascript
+          // can also request by ID
+          app.get('/restaurants/:id', (req, res) => {
+            Restaurant
+              .findById(req.params.id)
+              .then(restaurant =>res.json(restaurant.serialize()))
+              .catch(err => {
+                console.error(err);
+                  res.status(500).json({message: 'Internal server error'})
+              });
+          });
+        ```
+    - find by value: 
+      - ```javascript
+          app.get('/restaurants', (req, res) => {
+              const filters = {};
+              const queryableFields = ['cuisine', 'borough'];
+              queryableFields.forEach(field => {
+                  if (req.query[field]) {
+                      filters[field] = req.query[field];
+                  }
+              });
+              Restaurant
+                  .find(filters)
+                  .then(Restaurants => res.json(
+                      Restaurants.map(restaurant => restaurant.serialize())
+                  ))
+                  .catch(err => {
+                      console.error(err);
+                      res.status(500).json({message: 'Internal server error'})
+                  });
+          });
+        ``` 
+    - creating documents: using .create()
+      - ```javascript
+          app.post('/restaurants', (req, res) => {
+            const requiredFields = ['name', 'borough', 'cuisine'];
+            for (let i=0; i<requiredFields.length; i++) {
+              const field = requiredFields[i];
+              if (!(field in req.body)) {
+                const message = `Missing \`${field}\` in request body`
+                console.error(message);
+                return res.status(400).send(message);
+              }
+            }
+            Restaurant
+              .create({
+                name: req.body.name,
+                borough: req.body.borough,
+                cuisine: req.body.cuisine,
+                grades: req.body.grades,
+                address: req.body.address})
+              .then(
+                restaurant => res.status(201).json(restaurant.serialize()))
+              .catch(err => {
+                console.error(err);
+                res.status(500).json({message: 'Internal server error'});
+              });
+          });          
+        ```
+    - update operations by id: using `.findByIdAndUpdate` method
+      - ```javascript
+          app.put('/restaurants/:id', (req, res) => {
+            if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+              const message = (
+                `Request path id (${req.params.id}) and request body id ` +
+                `(${req.body.id}) must match`);
+              console.error(message);
+              // we return here to break out of this function
+              return res.status(400).json({message: message});
+            }
+            const toUpdate = {};
+            const updateableFields = ['name', 'borough', 'cuisine', 'address'];
+            updateableFields.forEach(field => {
+              if (field in req.body) {
+                toUpdate[field] = req.body[field];
+              }
+            });
+            Restaurant
+              .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+              .then(restaurant => res.status(204).end())
+              .catch(err => res.status(500).json({message: 'Internal server error'}));
+          });
+        ```
+    - Delete ops: using `.findByIdAndRemove` method
+      - ```javascript
+          app.delete('/restaurants/:id', (req, res) => {
+            Restaurant
+              .findByIdAndRemove(req.params.id)
+              .then(() => res.status(204).end())
+              .catch(err => res.status(500).json({message: 'Internal server error'}));
+          });
+        ```
+- Deploying Mongo-backed Express apps to Heroku, using mLab to host Mongo.

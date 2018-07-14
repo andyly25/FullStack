@@ -743,3 +743,49 @@ a way to serve data to clients (e.g., our route for /the-count)
           });
         ```
 - Deploying Mongo-backed Express apps to Heroku, using mLab to host Mongo.
+  - mLab make a new DB and then create a new user. 
+  - mongoimport primer-dataset.json to mLab
+  - go into your app folder and `heroku create` then `git push heroku master`
+  - run `heroku ps:scale web=1` to start dyno on server
+  - go to dashboard at Heroku find app you made then go to settings
+    - `Reveal Config Vars` and then enter DATABASE_URL and then paste in URL for mLab DB you made
+  - "Open app" and everything should work! supposedly
+---
+
+### Lesson 3: Integration testing and CI with Mongoose
+
+#### Notes:
+- integration test strategy
+  1. Seed a test database with fake data (Don't do this for production DB!)
+  2. Make HTTP req and assert about response
+    - Now we compare data returned by API to a known state of db
+  3. Inspect db after making requests
+    - mainly for PUT and DELETE
+    - for PUT, after inspect, we query db for item updated to prove properly updated
+  4. Tear down: crucial tests fully independent from one another
+- Promises and async:
+  1. connect to test DB
+  2. insert seed data into test DB
+  3. makee HTTP req to API using test client
+  4. inspect state of DB after req is made
+  5. tear down test DB
+- Test set up and tear down
+  - Faker.js is used to generate random data
+  - go to repository of https://github.com/birisora/node-restaurants-app-mongoose and within test folder follow along
+  - **USE SEPARATE DATABASE URL FOR TESTS**
+    - you don't want to wipe out your production database
+
+---
+
+## Unit 3: Intermediate server side architecture
+- Learn about server side architecture for creating and managing usr accounts
+  - and managing access to protected res
+
+### Authentication and access control
+- model users and allow to authenticate with API
+- use bcryptjs to encrypt user pw so we don't save as raw text strings
+- see how users swap username and pw for **JSON Web Token (JWT)** to identify themselves
+- Use **passport** to control access to an endpoint containing protected data at /api/protected that only authenticated users can access
+- Usage of one-way hashing to keep user details secure and digital signing ensure data not modified without permission
+
+#### Notes

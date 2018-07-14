@@ -14,3 +14,5 @@
   - git push
   - fatal: unable to access 'https://github.com/birisora/Challenge-Blog-API.git/': The requested URL returned error: 504
     - worked after coming back to it later
+
+- currently having troubles getting Heroku to coopearate with mLab 

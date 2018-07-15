@@ -789,3 +789,16 @@ a way to serve data to clients (e.g., our route for /the-count)
 - Usage of one-way hashing to keep user details secure and digital signing ensure data not modified without permission
 
 #### Notes
+- JWT: strings used to identify user and grant access to API
+  - can check out the debugger here: https://jwt.io/
+  - split into 3 sections:
+    - *header*: describes type of token and algorithm used to sign the token
+    - *payload*: where contents are stored
+      - individual fields are *claims* (user, and subclaims as usrname/pw)
+    - *signature*: used to verify that JWT is valid
+  - different types of HTTP req users can make
+    - `POST /api/users/` request a new user
+    - `POST /api/auth/login` request a JWQ, valid usr and pw required and new token given in exchange
+    - `GET /api/protected` make a request for protected API endpoint
+      - valid non expired JWT required, use as many req as wanted until expire
+    - `POST /api/auth/refresh` to request a new JWT with a later expiry date

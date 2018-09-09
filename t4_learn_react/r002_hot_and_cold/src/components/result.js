@@ -1,7 +1,14 @@
 import React from 'react';
 
 export default function Result (props) {
+  const { guesses } = props;
+  const guessCount = guesses.length;
+  console.log(guesses);
+
   return (
-    <h2 className="child">COLD</h2>
+    <section className="child">
+      <h2>Guesses made: {guessCount}</h2>
+      <h3> {guesses.join(', ')} </h3>
+    </section>
   );
 }

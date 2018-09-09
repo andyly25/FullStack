@@ -4,13 +4,14 @@ import './game.css'
 
 import Guess from './guess'
 import Result from './result'
+import Restart from './restart'
 
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       guesses: [],
-      feedback: 'Guess!',
+      feedback: 'Guess a Number!',
       answer: Math.floor(Math.random() * 100) + 1
     };
   }
@@ -25,16 +26,16 @@ export default class Game extends React.Component {
 
     const diff = Math.abs(guess - this.state.answer);
     let feedback;
-    if(feedback >= 50) {
+    if(diff >= 50) {
       feedback = 'COLD!';
     } 
-    else if (feedback >= 25) {
+    else if (diff >= 25) {
       feedback = 'COOL!';
     }
-    else if (feedback >= 10) {
+    else if (diff >= 10) {
       feedback = 'WARM!';
     }
-    else if (feedback >= 5) {
+    else if (diff >= 1) {
       feedback = 'HOT';
     }
     else {
@@ -45,6 +46,15 @@ export default class Game extends React.Component {
       feedback,
       // need to add guesses into the array as well
       guesses: [...this.state.guesses, guess]
+    });
+  }
+
+  // make a restart
+  restart() {
+    this.setState({
+      guesses: [],
+      feedback: 'Guess a number!',
+      answer: Math.floor(Math.random() * 100) + 1
     });
   }
 
@@ -64,6 +74,7 @@ export default class Game extends React.Component {
           <Result 
             guesses={guesses}
           />
+          <Restart onRestart={() => this.restart()}/>
         </main>
       </div>
     )

@@ -8,4 +8,11 @@ describe('<GuessCount />', () => {
   it('Renders without crashing', () => {
     shallow(<GuessCount />);
   });
+
+  it('Renders guess count', () => {
+    const guessCount = 8;
+    const wrapper = shallow(<GuessCount guessCount={guessCount} />)
+    // You've made <span id="count">{props.guessCount}</span> {guessNoun}!
+    expect(wrapper.text()).toEqual(`You've made ${guessCount} guesses!`)
+  })
 });

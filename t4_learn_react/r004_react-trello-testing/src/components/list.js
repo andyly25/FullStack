@@ -10,30 +10,33 @@ export default class List extends React.Component {
             cards: []
         }
 
+        // we bind the addCard method
         this.addCard = this.addCard.bind(this);
     }
 
     addCard(text) {
+        // update the state
         this.setState({
-            cards: [...this.state.cards, {
-                text
-            }]
+            cards: [...this.state.cards, {text}]
         });
     }
 
     render() {
+        // store all of the cards within this const
         const cards = this.state.cards.map((card, index) =>
             <li key={index}>
                 <Card {...card} />
             </li>
         );
+
+        // returns back a list of the cards and a small form at end to add card
         return (
             <div>
                 <h3>{this.props.title}</h3>
                 <ul className="list">
                     {cards}
                     <li>
-                        <AddForm
+                        <AddForm 
                             type="card"
                             onAdd={text => this.addCard(text)}
                         />

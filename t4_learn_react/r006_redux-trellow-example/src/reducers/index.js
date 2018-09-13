@@ -40,6 +40,14 @@ export const trelloReducer = (state=initialState, action) => {
             }]
         });
     }
+    /*
+        Here, you map over the lists property of the state, creating a new 
+        array of lists. When you reach the list index which you want to add 
+        the card to, you use the same combination of Object.assign and the 
+        array spread operator to append the new card to the cards array. 
+        Finally, you use Object.assign to replace the lists property of the 
+        state with our new array of lists.
+     */
     else if (action.type === actions.ADD_CARD) {
         let lists = state.lists.map((list, index) => {
             if (index !== action.listIndex) {

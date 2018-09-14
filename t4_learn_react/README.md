@@ -8,3 +8,8 @@
 ## Introduction to React
 - Best example in r004_react-trello-testing directory. 
   - included my take on what each things does within the src/components folder
+- communication drills: https://gist.github.com/birisora/f9a12fb28126e489d6ef81b1fe92c062
+- action reducer and store drills: https://gist.github.com/birisora/a5ad44c41a6d580fa75b34468ccbd240
+
+## React Redux
+- some drills I did: https://gist.github.com/birisora/94cde35cc12469e1471da7806d581c1c

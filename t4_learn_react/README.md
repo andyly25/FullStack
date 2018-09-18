@@ -14,3 +14,4 @@
 ## React Redux
 - some drills I did: https://gist.github.com/birisora/94cde35cc12469e1471da7806d581c1c
 - react router: https://glitch.com/edit/#!/ajl-react-router-drills
+- redux thunk drills: https://glitch.com/edit/#!/ajl-redux-thunk-drill

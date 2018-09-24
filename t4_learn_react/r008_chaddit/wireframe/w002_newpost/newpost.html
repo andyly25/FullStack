@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+      <title>Chaddit</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css">
+      <link rel="stylesheet" type="text/css" href="newpost.css">
+  </head>
+
+  <body>
+    <nav role="navigation">Nav</nav>
+    <main role="main">
+      <header>
+        <h1>New Post</h1>
+      </header>
+      <section>
+        <form id="record-post">
+          <div class="form-section">
+            <label for="post-title">post title</label>
+            <input type="text" name="post-title" placeholder="Flying post" required>
+          </div>
+          <div class="form-section">
+            <label for="post-summary">post summary</label>
+            <textarea name="post-summary" rows="15"   required></textarea>
+          </div>
+          <div class="form-section">
+            <label for="subpage">Choose subpage to post</label>
+            <input type="text" name="subpage" placeholder="current subpage">
+          </div>
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </form>
+      </section>
+    </main>
+  </body>
+
+</html>

@@ -1,2 +1,3 @@
 # Quiz app
-- found at https://repl.it/@andyjly/Andy-Thinkful-Quiz-App
+- found at https://andy-thinkful-quiz-app--andyjly.repl.co/
+- uses HTML, CSS, JavaScript and JQuery

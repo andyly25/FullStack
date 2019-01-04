@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.1.4"
+    "react-scripts": "^2.1.3"
   },
   "dependencies": {
     "npm-run-all": "^4.0.2",

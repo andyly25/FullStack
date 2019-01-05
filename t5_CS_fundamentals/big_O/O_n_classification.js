@@ -122,4 +122,101 @@ function getRunTimeOperations2 (fn, input) {
 function findMin (array) {
     let min = array[0];
     let ticks = 1;
+    for (let i = 1; i < array.length; i += 1) {
+        ticks += 1;
+        if (array[i] < min) {
+            ticks += 1;
+            min = numArray[i];
+        }
+    }
+    return {
+        result: min,
+        ticks
+    };
 }
+
+function getRunTimeOperations3 (fn, input) {
+    const { ticks, result } = fn(input);
+    console.log(
+        `With input of size ${input.length}, ${fn.name} ` +
+            `clocked ${ticks} ticks to generate result of ${result}.`
+    );
+}
+// getRunTimeOperations3(findMin, array1);
+// getRunTimeOperations3(findMin, array2);
+// getRunTimeOperations3(findMin, array2);
+// getRunTimeOperations3(findMin, array3);
+
+/*
+ * Polynomial time O(n^k)
+ * run time of input n raised to some constant power k.
+ * easiest way to understand is nested loops
+ * 2 inner loops is O(n^2), and so on
+ */
+function hasDuplicates(array) {
+    let ticks = 0;
+    let result = false;
+    for (let i = 0; i < array.length; i += 1) {
+        ticks += 1;
+        for (let j = 0; j < array.length; j += 1) {
+            ticks += 1;
+            if (array[i] === array[j] && i !== j) {
+                ticks += 1;
+                result = true;
+            }
+        }
+    }
+    return {
+        result,
+        ticks
+    };
+}
+
+// getRunTimeOperations3(hasDuplicates, [1, 2, 2]);
+// getRunTimeOperations3(hasDuplicates, [1, 2, 3, 4, 5, 6, 7, 8, 9, 9]);
+// getRunTimeOperations3(hasDuplicates,
+//     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+//         11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+//         22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+//         34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+//         46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+//         58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
+//         70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81,
+//         82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
+//         94, 95, 96, 97, 98, 99, 99
+//     ]);
+
+/*
+ * Exponential time O(2^n)
+ * run times grow rapidly with increase in input size
+ * 2^2 = 4, 2^10 = 1024
+ */
+function countTriangle (layers) {
+    let ticks = 1;
+    let count = 0; // num of dots counted so far
+    let layer = 0; // current layer
+    let lastLayer = 1; // num of dots counted in prev layer
+    while (layer < layers) {
+        let newLayer = 0; // num dots counted so far in curr layer
+        for (let i = 0; i < lastLayer; i += 1) {
+            ticks += 1;
+            newLayer += 2;
+        }
+        lastLayer = newLayer;
+        count += lastLayer;
+        layer += 1;
+    }
+    return { result: count, ticks };
+}
+
+function getRunTimeOperations4 (fn, input) {
+    const { ticks, result } = fn(input);
+    console.log(
+        `With input of size ${input}, ${fn.name} ` +
+            `clocked ${ticks} ticks to generate result of ${result}.`
+    );
+}
+
+// getRunTimeOperations4(countTriangle, 2);
+// getRunTimeOperations4(countTriangle, 4);
+// getRunTimeOperations4(countTriangle, 16);

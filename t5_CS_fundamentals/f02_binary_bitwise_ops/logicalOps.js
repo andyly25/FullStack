@@ -62,9 +62,9 @@ function andOrXor (num1, num2, op) {
     }
 }
 
-andOrXor(0, 1, 'andOp');
-andOrXor(0, 1, 'orOp');
-andOrXor(0, 1, 'xorOp');
+// andOrXor(0, 1, 'andOp');
+// andOrXor(0, 1, 'orOp');
+// andOrXor(0, 1, 'xorOp');
 
 /*
  * Write a function that takes in an integer value and
@@ -78,6 +78,38 @@ function notOp (num) {
     console.log(`num entered is: ${binary}, \ncomplement is: ${binaryNot}`);
 }
 
-notOp(9);
-notOp(1);
-notOp(16);
+// notOp(9);
+// notOp(1);
+// notOp(16);
+
+// * Write a function which sets the third bit of a number.
+function setBit (num, pos) {
+    const mask = 1 << pos;
+    console.log(`${num} set bit at position: ${pos} is ${num | mask}`);
+}
+setBit(16, 3);
+
+// * Write a function which toggles the third bit of a number.
+function toggleBit (num, pos) {
+    // this is how we get bit mask
+    const mask = 1 << pos;
+    console.log(`${num} toggle bit at position: ${pos} is ${num ^ mask}`);
+}
+toggleBit(15, 3);
+// * Write a function which clears (sets to zero) the third bit of a number.
+function clearBit(num, pos) {
+    const mask = 1 << pos;
+    // & ~mask makes it so everything else but position gives a 1 from AND
+    console.log(`${num} clear bit at position: ${pos} is ${num & ~mask}`);
+}
+clearBit(31, 3);
+
+// * Write a function which tells you whether the third bit of a number is set.
+// check to see if bit at that position is a 1
+function checkBit (num, pos) {
+    const mask = 1 << pos;
+    const result = (num & mask) ? true : false;
+    console.log(`${num} check bit at position: ${pos} is ${result}`);
+}
+checkBit(16, 3);
+checkBit(8, 3);

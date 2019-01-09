@@ -35,3 +35,18 @@
 - OR: as long one of the inputs is has a 1, result is a 1, else 0
 - XOR: 1 in truth table when both bits are different
 - NOT: provides the complement value
+
+## Shift Operators
+- `left shift (<<), right shift (>>), zero-fill right shift (>>>)`
+- *left shift* will shift the value n num of bits to the left
+    - equation of using this is `x*2^y`
+    - 13 << 3 will become `13*2^3 = 104`
+- *right shift* shift binary bits to the right
+    - 13 >> 3 = 1
+- *zero-fill right shift* same as right shift, but also discards sign bit value
+    - leftmost bits always zero and result is always non-negative
+    - -17 >>> 5 = 134217727
+    - 00000000 00000000 00000000 00010001  —> Binary Format of 17
+    - 11111111 11111111 11111111 11101110  —> One’s Complement of 17 in Binary Format
+    - 11111111 11111111 11111111 11101111 —> Two’s Complement of 17 in Binary Format
+    - 00000111  11111111 11111111 11111111  —> After shifting 5 bit positions right

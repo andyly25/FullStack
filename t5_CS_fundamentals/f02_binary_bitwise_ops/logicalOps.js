@@ -13,7 +13,7 @@ it would become much faster for very large inputs(iterations)
  */
 
 function evensAndOp (num) {
-    console.log('using AND, is it even? ', num, num & 1 ? false : true);
+    console.log('using AND, is it even? ', num, num & 1);
 }
 
 // evensAndOp(3);
@@ -97,7 +97,7 @@ function toggleBit (num, pos) {
 }
 toggleBit(15, 3);
 // * Write a function which clears (sets to zero) the third bit of a number.
-function clearBit(num, pos) {
+function clearBit (num, pos) {
     const mask = 1 << pos;
     // & ~mask makes it so everything else but position gives a 1 from AND
     console.log(`${num} clear bit at position: ${pos} is ${num & ~mask}`);
@@ -108,7 +108,7 @@ clearBit(31, 3);
 // check to see if bit at that position is a 1
 function checkBit (num, pos) {
     const mask = 1 << pos;
-    const result = (num & mask) ? true : false;
+    const result = num & mask;
     console.log(`${num} check bit at position: ${pos} is ${result}`);
 }
 checkBit(16, 3);

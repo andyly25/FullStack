@@ -128,17 +128,23 @@ function getProductsOfAllIntsExceptIndex (arr) {
     // before it, storing the total prod so far each time
     let prodSoFar = 1;
     for (let i = 0; i < arr.length; i += 1) {
+        console.log(`prod so far is: ${prodSoFar} for arr[${i}]: ${arr[i]}`);
         productOfAllIntsExceptAtIndex[i] = prodSoFar;
         prodSoFar *= arr[i];
     }
+
+    console.log(`current array is: ${productOfAllIntsExceptAtIndex}`);
 
     // for each in, we find prod of all ints
     // after it, since each index in product all has prod of all ints be4 it
     // now we're starting the total prod of all other ints
     prodSoFar = 1;
     for (let j = arr.length - 1; j >= 0; j -= 1) {
+        console.log(`${j} is: ${productOfAllIntsExceptAtIndex[j]} multiply with prodsofar: ${prodSoFar}`);
         productOfAllIntsExceptAtIndex[j] *= prodSoFar;
+        console.log(`is ${productOfAllIntsExceptAtIndex[j]}`);
         prodSoFar *= arr[j];
+        // console.log(`prod so far is: ${prodSoFar} for arr[${j}]: ${arr[j]}`);
     }
     return productOfAllIntsExceptAtIndex;
 }

@@ -1,0 +1,15 @@
+# Linked Lists:
+- data struc meant to store ordered collections of data
+- works by storing a series of nodes
+    - *node* consists of a value, and pointer to next node
+    - can be spread out in memory
+- why are arrays used more often than linked lists? **Cache Locality**
+    - Need to know how CPU works first
+    - when CPU try to access data it loads directly from RAM
+        - mem access is slow so introduces small memory caches into processor
+        - when access data from mem, stores some into nearby caches
+        - and CPU can pull data from caches more quickly than from RAM
+    - works well for arrays since stored in contiguous memory
+        - big chunk of array loaded into caches, so fast access
+    - Nodes in LL are spread throughout memory so unlikely to be found in caches
+        - loads far more data from the Ram, resulting in performance penalty

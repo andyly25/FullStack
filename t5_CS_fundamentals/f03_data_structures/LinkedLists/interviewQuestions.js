@@ -43,6 +43,8 @@ const n5 = new Node('mapple', n4);
 const n6 = new Node('dapple', n5);
 const n7 = new Node('papple', n6);
 const n8 = new Node('pineapple', n7);
+const n9 = new Node('looping', n8);
+const n10 = new Node('looping', n9);
 
 // assign node to head which function as entry into linked list
 const head = n8;
@@ -78,7 +80,7 @@ function findThirdFromEnd (head) {
 console.log('third from end is: ', findThirdFromEnd(head));
 
 /*
- * Write an algorithm to reverse a linked list
+ * 3. Write an algorithm to reverse a linked list
  *
  * 1st method is iterative method, O(n) time and O(1) space complexity
  */
@@ -102,3 +104,63 @@ function reverseLinkedList (linkedList) {
 console.log('reversed linked list', reverseLinkedList(n8));
 
 // look into recursive method next time
+const recursionReverseLinkedList = (curr, prev) => {
+    if (curr.next) {
+        const newHead = reverseLinkedList(curr.next, curr);
+        curr.next = prev;
+        // pass new head up the list
+        return newHead;
+    }
+    curr.next = prev;
+    // base case return the tail
+    return curr;
+}
+
+const someList = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null
+            }
+        }
+    }
+};
+
+console.log(recursionReverseLinkedList(someList));
+
+/*
+ * Write an algorithm to find whether a linked list has a cycle
+ * (i.e. whether a node in the list has its next value pointing
+ * to an earlier node in the list)
+ *
+ * the way to solve this is similar to the previous ones
+ * where we have two pointers, one faster and the other slower
+ * if the two pointers meets up, then we have a cycle
+ */
+function findLoop (list) {
+    let ptr1 = list;
+    let ptr2 = list;
+
+    if (!list || !list.next) {
+        return false;
+    }
+    if (list.next === list) {
+        return true;
+    }
+
+    while (ptr2 !== null) {
+        ptr1 = ptr1.next;
+        ptr2 = ptr2.next.next;
+        if (ptr1 === ptr2) {
+            return true;
+        }
+    }
+    return false;
+}
+
+n8.next = n10;
+console.log(`Is there a loop? ${findLoop(n10)}`);

@@ -8,6 +8,49 @@ class HashMap {
         this._capactiy = initialCapacity;
     }
 
+    get (key) {
+        const index = this._findSlot(key);
+        if (this._slots[index] === undefined) {
+            throw new Error('Key error');
+        }
+        return this._slots[index].value;
+    }
+
+    set (key, value) {
+        // first checks whether load ratio is greater than given max
+        // if so then resisze using resize fn
+        // next finds the appropiate slot, and add obj to the array contain k/v
+        // O(1) best and avg, O(n) worst
+        const loadRatio = (this.length + this._deleted + 1) / this._capacity;
+        if (loadRatio > HashMap.MAX_LOAD_RATIO) {
+            this._resize(this._capacity * HashMap.SIZE_RATIO);
+        }
+
+        const index = this._findSlot(key);
+        this._slots[index] = {
+            key,
+            value,
+            deleted: false
+        };
+        this.length += 1;
+    }
+
+    // the simplest solution is to not actually delete the item at all, and just
+    // put a deleted marker in the slot. Then on resize you can actually clear
+    // out all of deleted items. This means that the hash map loads up slightly
+    // more quickly, but simplifies the code significantly.
+    // addition of a deleted property with some changes to resize and findslot
+    remove (key) {
+        const index = this._findSlot(key);
+        const slot = this._slots[index];
+        if (slot === undefined) {
+            throw new Error('Key error');
+        }
+        slot.deleted = true;
+        this.length--;
+        this._deleted += 1;
+    }
+
     static _hashString (string) {
         // this takes a string and hashes it, outputting a number
         // uses djb2 algorithm
@@ -17,24 +60,6 @@ class HashMap {
             hash = hash & hash;
         }
         return hash >>> 0;
-    }
-
-    set (key, value) {
-        // first checks whether load ratio is greater than given max
-        // if so then resisze using resize fn
-        // next finds the appropiate slot, and add obj to the array contain k/v
-        // O(1) best and avg, O(n) worst
-        const loadRatio = (this.length + 1) / this._capactiy;
-        if (loadRatio > HashMap.MAX_LOAD_RATIO) {
-            this._resize(this._capacity * HashMap.SIZE_RATIO);
-        }
-
-        const index = this._findSlot(key);
-        this._slots[index] = {
-            key,
-            value
-        };
-        this.length += 1;
     }
 
     _findSlot (key) {
@@ -50,7 +75,7 @@ class HashMap {
         for (let i = start; i < start + this._capacity; i += 1) {
             const index = i % this._capacity;
             const slot = this._slots[index];
-            if (slot === undefined || slot.key === key) {
+            if (slot === undefined || (slot.key === key && !slot.deleted)) {
                 return index;
             }
         }
@@ -64,19 +89,15 @@ class HashMap {
         this._capacity = size;
         // Reset the length - it will get rebuilt as you add the items back
         this.length = 0;
+        this._deleted = 0;
         this._slots = [];
 
         for (const slot of oldSlots) {
-            if (slot !== undefined) {
+            if (slot !== undefined && !slot.deleted) {
                 this.set(slot.key, slot.value);
             }
         }
     }
-
-    // the simplest solution is to not actually delete the item at all, and just
-    // put a deleted marker in the slot. Then on resize you can actually clear
-    // out all of deleted items. This means that the hash map loads up slightly
-    // more quickly, but simplifies the code significantly.
 }
 
 // MAX_LOAD_RATIO is highest that ratio between len and cap allowed to reach

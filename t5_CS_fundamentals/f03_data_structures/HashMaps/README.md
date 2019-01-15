@@ -6,3 +6,9 @@
     - how to store is by taking a value, and convert into a number
         - num then used as index into array
         - any input has almost equal chance of being hashed to any output index
+- main difficulty is collisions
+    - what happens when 2 keys hash to same slot in array?
+        - *Separate chaining*: Each slots hold a linked list
+            - when you want add a value, hash the key, find slot, then add pair to list
+        - *Open addressing*: when there is collision, add pair to nearest empty slot where it should live
+    - by having max load ratio, minimizes chance value ends up long way away from hash pos due to slots being full

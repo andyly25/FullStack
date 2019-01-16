@@ -5,7 +5,9 @@ class HashMap {
         // helps cut down on num of mem allocations
         this.length = 0;
         this._slots = [];
-        this._capactiy = initialCapacity;
+        // wow, had typo on capacity the whole time...
+        this._capacity = initialCapacity;
+        this._deleted = 0;
     }
 
     get (key) {
@@ -47,7 +49,7 @@ class HashMap {
             throw new Error('Key error');
         }
         slot.deleted = true;
-        this.length--;
+        this.length -= 1;
         this._deleted += 1;
     }
 
@@ -104,3 +106,76 @@ class HashMap {
 // when 90% slots reached, a resize takes place
 HashMap.MAX_LOAD_RATIO = 0.9;
 HashMap.SIZE_RATIO = 3;
+
+/*
+ * 1. Write an algorithm to check whether any permutation of a string is a palindrome.
+ *  A palindrome is a string that reads the same forwards and backwards:
+ *  for example, "madam" or "racecar". Your algorithm needs to check if any
+ *  permutation of the string is a palindrome. Given the string "acecarr",
+ *  the algorithm should return true, because the letters in "acecarr" can be
+ *  rearranged to "racecar", which is a palindrome. In contrast, given the word
+ *  "north", the algorithm should return false, because there's no way to
+ *  rearrange those letters to be a palindrome.
+ */
+function isPalindrome (string) {
+    const str = string.toLowerCase();
+    const hashMap = new HashMap();
+    for (let i = 0; i < str.length; i += 1) {
+        console.log(str[i]);
+        try {
+            // instead of storing we check to see if a letter already exists
+            // in the hashmap then we remove it
+            hashMap.remove(str[i]);
+        }
+        catch (e) {
+            // if we can't remove, we give a value of 1 to the letter
+            hashMap.set(str[i], 1);
+        }
+    }
+    if (hashMap.length <= 1) {
+        // as long as there is only 1 or less letter remaining in hashmap
+        // we have a palindrome!
+        return true;
+    }
+    return false;
+}
+
+const string1 = 'aabbccdde';
+const string2 = 'aabbccddef';
+// console.log(`is ${string1} a palindrome?: ${isPalindrome(string1)}`);
+// console.log(`is ${string2} a palindrome?: ${isPalindrome(string2)}`);
+
+/*
+ * 2. Write an algorithm to group a list of words into anagrams.
+ * For example, if the input was
+ * ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'],
+ * the output should be:
+ * [['east', 'teas', 'eats'], ['cars', 'arcs'], ['acre', 'race']].
+ */
+const array1 = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
+const array2 = ['maps', 'hacker', 'spam', 'pams', 'kercha'];
+function anagrams (array) {
+    const results = [];
+    const hashMap = new HashMap();
+    array.forEach((word) => {
+        const sortedLetters = word.split('').sort().join('');
+        try {
+            const index = hashMap.get(sortedLetters);
+            results[index].push(word);
+        }
+        catch (e) {
+            hashMap.set(sortedLetters, results.length);
+            results.push([word]);
+        }
+    });
+    return results;
+}
+
+// console.log(`anagram of ${array1} is
+//     ${JSON.stringify(anagrams(array1))}`);
+// console.log(`anagram of ${array2} is
+//     ${JSON.stringify(anagrams(array2))}`);
+
+/*
+ * 3. Write a hash map implementation which uses separate chaining.
+ */

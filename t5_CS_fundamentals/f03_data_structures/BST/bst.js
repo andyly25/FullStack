@@ -150,3 +150,106 @@ class BinarySearchTree {
         return this.left._findMin();
     }
 }
+
+/*
+ * 1. Write an algorithm to find the height of a binary search tree
+ *
+ * one way is to find the height of the left subtree and right subtree
+ * then add one from root connecting to subtree
+ */
+
+function findHeight (node) {
+    if (!node) {
+        return 0;
+    }
+    const leftHeight = findHeight(node.left);
+    const rightHeight = findHeight(node.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
+}
+
+function printNodesAtLevelK (root, k) {
+    if (root === null) {
+        return;
+    }
+    if (k === 0) {
+        console.log(`Node at level k = ${root.value}`);
+        return;
+    }
+    else {
+        printNodesAtLevelK(root.left, k - 1);
+        printNodesAtLevelK(root.right, k - 1);
+    }
+}
+
+/*
+ * 2. Write an algorithm to check whether an arbitrary binary tree is a binary
+ * search tree, assuming the tree does not contain duplicates
+ *
+ * to find out we have to verify if values on left hand side is less than parent node
+ * and nodes on right is greater than parent node
+ */
+function isBST (node, min = null, max = null) {
+    if (!node) {
+        return true;
+    }
+    if (max !== null && node.key >= max) {
+        return false;
+    }
+    if (min !== null && node.key <= min) {
+        return false;
+    }
+    const leftSide = isBST(node.left, min, node.key);
+    const rightSide = isBST(node.right, node.key, max);
+    return leftSide && rightSide;
+}
+
+/*
+ * Write an algorithm to find the third largest node in a binary search tree
+ * this uses reverse inorder traversal of BST
+ * traverse all nodes in decreasing order, and keeps track of count of nodes
+ * visited, when count equal to k, we return the value
+ *
+ * based off of:
+ * https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
+ * only has C++, Java, Python, C# solutions posted
+ */
+function kthLargestUtil (root, k, c) {
+    const count = c;
+    // base cases, 2nd condition to avoid unnecessary recursive calls
+    if (root === null || count[0] >= k) {
+        return;
+    }
+    // follow reverse inorder traversal so largest element visited first
+    kthLargestUtil(root.right, k, c);
+    // increment count of visited node
+    count[0] += 1;
+    // if c becomes k now, then this is k'th largest
+    if (count[0] === k) {
+        console.log(`k'th largest element is ${root.key} which is ${root.value}`);
+        return;
+    }
+}
+
+function kthLargest (root, k) {
+    // initialize count of nodes
+    const c = [0];
+    // c is passed by reference
+    kthLargestUtil(root, k, c);
+}
+
+const tree = new BinarySearchTree();
+tree.insert(8, 'Tidus');
+tree.insert(1, 'Squall');
+tree.insert(5, 'Zidane');
+tree.insert(14, 'Vaan');
+tree.insert(13, 'Cecil');
+tree.insert(20, 'Zack');
+tree.insert(15, 'Rinoa');
+
+// find height of tree
+console.log(`height of the tree is: ${findHeight(tree)}`);
+// determing if is a BST
+console.log(`is tree valid BST?: ${isBST(tree)}`);
+// find kth largest, in our case 3rd, don't forget 0 counts
+kthLargest(tree, 2);

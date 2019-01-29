@@ -3,6 +3,7 @@ It is a basically programming using objects that are usually instances of a clas
 
 - **Object**
     - software bundle of state and behavior
+    - in pure OOP terms, an object is an instance of a class
     - models real world objects found in real life
         - e.g. dog: state (name, breed, color), behavior(barking, fetch)
     - object stores its states in fields (variables)
@@ -18,13 +19,19 @@ It is a basically programming using objects that are usually instances of a clas
         - *pluggability and debugging ease*: if problems with obj, can remove and use another obj instead
 - **Class**
     - blueprint or prototype from which objects are created.
+        - describes the details of an object
     - modeling the state and behavior of an object
+    - composed of 3 things:
+        - name
+        - attributes
+        - operations
 - **Constructors**
 - **Inheritance**
     - inherits commonly used state and behavior from other classes
     - each class allowed have one direct superclass
         - superclass has potential for unlimited num of subclassess
         - Bike is superclass of MountainBike and RoadBike
+    - ability to extend components without any knowledge of the way in which a class was implemented
 - **Interface**
     - contract between a class and the outside world, enforced by compiler
     - class implementing interface provides all behaviors of that interface
@@ -38,11 +45,30 @@ It is a basically programming using objects that are usually instances of a clas
         - Java Platform provides a large class library (a set of packages)
         - e.g. String, File, Socket and more!
 - **OOP**
+    - Object Oriented Programming
+    - everything is grouped as self-sustainable objects
+    - 4 major principles: *encapsulation*, *abstraction*, *inheritance*, *polymorphism*
 - **Encapsulation**
     - hiding internal state and req. all interactions to be performed through obj. methods
+    - can make changes without worrying about breaking other code that is using the class
+    - restricts access to accessors and mutators
+        - **Accessor**: method used to ask obj about itself
+            - in form of properties, which usually has a *get* method, which is this
+            - not restricted to properties and can be any public method that gives info about state of obj
+        - **Mutator**: public methods used to modify state of obj, while hiding implementation how data is modified
+            - it is considered the *set* method that lets the caller modify behind member data behind the scenes
+- **Abstraction** (sounds soo abstract o.o)
+    - development of classes, objects, types in terms of their interfaces and functionality, instead of implmentation to details
+    - denotes a model, a view, or some other focused representation for an actual item
+    - denotes the essential characteristics of an obj that distinguish it from all other kinds of obj. and thus provide crisply defined conceptual boundaries, relative to perspective of viewers.
+    - implementation of an obj that contains the same essential properties and actions we can find in the original object we are representing.
 - **Abstract class**
 - **Polymorphism**
-- **Abstraction**
+    - having multiple methods all with the same name, but slightly different functionality
+    - having a default method, and then using the other methods depending on your needs
+    - easiest example I can think of is with multiplication
+        - `multiply(x) // which will multiply x with itself`
+        - `multiply(x, y) // multiplies x with y`
 
 ## Questions:
 1. Real world objects contain _ and _

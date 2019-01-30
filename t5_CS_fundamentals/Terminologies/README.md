@@ -37,6 +37,10 @@ It is a basically programming using objects that are usually instances of a clas
     - class implementing interface provides all behaviors of that interface
     - basically a group of related methods with empty bodies
     - allows a class to become more formal about behavior it promises to provide
+    - when to use
+        - total abstraction, all methods declared within interface must be implemented by class(es) that implements interface
+        - class can implement more than one interface, multiple inheritance
+        - specify behavior of particular data type, but not concerned about who implements its behavior
 - **Package**
     - namespace for organizing classes and interfaces in a logical manner
     - think of it like folders on your comp (one section for HTML, another for Java and etc)
@@ -57,12 +61,37 @@ It is a basically programming using objects that are usually instances of a clas
             - not restricted to properties and can be any public method that gives info about state of obj
         - **Mutator**: public methods used to modify state of obj, while hiding implementation how data is modified
             - it is considered the *set* method that lets the caller modify behind member data behind the scenes
+    - techniques classes use to associate with each other: association, aggregation, composition
+        - *association*: a relationship between 2 classes, all one obj instance to cause another to perform an action on its behalf
+            - just connectivity between two classes
+            - when define a var of one class in another class, you enable 1st to associate fn and prop of 2nd class
+            - no ownership in place, e.g. a teacher *has-a* or *teaches* a student, they don't own each other
+        - *aggregation*: weaj type of association with partial ownership
+            - can survive the aggregation life cycle without existence of parent object
+                - e.g. a school uses teachers, but any teachers can belong to more than one department, so if a department disappears, the teacher will still exist
+        - *composition* strong type of association with full ownership.
+            - e.g. department owns courses, so if a department disappears, those courses will disappear as well
 - **Abstraction** (sounds soo abstract o.o)
     - development of classes, objects, types in terms of their interfaces and functionality, instead of implmentation to details
     - denotes a model, a view, or some other focused representation for an actual item
     - denotes the essential characteristics of an obj that distinguish it from all other kinds of obj. and thus provide crisply defined conceptual boundaries, relative to perspective of viewers.
     - implementation of an obj that contains the same essential properties and actions we can find in the original object we are representing.
-- **Abstract class**
+    - when to use:
+        - some related classes that need to share some lines of code
+            - can put these code into abstract class and should be extended to all related classes
+        - define non-static or non-final field(s)
+            - so by method you can access and modify the state of obj to which they belong
+        - expect classes extend an abstract class have many common methods or fields, or req. access modifier other than public
+- **[Abstract class](https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html)**
+    - may or may not include abstract methods. cannot be instantiated, but can be subclassed
+        - interface can only have abstract; abstract can have default and static methods
+    - *abstract method*: declared without an implementation (no braces, and followed by semicolon)
+        - `abstract void moveTo(double deltaX, double deltaY);`
+    - if a class includes abstract methods, then the class itself must be declared abstract
+    - when an abstract class is subclassed, subclass usually provides implementations for all abstract methods in parent class
+        - if not, must be declared abstract
+    - can be extended with "extends" compared to interface "implements"
+    - can extend another java class and implement multiple Java interfaces
 - **Polymorphism**
     - having multiple methods all with the same name, but slightly different functionality
     - having a default method, and then using the other methods depending on your needs
@@ -89,3 +118,15 @@ It is a basically programming using objects that are usually instances of a clas
     - package
 9. The term API stands for __ ?
     - Application programming interface
+10. Which of the following is FALSE about abstract classes in Java
+    - If we derive an abstract class and do not implement all the abstract methods, then the derived class should also be marked as abstract using 'abstract' keyword
+    - Abstract classes can have constructors
+    - A class can be made abstract without any abstract method
+    - (x) A class can inherit from multiple abstract classes.
+11. Which of the following is true about interfaces in java.
+    - (x) An interface can contain following type of members.
+        - ....public, static, final fields (i.e., constants)
+        - ....default and static methods with bodies
+    - An instance of interface can be created.
+    - (x) A class can implement multiple interfaces.
+    - (x) Many classes can implement the same interface.

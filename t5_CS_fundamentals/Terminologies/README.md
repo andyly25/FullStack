@@ -28,6 +28,10 @@ It is a basically programming using objects that are usually instances of a clas
         - attributes
         - operations
 - **Constructors**
+    - class contains constructors that are invoked to create obj from the class blueprint
+    - declarations use the name of the class and have no return type
+        - e.g. to create a Bike obj called myBike, a constructor is called by the new operator
+        - `Bike myBike = new Bike(30, 0, 8);`
 - **Inheritance**
     - inherits commonly used state and behavior from other classes
     - each class allowed have one direct superclass
@@ -169,9 +173,30 @@ It is a basically programming using objects that are usually instances of a clas
         int[] anArray = {100, 200, 300, 400};
       ```
 - Questions: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_variables.html
-- Conditional Statements: if and else
-- Loops: for and while
+- Conditional Statements: if and else and switch
+    - operators used in building expressions, which computers values
+    - expressions are core components of statements
+        - construct made of var, ops, and method invocations
+    - statements may be grouped into blocks
+    - block is a group of 0 or more statements between braces and used anywhere a single statement is allowed
+- Loops: for and while and do-while
+    - statements in do-while are always executed at least once
 - Classes
+    - class declarations can include these componenets
+        - Modifiers: public, private, and others
+        - class name, with initial letter capitalized
+        - name of class's parent (superclass), preceded with *extends*; can only extend(subclass) one parent
+        - comma separated list of interfaces implemented by class, preceded with *implement*
+        - class body surrounded by braces {}
+    - variables
+        - Member vars in class are *fields*
+        - var in method or block of code are *local variables*
+        - var in method declarations are *parameters*
+    - access modifiers
+        - **public** modifier: the field is accessible from all classes
+        - **private** modifier: field is accessible only within its own class
+        - in the spirit of encapsulation to make fields private, can only be directly accessed from its class
+            - only way to access the values is by indirectly adding public methods to find or edit field values
 - Interfaces
 - Abstract Classes
 - Exceptions

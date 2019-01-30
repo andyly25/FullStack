@@ -1,4 +1,6 @@
-# OOP concepts
+# Review Topics
+
+## OOP concepts
 It is a basically programming using objects that are usually instances of a class. A class consists of data fields and methods that work together. This includes techniques such as abstraction, polymorphism, inheritance and more.
 
 - **Object**
@@ -130,3 +132,47 @@ It is a basically programming using objects that are usually instances of a clas
     - An instance of interface can be created.
     - (x) A class can implement multiple interfaces.
     - (x) Many classes can implement the same interface.
+
+## Java
+- Syntax
+    - built almost exclusively as an OOP language
+    - all code written inside classes and every data items is an object (except data types)
+    - **instance variable** (non-static fields)
+        - fields declared without static keyword and their values are unique to each instance of a class
+    - **class variables** (static fields) is any field declared with static modifier
+        - tells compiler there is exactly one copy of this variable in existence
+        - e.g. a field defining num of gears for a type of bike could be marked static
+            - `static final int numGears = 6`, with final it means the num of gears will never change
+    - **local variables** only visible to the methods in which they are declared; not accessible from the rest of the class
+    - **parameters** are always classified as variables and not fields
+        - in `public static void main(String[] args)` args variable is the parameter
+    - Naming: use camelcase if multiple words
+        - if variable stores constant value do something like `static final int NUM_GEARS = 6`
+- Primitive Data Types (8 of them)
+    - **byte**: 8 bit signed two's complement integer from -128 to 127
+        - useful for saving memory in large arrays
+    - **short**: 16 bit signed 2's complement integer from -32,768 to 32767
+    - **int**: 32 bit 2's complement
+    - **long**: 64 bit 2's complement
+    - **float**: single precision 32 bit, use float instead double if need save memory in large arrays of floating point nums
+    - **double**: single precision 64 bit usually default choice for decimal values
+    - **boolean**: true and false conditions
+    - **char**: 16 bit unicode char from \u0000 to \uffff
+- Arrays: container obj holding fixed num of values of single type
+    - length of array is est. when array is created
+    - ```java
+        int[] someArray;
+        //allocates memory for 10 ints
+        someArray = new int[10];
+        someArray[0] = 100;
+        // can initalize array by
+        int[] anArray = {100, 200, 300, 400};
+      ```
+- Questions: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/QandE/questions_variables.html
+- Conditional Statements: if and else
+- Loops: for and while
+- Classes
+- Interfaces
+- Abstract Classes
+- Exceptions
+- Collections

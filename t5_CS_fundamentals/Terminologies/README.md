@@ -1,4 +1,7 @@
 # Review Topics
+## Table of Contents
+1. [OOP Concepts](#oop-concepts)
+2. [Java](#java)
 
 ## OOP concepts
 It is a basically programming using objects that are usually instances of a class. A class consists of data fields and methods that work together. This includes techniques such as abstraction, polymorphism, inheritance and more.
@@ -137,6 +140,7 @@ It is a basically programming using objects that are usually instances of a clas
     - An instance of interface can be created.
     - (x) A class can implement multiple interfaces.
     - (x) Many classes can implement the same interface.
+---
 
 ## Java
 - Syntax
@@ -198,7 +202,7 @@ It is a basically programming using objects that are usually instances of a clas
         - **private** modifier: field is accessible only within its own class
         - in the spirit of encapsulation to make fields private, can only be directly accessed from its class
             - only way to access the values is by indirectly adding public methods to find or edit field values
-- Interfaces:
+- **Interfaces**:
     - a contract that spells out how their contract interacts
         - each group should be able to write their own code without any knowledge how other group's code is written
     - reference type similar to class that can only contain constants, method signatures, default methods, static methods, and nested types
@@ -221,7 +225,7 @@ It is a basically programming using objects that are usually instances of a clas
                 }
             }
         ```
-- Inheritance:
+- **Inheritance**:
     - why use? when you want to create a new class and there is already a class that includes some code you want
         - reuse fields and methods of existing class without having to write and debug yourself
     - classes can be derived from other classes; inheriting fields and methods
@@ -231,7 +235,7 @@ It is a basically programming using objects that are usually instances of a clas
     - when superclass provides multiple default methods with same signature, follows this principle
         - instance methods are preferred over interface default methods
         - methods that are already overridden by other candidates are ignored
-- Abstract Classes:
+- **Abstract Classes**:
     - when you want to share code amont several closely related classes
     - classes that extend abstract class to have many common methods or fields, or req access modifiers other than public (protected, private)
     - example would be GraphicObjects must be able to resize themselves, just differ how they do it
@@ -257,9 +261,24 @@ It is a basically programming using objects that are usually instances of a clas
                 }
             ```
         - abstract class implements interface does not have implment all the interface's methods
-- Exceptions
-- Collections
-    - **collection** represents a single unit of objects e.g. group
+- **Exceptions**
+    - unwanted or unexpected event which occurs during the execution of a program that disrupts the normal flow of program's instructions
+    - exceptions and errors are subclasses of class **Throwable**
+        - *error*: indicates serious problem that a reasonable app should not try to catch
+            - used by Java run-time system(JVM) to indicate errors having to do with run-time env(JRE)
+            - g.g. StackOverflowError
+        - *exception*: conditions that a reasonable app might try to catch
+            - e.g. NullPointerException, ArrayIndexOutOfBoundsException
+            - if exception occurs, method creates an Exception Object and hands to JVM
+                - *call stack* might be a list methods called to get to the method where exception occured
+                - JVM search call stack to find method that can handle occurred exception
+                    - block of code is *Exception handler*
+                - JVM search from method where occurs in reverse order in which methods called
+                - if finds appropriate handler then it passes exception to it
+                - if can't find then hands over to *default exception handler*
+            - how to handle exceptions by using try, catch, throw, throws, finally
+- **Collections**
+    - represents a single unit of objects e.g. group
         - is an object that can hold references to other obj
     - **collection framework**: represents a unified architecture for storing and manipulating group of obj
         - interfaces
@@ -276,3 +295,6 @@ It is a basically programming using objects that are usually instances of a clas
         - consistent API: basic set of interfaces like Collection, Set, List, or Map
         - reduces programming effort: does not have to worry about design of Collection, and can focus elsewhere
         - increases program speed and quality: provides high performance implementations of useful data structures and algorithms
+---
+
+## Database/SQL

@@ -99,6 +99,7 @@ It is a basically programming using objects that are usually instances of a clas
     - can be extended with "extends" compared to interface "implements"
     - can extend another java class and implement multiple Java interfaces
 - **Polymorphism**
+    - subclasses of a class can define their own unique behaviors and yet share some of the same functionality of parent class
     - having multiple methods all with the same name, but slightly different functionality
     - having a default method, and then using the other methods depending on your needs
     - easiest example I can think of is with multiplication
@@ -197,7 +198,81 @@ It is a basically programming using objects that are usually instances of a clas
         - **private** modifier: field is accessible only within its own class
         - in the spirit of encapsulation to make fields private, can only be directly accessed from its class
             - only way to access the values is by indirectly adding public methods to find or edit field values
-- Interfaces
-- Abstract Classes
+- Interfaces:
+    - a contract that spells out how their contract interacts
+        - each group should be able to write their own code without any knowledge how other group's code is written
+    - reference type similar to class that can only contain constants, method signatures, default methods, static methods, and nested types
+        - default methods can be overriden in implementing class, while static cannot
+        - static belongs only to interface class, so can only invoke static method on interface class
+    - can only be implemented by classes or extended by other interfaces
+    - not method have no braces and terminated with semicolon
+    -   ```java
+            public interface Mother {
+                boolean getAngry(boolean isAngry);
+                int foldClothes(int numClothes);
+                //...
+            }
+            public class Mom implements Mother {
+                boolean getAngry(boolean isAngry) {
+                    // code to implment what happens
+                }
+                int foldClothes(int numClothes) {
+                    // code to fold num of clothes
+                }
+            }
+        ```
+- Inheritance:
+    - why use? when you want to create a new class and there is already a class that includes some code you want
+        - reuse fields and methods of existing class without having to write and debug yourself
+    - classes can be derived from other classes; inheriting fields and methods
+        - a class derived from another class is a subclass
+        - class from which subclass is derived is called a superclass
+    - `@Override` if you want to override a method from superclass
+    - when superclass provides multiple default methods with same signature, follows this principle
+        - instance methods are preferred over interface default methods
+        - methods that are already overridden by other candidates are ignored
+- Abstract Classes:
+    - when you want to share code amont several closely related classes
+    - classes that extend abstract class to have many common methods or fields, or req access modifiers other than public (protected, private)
+    - example would be GraphicObjects must be able to resize themselves, just differ how they do it
+        - similarities would be moveTo, rotate; differing is resize or draw
+        -   ```java
+                abstract class GraphicObject {
+                    int x, y;
+                    ...
+                    void moveTo(int newX, int newY) {
+                        ...
+                    }
+                    abstract void draw();
+                    abstract void resize();
+                }
+                // then you would create other objects extending
+                class Circle extends GraphicObject {
+                    void draw() {
+                        ... //implement its version
+                    }
+                    void resize() {
+                        ...
+                    }
+                }
+            ```
+        - abstract class implements interface does not have implment all the interface's methods
 - Exceptions
 - Collections
+    - **collection** represents a single unit of objects e.g. group
+        - is an object that can hold references to other obj
+    - **collection framework**: represents a unified architecture for storing and manipulating group of obj
+        - interfaces
+            - allows collections to be manipulated independently of the details of their representation
+        - implementations, e.g. classes
+            - concrete implementation of the collection interfaces
+                - basically reusable data structures
+        - algorithm
+            - methods that perform useful computations
+            - said to be polymorphic
+    - Java collections framework gives programmer access to prepackaged data structs as well as algo to manipulate them
+    - classes and interfaces of the collection framework are in package java.util
+    - advantages
+        - consistent API: basic set of interfaces like Collection, Set, List, or Map
+        - reduces programming effort: does not have to worry about design of Collection, and can focus elsewhere
+        - increases program speed and quality: provides high performance implementations of useful data structures and algorithms

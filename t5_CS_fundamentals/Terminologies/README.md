@@ -419,9 +419,58 @@ It is a basically programming using objects that are usually instances of a clas
         - can also use **NOT BETWEEN**
     - Useful math functions
         - ABS(x), SIGN(x), MOD(x,y), FLOOR(x), CEIL(x), POWER(x,y), ROUND(x), ROUND(x,d), SQRT(x)
-- Relationships
-- Normalization
-- Syntax
+- [Relationships](https://launchschool.com/books/sql/read/table_relationships)
+    - **one to one relationships**
+        - when a particular entity instance exists in one table and can have only one associated entity instance in another table
+            - e.g. a user can have only one address, and an address belongs to one user
+            - ```sql
+                /*
+                one to one: User has one address
+                */
+                CREATE TABLE addresses (
+                  user_id int, -- Both a primary and foreign key
+                  street varchar(30) NOT NULL,
+                  city varchar(30) NOT NULL,
+                  state varchar(30) NOT NULL,
+                  PRIMARY KEY (user_id),
+                  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+                );
+              ```
+    - **One to Many**
+        - one to many exists between two entities if an entity instance in one of the tables can be associated with multiple records in the other table
+            - e.g. a book has many reviews, but a review belonds to only one book.
+            - ```sql
+                CREATE TABLE books (
+                  id serial,
+                  title varchar(100) NOT NULL,
+                  author varchar(100) NOT NULL,
+                  published_date timestamp NOT NULL,
+                  isbn char(12),
+                  PRIMARY KEY (id),
+                  UNIQUE (isbn)
+                );
+                /*
+                 one to many: Book has many reviews
+                */
+                CREATE TABLE reviews (
+                  id serial,
+                  book_id integer NOT NULL,
+                  reviewer_name varchar(255),
+                  content varchar(255),
+                  rating integer,
+                  published_date timestamp DEFAULT CURRENT_TIMESTAMP,
+                  PRIMARY KEY (id),
+                  FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+                );
+              ```
+    - **Many to Many Relationships**
+        - exists between two entities if one entity instance there may be multiple records in the other table, and vice versa
+        - e.g. a user can check out many books. A book can be checked out by many users
+        - need to introduce a third cross reference table that holds relationship between the two entities by having two foreign keys
+    - **self referencing relationships**
+- **Normalization** process of splitting up data to remove duplication and improve data integrity
+    - split data across multiple different tables and create relationships between them
+- Syntax: SELECT, UPDATE, DELETE, INSERT INTO, CREATE DATABASE, ALTER DATABASE, CREATE TABLE, ALTER TABLE, DROP TABLE, CREATE INDEX, DROP INDEX
 - DDL
 - Constraints
 - DML
@@ -438,7 +487,16 @@ It is a basically programming using objects that are usually instances of a clas
             FROM customer_info, purchases
             WHERE customer_info.customer_number = purchases.customer_number;
           ```
-- Unions
+- **UNION** operator used to combine the result-set of two or more SELECT statements
+    - each SELECT statement within UNION must have same num of col
+    - col must also have similar data types
+    - col in each SELECT statement must also be in same order
+    - ```sql
+        SELECT col1 FROM table1
+        UNION
+        SELECT col2 FROM table2
+      ```
+    - UNION ALL if you want to allow duplicate values
 
 ### Exercises Select from [sqlCourse](http://www.sqlcourse.com/select.html)
 - Display the first name and age for everyone that's in the table.
@@ -472,4 +530,100 @@ It is a basically programming using objects that are usually instances of a clas
         FROM customers, items_ordered
         WHERE customers.customerid = items_ordered.customerid;
       ```
+---
 
+## HTML
+- Hyper text markup language
+- **Elements**
+    - usually consists of a start tag and end tag
+    - e.g. `<tagname>Element Content</tagname>`
+    - HTML element is everything from start tag to end tag
+- **Attributes**
+    - all HTML elements can have attributes that provide additional info about element
+    - e.g. name="value" and in image tags important to use alt attribute to describe image when it cannot be displayed
+- **Forms**
+    - form elements are different types of input elements (text fields, checkboxes, radio, submit buttons...)
+    - ```html
+        <form>
+            First name: <input type="text" name="firstname">
+        </form>
+      ```
+    - **method** attribute specifies the HTTP method (GET or POST) to be used when submitting form data
+        - *GET* is default method when submitting form data
+        - *POST* used if form data contains sensitive or personal info.
+            - Does not display submitted data in page address field
+- HTTP
+    - hyper text transfer protocol
+    - communication between client comp and webservers is done by sending HTTP requests and receiving HTTP responses
+    - WOrld Wide Web(WWW) is about communication between web clients and web servers
+    - clients are often browsers, but can be any type of program or device
+    - servers are often computers in the cloud
+    - HTTP Request/response
+        - client sends HTTP req to web
+        - web server receives it
+        - server runs an app to process req
+        - server returns HTTP response to browser
+        - client receives response
+---
+
+## CSS
+- **[Selectors](https://www.w3schools.com/cssref/css_selectors.asp)**
+    - patterns used to select the elements you want to style
+    - e.g. .class{}, #id{}, \*{}, div > p {} etc
+- **Box Model**
+    - all html elements can be considered as boxes
+    - this model is essentially a box that wraps around every HTML element consists of
+        - margins, borders, padding, content
+- **Styling Attributes**
+    - [attribute] selector is used to select elements with specified attribute
+    - e.g. a[target="\_blank"]{background-color: yellow;} targets all `<a>` elements with target="\_blank" attribute
+
+---
+
+## JavaScript
+- Syntax:
+    - camelcase
+    - case sensitive
+    - uses const and let
+- [Data Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+    - boolean, null, undefined, number, string, symbol, object
+    - symbol is new to me so I'm not sure
+- Functions:
+    - block of code designed to perform particular task. Executed when something invokes it
+    - ```javascript
+        function someFunction (p1, p2) {
+            return p1 * p2;
+        }
+      ```
+    - can also be defined using an expression
+        - `const x = function (a, b) {return a * b};`
+    - can also be defined with built-in JS function constructor called Function()
+        - `var myFunction = new Function("a", "b", "return a * b");`
+    - also self invoking functions you can check out
+- **Objects**
+    - JS objects are containers for named values called properties or methods
+        - values written as name: value
+        - ```javascript
+            const person = {
+                firstName:"John",
+                lastName:"Smith",
+                age:"40",
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+         ```
+- DOM Manipulation
+    - Document Object Model (DOM) is a programming interface for HTML and XML documents
+        - represents the page so programs can change the doc struct, style, content
+    - JS uses the DOM to access doc and its elements
+        - can traverse through the dom and manipulate its contents
+        - using things like `querySelector, createElement, setAttribute, getElementsByTagName`
+        - can edit css as well using inline styling
+- Event Management
+    - executes code when events are detected
+    - HTML allows event handler attributes to be added to HTML elements
+        - e.g. `<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>`
+    - common html events
+        - onchange, onclick, onmouseover, onmouseout, onkeydown, onload
+    - event handlers used to handle and verify user input, actions, and browser actions

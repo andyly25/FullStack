@@ -2,6 +2,7 @@
 ## Table of Contents
 1. [OOP Concepts](#oop-concepts)
 2. [Java](#java)
+3. [Database/SQL](#database-and-sql)
 
 ## OOP concepts
 It is a basically programming using objects that are usually instances of a class. A class consists of data fields and methods that work together. This includes techniques such as abstraction, polymorphism, inheritance and more.
@@ -297,4 +298,178 @@ It is a basically programming using objects that are usually instances of a clas
         - increases program speed and quality: provides high performance implementations of useful data structures and algorithms
 ---
 
-## Database/SQL
+## Database and SQL
+- Relational Database Management System (RDMS)
+    - structured in database tables, fields, and records
+    - table consists of db table rows
+    - each db table row consists of one or more db table fields
+    - stores data into collection of tables, which might be related by common fields
+    - uses re;atopma; ops to manipulate data stored
+- **SQL**(Structured Query Language): used to communicate with a db
+- Structure
+    - RDMS contains one or more obj called tables
+        - data or info for db are stored in tables
+        - uniquely identified by their names and comprised of col and rows
+            - *column*: contain col name, data type, and other attributes for col
+            - *rows*: contain records or data for columns
+    - **select** used to query the db and retrieve seleced data that match criteria specified
+        -   ```sql
+                select "col1"
+                    [,"col2",etc]
+                    from "tablename"
+                    [where "condition"];
+                    [] = optional
+            ```
+        - "\*" is used to select all col
+        - *where* clause specifies which data values or rows will be returned or displayed based on criteria
+            - <> (not equal to), =, >, <, >=, <=
+        - *LIKE* operator used to select only rows that you specified
+            -   ```sql
+                    select first, last, city
+                    from empinfo
+                    where first LIKE 'Er%';
+                ```
+            - example above will match any first name that starts with 'Er'
+            - strings are in single quote
+    - **create table** used to create new table
+        -   ```sql
+                create table "tablename"
+                ("col1" "data type"
+                        [constraint],
+                "col2" "data type"
+                        [constraint],
+                "col3" "data type");
+                        [constraint]
+            ```
+        - constraints are optional
+        - common data types: char(size), varchar(size), number(size), date, number(size, d)
+    - **insert** used to insert or add a row of data into the table
+        -   ```sql
+                insert into "tablename"
+                (first_col, ... last_col)
+                values (first_val, ... last val);
+            ```
+    - **update** used to update or change records that match specified criteria
+        -   ```sql
+                update "tablename"
+                set "colname" =
+                "newvalue"
+                [,"nextcol" =
+                 "newvalue2"...]
+                where "colname"
+                 OPERATOR "value"
+                [and|or "col"
+                 OPERATOR "value"];
+            ```
+        -   ```sql
+                update phone_book
+                  set area_code = 623
+                  where prefix = 979;
+                update phone_book
+                  set last_name = 'Smith', prefix=555, suffix=9292
+                  where last_name = 'Jones';
+                update employee
+                  set age = age+1
+                  where first_name='Mary' and last_name='Williams';
+            ```
+    - **delete** used to delete reocrds or rows from the table
+        -   ```
+                delete from "tablename"
+                where "columnname"
+                    OPERATOR "value"
+                [and|or "col"
+                 OPERATOR "value"];
+            ```
+        - if you leave off the where clause, all records will be deleted
+    - **drop table** used to delete a table and all rows in table
+        - `drop table "tablename"`
+    - **aggregate functions**: MIN, MAX, SUM, AVG, COUNT, COUNT(\*)
+    - **GROUP BY** clause will gather all rows that contain data in specified col
+        -   ```sql
+                SELECT col1,
+                SUM(col2)
+                FROM "list-of-tables"
+                GROUP BY "col-list";
+            ```
+        - example to retrieve list of highest paid salaries in each department
+            - ```sql
+                SELECT max(salary), dept
+                FROM employee
+                GROUP BY dept;
+              ```
+    - **HAVING** allows to specify conditions on the row for each group; should follow GROUP BY clause
+        -   ```sql
+                SELECT col1,
+                SUM(col2)
+                FROM "list-of-tables"
+                GROUP BY "column-list"
+                HAVING "condition"
+            ```
+    - **ORDER BY** allows to display results of query in a sorted order based on col u specify order by
+        -   ```sql
+                SELECT col1, SUM(col2) FROM "list-of-tables" ORDER BY "col-list" [ASC | DESC];
+            ```
+        - e.g. `SELECT employee_id, dept, name, age, salary FROM employee_info WHERE dept = 'Sales' ORDER BY salary;`
+    - **AND** operator used to join 2 or more conditions in the where clause, both sides of AND must be true for conditions to be met
+    - **IN** operator used to test whether or not a value is "in" the list of values provided
+        - e.g. `SELECT employeeid, lastname, salary FROM employee_info WHERE lastname IN ('Joe', 'Smith', 'Sue')`
+        - can also use **NOT IN** to exclude rows in your list
+    - **BETWEEN** is used to see whether or not a value is "between" the two values stated after keyword BETWEEN
+        - e.g. `SELECT employeeid, age, lastname, salary FROM employee_info WHERE age BETWEEN 30 AND 40;`
+        - can also use **NOT BETWEEN**
+    - Useful math functions
+        - ABS(x), SIGN(x), MOD(x,y), FLOOR(x), CEIL(x), POWER(x,y), ROUND(x), ROUND(x,d), SQRT(x)
+- Relationships
+- Normalization
+- Syntax
+- DDL
+- Constraints
+- DML
+- Joins
+    - allows you to link data from two or more tables together into a single query result from one single SELECT statement
+        - ```sql
+            SELECT "list-of-columns"
+            FROM table1,table2
+            WHERE "search-condition(s)"
+          ```
+        - the below "join" is known as inner join
+        - ```sql
+            SELECT customer_info.firstname, customer_info.lastname, purchases.item
+            FROM customer_info, purchases
+            WHERE customer_info.customer_number = purchases.customer_number;
+          ```
+- Unions
+
+### Exercises Select from [sqlCourse](http://www.sqlcourse.com/select.html)
+- Display the first name and age for everyone that's in the table.
+    - select first, age from empinfo;
+- Display the first name, last name, and city for everyone that's not from Payson
+    - select first, last, city from empinfo where city <> 'Payson';
+- Display all columns for everyone that is over 40 years old.
+    - select * from empinfo where age > 40;
+- Display the first and last names for everyone whose last name ends in an "ay".
+    - select first, last from empinfo where Like '%ay';
+- Display all columns for everyone whose first name equals "Mary".
+    - select from first where first = 'Mary';
+- Display all columns for everyone whose first name contains "Mary".
+    - select * from empinfo where first LIKE '%Mary%';
+- Jonie Weber just got married to Bob Williams. She has requested that her last name be updated to Weber-Williams.
+    - update phone_book set last_name = 'Williams' where first_name='Jonie' and last_name="Weber"
+- Dirk Smith's birthday is today, add 1 to his age.
+    - update phone_kook set age=age+1 where first_name='Dirk' and last_name='Smith'
+- All secretaries are now called "Administrative Assistant". Update all titles accordingly.
+    - update phone_book set title='Administrative Assistant' where title='Secretary'
+- Everyone that's making under 30000 are to receive a 3500 a year raise.
+    - update phone_book set wage=wage+3500 where salary < 3500
+- All "Programmer II" titles are now promoted to "Programmer III".
+    - update phone_book set title="Programmer III" where title = "Programmer II"
+- Select the item and price of all items that start with the letters 'S', 'P', or 'F'.
+    - SELECT item, price FROM items_ordered WHERE (item LIKE 'S%') or (item LIKE 'P%') or (item LIKE 'F%');
+- Write a query using a join to determine which items were ordered by each of the customers in the customers table. Select the customerid, firstname, lastname, order_date, item, and price for everything each customer purchased in the items_ordered table.
+    - ```sql
+        SELECT customers.customerid, customers.firstname, customers.lastname,
+        items_ordered.order_date, items_ordereditem, items_ordered.price
+        FROM customers, items_ordered
+        WHERE customers.customerid = items_ordered.customerid;
+      ```
+
